@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veritas Aescula Institute - Shaping Bright Futures, One Student at a Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-maroon: #7D242B;
+            --light-beige: #D7CAB7;
+            --maroon-variant-1: #7E242B;
+            --maroon-variant-2: #7F242B;
+            --maroon-variant-3: #80242B;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+            --white: #FFFFFF;
+            --background-light: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-beige);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(125, 36, 43, 0.9) 0%, rgba(128, 36, 43, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.03"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.03"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.03"/><circle cx="90" cy="40" r="1" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--light-beige);
+            font-weight: 400;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--light-beige);
+            color: var(--primary-maroon);
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            background: var(--white);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-maroon);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Student Activities Gallery */
+        .activities-gallery {
+            background: var(--background-light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(125, 36, 43, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(125, 36, 43, 0.9), transparent);
+            padding: 2rem;
+            color: var(--white);
+        }
+
+        .gallery-overlay h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--background-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(125, 36, 43, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Values Section */
+        .values {
+            background: var(--background-light);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(125, 36, 43, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(125, 36, 43, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-2));
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Program Highlights Section */
+        .program-highlights {
+            background: var(--white);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .program-highlight-card {
+            background: var(--background-light);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(125, 36, 43, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .program-highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(125, 36, 43, 0.2);
+        }
+
+        .program-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-content h3 {
+            color: var(--primary-maroon);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .program-content p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .program-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-maroon);
+            font-weight: 700;
+        }
+
+        .register-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-2));
+            color: var(--white);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(125, 36, 43, 0.3);
+        }
+
+        .register-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(125, 36, 43, 0.4);
+            background: linear-gradient(135deg, var(--maroon-variant-2), var(--primary-maroon));
+        }
+
+        /* Why Choose Us Section */
+        .why-choose {
+            background: var(--background-light);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(125, 36, 43, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(125, 36, 43, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: var(--primary-maroon);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
+            color: var(--white);
+            text-align: center;
+        }
+
+        .contact .section-title {
+            color: var(--white);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+        }
+
+        .contact-item h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light-beige);
+        }
+
+        .contact-item a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--light-beige);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--maroon-variant-3);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-maroon);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .values-grid,
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon"></div>
+                Veritas Aescula Institute
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="#activities">Student Life</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in-up">Veritas Aescula Institute</h1>
+            <p class="tagline fade-in-up">"Shaping Bright Futures, One Student at a Time"</p>
+            <p class="hero-description fade-in-up">
+                Empowering final-year high school students with specialized, comprehensive online education 
+                for accelerated admission to world-class tertiary institutions. We provide tailored courses 
+                that prepare students for their determined career paths with flexibility, intensity, and excellence.
+            </p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" class="cta-button fade-in-up">Start Your Journey Today</a>
+        </div>
+    </section>
+
+    <!-- Student Activities Gallery -->
+    <section id="activities" class="section activities-gallery">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Student Life & Community Engagement</h2>
+            <p class="section-subtitle animate-on-scroll">Our students participate in meaningful volunteer and community involvement hours, gaining real-world healthcare experience through clinical observations, community health initiatives, and hands-on learning opportunities.</p>
+            <div class="gallery-grid">
+                <div class="gallery-item animate-on-scroll">
+                    <img src="student1.jpg" alt="Clinical Skills Practice">
+                    <div class="gallery-overlay">
+                        <h3>Clinical Skills Observation</h3>
+                        <p>Students observe medical procedures and clinical techniques</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="student2.jpg" alt="Medical Equipment Workshop">
+                    <div class="gallery-overlay">
+                        <h3>Healthcare Volunteer Work</h3>
+                        <p>Learning clinical measurement in community settings</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="student3.jpg" alt="Physical Therapy Training">
+                    <div class="gallery-overlay">
+                        <h3>Community Health Programs</h3>
+                        <p>Participating in rehabilitation and physical therapy outreach</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="student4.jpg" alt="Surgical Skills Lab">
+                    <div class="gallery-overlay">
+                        <h3>Clinical Observation Hours</h3>
+                        <p>Observing surgical procedures and sterile techniques</p>
+                    </div>
+                </div>
+                <div class="gallery-item animate-on-scroll">
+                    <img src="student5.jpg" alt="Patient Care Training">
+                    <div class="gallery-overlay">
+                        <h3>Patient Care Volunteering</h3>
+                        <p>Developing compassionate care skills through community service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Our Foundation</h2>
+            <div class="about-grid">
+                <div class="about-card animate-on-scroll">
+                    <h3>Vision</h3>
+                    <p>To provide tailored and essential courses that empower students to pursue their determined career paths with flexibility and intensity, ensuring their success in tertiary education and beyond.</p>
+                </div>
+                <div class="about-card animate-on-scroll">
+                    <h3>Mission</h3>
+                    <p>To empower final-year high school students with the skills and knowledge necessary to gain accelerated admission to world-class tertiary institutions by delivering a specialized, comprehensive, and high-quality secondary school diploma program.</p>
+                </div>
+                <div class="about-card animate-on-scroll">
+                    <h3>Our Approach</h3>
+                    <p>We believe in developing the whole student—academically, mentally, and ethically. Our transformative online approach unlocks each student's full potential while preparing them for global readiness in healthcare and medical fields.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="values" class="section values">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card animate-on-scroll">
+                    <div class="value-icon">A</div>
+                    <h3>Academic Excellence</h3>
+                    <p>Mastery in knowledge and skill proficiency, aiming for the highest standards of academic achievement.</p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <div class="value-icon">C</div>
+                    <h3>Collaborative Learning</h3>
+                    <p>Promoting interactive teaching and peer mentorship to build a strong, supportive community.</p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <div class="value-icon">E</div>
+                    <h3>Ethical Integrity</h3>
+                    <p>Committing to unwavering moral responsibility, self-reflection, and ethical practices.</p>
+                </div>
+                <div class="value-card animate-on-scroll">
+                    <div class="value-icon">R</div>
+                    <h3>Resilience & Well-Being</h3>
+                    <p>Cultivating mental fortitude and self-care practices that are essential for long-term success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Highlights Section -->
+    <section id="programs" class="section program-highlights">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Program Highlights</h2>
+            <p class="section-subtitle animate-on-scroll">Specialized healthcare-focused diploma programs designed to accelerate your path to top medical universities worldwide</p>
+            <div class="programs-grid">
+                <div class="program-highlight-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ontario Secondary School Diploma" class="program-image">
+                    <div class="program-content">
+                        <h3>Ontario Secondary School Diploma (Specialized for Healthcare Aspirants)</h3>
+                        <p>Internationally recognized Canadian diploma with specialized healthcare curriculum preparing students for medical school admission worldwide.</p>
+                        <ul class="program-features">
+                            <li>Advanced Biology and Chemistry modules</li>
+                            <li>Medical terminology and healthcare foundations</li>
+                            <li>Online learning with community volunteer hours</li>
+                            <li>Direct pathway to Canadian and international universities</li>
+                        </ul>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" class="register-button">Pre-Register Now</a>
+                    </div>
+                </div>
+
+                <div class="program-highlight-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="GED General Educational Development" class="program-image">
+                    <div class="program-content">
+                        <h3>GED - General Educational Development (Specialized for Healthcare Aspirants)</h3>
+                        <p>Comprehensive American-style credential with healthcare specialization, designed for flexible, accelerated university admission in medical programs.</p>
+                        <ul class="program-features">
+                            <li>Healthcare-focused science curriculum</li>
+                            <li>Anatomy and physiology foundations</li>
+                            <li>Medical ethics and patient care principles</li>
+                            <li>SAT/ACT preparation for medical school prerequisites</li>
+                        </ul>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" class="register-button">Pre-Register Now</a>
+                    </div>
+                </div>
+
+                <div class="program-highlight-card animate-on-scroll">
+                    <img src="https://images.unsplash.com/photo-1582560475093-ba66accbc424?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="IGCSE O Level" class="program-image">
+                    <div class="program-content">
+                        <h3>IGCSE O Level (Specialized for Healthcare Aspirants)</h3>
+                        <p>Globally recognized British qualification with medical sciences specialization, providing foundation for A-Levels and medical university entrance.</p>
+                        <ul class="program-features">
+                            <li>Cambridge-certified medical sciences track</li>
+                            <li>Combined sciences with healthcare applications</li>
+                            <li>Research skills and laboratory techniques</li>
+                            <li>Global recognition for medical school admission</li>
+                        </ul>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" class="register-button">Pre-Register Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-choose">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Why Choose Veritas Aescula?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Expert Faculty</h3>
+                    <p>Highly qualified educators with medical and healthcare expertise delivering personalized online learning experiences.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🤝</div>
+                    <h3>Community Engagement</h3>
+                    <p>Structured volunteer and community involvement hours providing real-world healthcare experience and clinical observations.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Global Pathways</h3>
+                    <p>Direct connections to top-tier medical universities worldwide with accelerated admission programs.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">💻</div>
+                    <h3>Online Flexibility</h3>
+                    <p>Comprehensive online learning platform with intensive, personalized curriculum tailored to each student's career ambitions.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">💡</div>
+                    <h3>Holistic Development</h3>
+                    <p>Focus on academic excellence, mental well-being, and ethical practices for complete student growth.</p>
+                </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Proven Success</h3>
+                    <p>Track record of successful placements in prestigious medical and healthcare programs globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="animate-on-scroll">Ready to transform your academic journey? Contact us to learn more about our programs and how we can help you achieve your healthcare career goals.</p>
+            <div class="contact-info">
+                <div class="contact-item animate-on-scroll">
+                    <h4>📧 Email</h4>
+                    <p><a href="mailto:info.admin@veritasaescula.com">info.admin@veritasaescula.com</a></p>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <h4>💬 WhatsApp</h4>
+                    <p><a href="https://wa.me/66620709511" target="_blank">+66 62 070 9511</a></p>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <h4>📍 Location</h4>
+                    <p>Bangkok, Thailand</p>
+                </div>
+                <div class="contact-item animate-on-scroll">
+                    <h4>🕒 Office Hours</h4>
+                    <p>Monday - Friday: 9:00 AM - 5:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Veritas Aescula Institute. All rights reserved. | Empowering Future Healthcare Leaders</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(125, 36, 43, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3))';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

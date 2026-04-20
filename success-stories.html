@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Stories - Victorious Healers | Veritas Aescula Institute</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-maroon: #7D242B;
+            --light-beige: #D7CAB7;
+            --maroon-variant-1: #7E242B;
+            --maroon-variant-2: #7F242B;
+            --maroon-variant-3: #80242B;
+            --text-dark: #2C2C2C;
+            --text-light: #666;
+            --white: #FFFFFF;
+            --background-light: #FAFAFA;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--background-light);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 15px;
+            background-image: url('logo.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--light-beige);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(125, 36, 43, 0.95) 0%, rgba(128, 36, 43, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+            color: var(--white);
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Success Stories Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .success-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(125, 36, 43, 0.15);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .success-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(125, 36, 43, 0.25);
+        }
+
+        .student-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--primary-maroon);
+            margin: 0 auto 2rem;
+            display: block;
+            box-shadow: 0 5px 20px rgba(125, 36, 43, 0.3);
+        }
+
+        .student-name {
+            color: var(--primary-maroon);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .student-program {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .student-testimony {
+            color: var(--text-dark);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-style: italic;
+            padding: 1.5rem;
+            background: var(--background-light);
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-maroon);
+        }
+
+        .accepted-university {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-2));
+            color: var(--white);
+            padding: 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .university-label {
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--maroon-variant-3);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-maroon);
+                flex-direction: column;
+                padding: 1rem 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .page-header h1 {
+                font-size: 2.2rem;
+            }
+
+            .stories-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"></div>
+                Veritas Aescula Institute
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="index.html#activities">Student Life</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#programs">Programs</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="fade-in-up">Victorious Healers from Veritas Aescula</h1>
+            <p class="fade-in-up">Meet our outstanding graduates who have been accepted into prestigious medical universities worldwide</p>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="section">
+        <div class="container">
+            <div class="stories-grid">
+                <!-- Success Story 1 - Replace with actual student data -->
+                <div class="success-card animate-on-scroll">
+                    <img src="success1.jpg" alt="Student Name" class="student-photo">
+                    <h3 class="student-name">[Ms.Sut Ngai Pan]</h3>
+                    <p class="student-program">OSSD Healthcare Track Graduate, Class of 2025</p>
+                    <p class="student-testimony">"Veritas Aescula gave me the foundation I needed to pursue my dream of becoming a physician. The personalized support and rigorous curriculum prepared me perfectly for medical school."</p>
+                    <div class="accepted-university">
+                        <div class="university-label">Accepted to</div>
+                        <div>Masaryk University - Czech Republic</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Veritas Aescula Institute. All rights reserved. | Empowering Future Healthcare Leaders</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(125, 36, 43, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3))';
+                header.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
