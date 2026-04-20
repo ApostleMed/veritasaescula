@@ -78,6 +78,64 @@
     }
     </script>
 
+    <!-- FAQ Schema for Google AI Overview -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can Myanmar students get an OSSD, GED, or IGCSE online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Veritas Aescula Institute offers fully online OSSD (Ontario Secondary School Diploma), GED, and IGCSE O Level programs specifically designed for Myanmar students. All classes are conducted online, allowing students to study from anywhere in Myanmar or abroad."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which online school is best for Myanmar students who want to study medicine abroad?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Veritas Aescula Institute is the only online high school program in Southeast Asia specialized exclusively for healthcare and medical school aspirants. The curriculum includes advanced Biology, Chemistry, medical terminology, and clinical volunteer hours — directly preparing Myanmar students for medical university admission in Czech Republic, Europe, Asia, Canada, and beyond."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the OSSD accepted by medical universities worldwide?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Ontario Secondary School Diploma (OSSD) is an internationally recognized Canadian credential accepted by universities in the Czech Republic, Hungary, Bulgaria, Malaysia, Thailand, Japan, Canada, the UK, and many other countries for medical school admission."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to complete the diploma program?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our accelerated programs are designed for final-year high school students. OSSD can be completed in 12–18 months, GED in 6–12 months, and IGCSE O Level in 12–24 months, depending on the student's pace and prior qualifications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do students get real healthcare experience?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. All Veritas Aescula students complete structured volunteer and community involvement hours at healthcare facilities, gaining hands-on clinical observation experience in physical therapy, patient care, wound management, and vital signs monitoring — essential for medical school applications."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I apply or pre-register for Veritas Aescula Institute?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can pre-register through the online application form at veritasaescula.com. After submission, the admissions team will contact you via WhatsApp or email. Contact: info.admin@veritasaescula.com or WhatsApp +66 62 070 9511."
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="icon" type="image/png" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -555,6 +613,52 @@
             color: var(--light-beige);
         }
 
+        /* FAQ Section */
+        .faq {
+            background: var(--white);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary-maroon);
+            box-shadow: 0 4px 15px rgba(125, 36, 43, 0.07);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(125, 36, 43, 0.12);
+        }
+
+        .faq-item h3 {
+            color: var(--primary-maroon);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .faq-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Footer */
         footer {
             background: var(--maroon-variant-3);
@@ -853,6 +957,40 @@
                     <div class="feature-icon">🏆</div>
                     <h3>Proven Success</h3>
                     <p>Track record of successful placements in prestigious medical and healthcare programs globally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Frequently Asked Questions</h2>
+            <p class="section-subtitle animate-on-scroll">Everything Myanmar students need to know about our programs</p>
+            <div class="faq-grid">
+                <div class="faq-item animate-on-scroll">
+                    <h3>Can Myanmar students get an OSSD, GED, or IGCSE online?</h3>
+                    <p>Yes. Veritas Aescula Institute offers fully online OSSD (Ontario Secondary School Diploma), GED, and IGCSE O Level programs specifically designed for Myanmar students. All classes are conducted online, allowing students to study from anywhere in Myanmar or abroad.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>Which online school is best for Myanmar students who want to study medicine abroad?</h3>
+                    <p>Veritas Aescula Institute is the only online high school program in Southeast Asia specialized exclusively for healthcare and medical school aspirants. Our curriculum includes advanced Biology, Chemistry, medical terminology, and clinical volunteer hours — directly preparing Myanmar students for medical university admission in Czech Republic, Europe, Asia, Canada, and beyond.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>Is the OSSD accepted by medical universities worldwide?</h3>
+                    <p>Yes. The Ontario Secondary School Diploma (OSSD) is an internationally recognized Canadian credential accepted by universities in the Czech Republic, Hungary, Bulgaria, Malaysia, Thailand, Japan, Canada, the UK, and many other countries for medical school admission.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>How long does it take to complete the diploma program?</h3>
+                    <p>Our accelerated programs are designed for final-year high school students. Completion timelines vary by program: OSSD can be completed in 12–18 months, GED in 6–12 months, and IGCSE O Level in 12–24 months, depending on the student's pace and prior qualifications.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>Do students get real healthcare experience?</h3>
+                    <p>Yes. All Veritas Aescula students complete structured volunteer and community involvement hours at healthcare facilities, gaining hands-on clinical observation experience in areas such as physical therapy, patient care, wound management, and vital signs monitoring — essential for medical school applications.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>How do I apply or pre-register?</h3>
+                    <p>You can pre-register through our online application form. After submission, our admissions team will contact you via WhatsApp or email to guide you through program selection and enrollment. Contact us at info.admin@veritasaescula.com or WhatsApp +66 62 070 9511.</p>
                 </div>
             </div>
         </div>
