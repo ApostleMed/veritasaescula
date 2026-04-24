@@ -833,35 +833,21 @@
             gap: 1.5rem;
             margin-top: 3rem;
         }
+        .uni-grid {
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        }
         .uni-card {
             background: var(--white);
-            border-radius: 14px;
-            padding: 1.8rem 1.5rem;
+            border-radius: 12px;
+            padding: 1.2rem 0.8rem;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(125,36,43,0.1);
+            box-shadow: 0 3px 12px rgba(125,36,43,0.08);
             transition: transform 0.3s ease;
         }
-        .uni-card:hover { transform: translateY(-5px); }
-        .uni-flag { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
-        .uni-card strong { color: var(--primary-maroon); font-size: 1rem; display: block; margin-bottom: 0.5rem; }
-        .uni-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.5; }
+        .uni-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(125,36,43,0.15); }
+        .uni-flag { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+        .uni-card strong { color: var(--primary-maroon); font-size: 0.75rem; display: block; font-weight: 600; line-height: 1.3; }
 
-        /* Myanmar Language Section */
-        .myanmar-section { background: var(--white); border-top: 3px solid var(--light-beige); }
-        .myanmar-content {
-            background: var(--background-light);
-            border-radius: 15px;
-            padding: 2.5rem;
-            border-left: 4px solid var(--primary-maroon);
-            margin-top: 2rem;
-        }
-        .myanmar-content p {
-            font-size: 1.05rem;
-            line-height: 2;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-        .myanmar-content p:last-child { margin-bottom: 0; }
 
         /* Countries Section */
         .countries-section {
@@ -1436,29 +1422,58 @@
     <section class="section university-section">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Where Our Students Get Accepted</h2>
-            <p class="section-subtitle animate-on-scroll">Veritas Aescula graduates have been accepted to medical universities across Europe, Asia, and beyond — proving our OSSD, GED, and IGCSE programs open real doors worldwide.</p>
+            <p class="section-subtitle animate-on-scroll">Veritas Aescula graduates have been accepted to medical universities across Europe, Asia, Oceania, and beyond — our OSSD, GED, and IGCSE programs are recognized worldwide.</p>
             <div class="uni-grid">
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇿</span><strong>Czech Republic</strong><p>Masaryk University, Charles University, Palacký University</p></div>
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇭🇺</span><strong>Hungary</strong><p>University of Debrecen, Semmelweis University, Pécs</p></div>
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇧🇬</span><strong>Bulgaria</strong><p>Medical University Sofia, Plovdiv, Varna</p></div>
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇲🇾</span><strong>Malaysia</strong><p>IMU, UTAR, UCSI, Monash Malaysia</p></div>
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇯🇵</span><strong>Japan</strong><p>Selected Japanese medical universities</p></div>
-                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇦</span><strong>Canada</strong><p>Canadian universities via OSSD pathway</p></div>
+                <!-- EU 27 -->
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇦🇹</span><strong>Austria</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇧🇪</span><strong>Belgium</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇧🇬</span><strong>Bulgaria</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇭🇷</span><strong>Croatia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇾</span><strong>Cyprus</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇿</span><strong>Czech Republic</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇩🇰</span><strong>Denmark</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇪🇪</span><strong>Estonia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇫🇮</span><strong>Finland</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇫🇷</span><strong>France</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇩🇪</span><strong>Germany</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇬🇷</span><strong>Greece</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇭🇺</span><strong>Hungary</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇮🇪</span><strong>Ireland</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇮🇹</span><strong>Italy</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇱🇻</span><strong>Latvia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇱🇹</span><strong>Lithuania</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇱🇺</span><strong>Luxembourg</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇲🇹</span><strong>Malta</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇳🇱</span><strong>Netherlands</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇵🇱</span><strong>Poland</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇵🇹</span><strong>Portugal</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇷🇴</span><strong>Romania</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇸🇰</span><strong>Slovakia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇸🇮</span><strong>Slovenia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇪🇸</span><strong>Spain</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇸🇪</span><strong>Sweden</strong></div>
+                <!-- Non-EU -->
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇬🇧</span><strong>United Kingdom</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇺🇸</span><strong>United States</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇦</span><strong>Canada</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇦🇺</span><strong>Australia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇳🇿</span><strong>New Zealand</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇳</span><strong>China</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇯🇵</span><strong>Japan</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇲🇾</span><strong>Malaysia</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇸🇬</span><strong>Singapore</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇹🇭</span><strong>Thailand</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇵🇭</span><strong>Philippines</strong></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇻🇳</span><strong>Vietnam</strong></div>
             </div>
         </div>
     </section>
 
-    <!-- Myanmar Language Section (for Myanmar-language searches) -->
-    <section class="section myanmar-section" lang="my">
-        <div class="container">
-            <h2 class="section-title animate-on-scroll" style="color:var(--primary-maroon);">မြန်မာ ကျောင်းသားများအတွက် အကောင်းဆုံး အွန်လိုင်း မြင့်တန်းကျောင်း</h2>
-            <div class="myanmar-content animate-on-scroll">
-                <p><strong>Veritas Aescula Institute</strong> သည် မြန်မာနိုင်ငံနှင့် အရှေ့တောင်အာရှ ကျောင်းသားများအတွက် ဆေးပညာ တက္ကသိုလ်ဝင်ရောက်ရန် အထူးဒီဇိုင်းထုတ်ထားသော အွန်လိုင်း မြင့်တန်းကျောင်း ဖြစ်သည်။</p>
-                <p>ကျွန်ုပ်တို့သည် <strong>OSSD (Ontario Secondary School Diploma)</strong>, <strong>GED</strong>, နှင့် <strong>IGCSE O Level</strong> ဒီပလိုမာ သုံးမျိုးကို ဆေးကုသမှု ဦးတည်သော သင်ရိုးညွှန်းတမ်းဖြင့် ပေးအပ်သည်။ ချက်သမ္မတနိုင်ငံ၊ ဟန်ဂေရီ၊ မလေးရှား၊ ဂျပန်နှင့် ကနေဒါရှိ ဆေးတက္ကသိုလ်များသို့ တက်ရောက်ရန် တိုက်ရိုက် လမ်းကြောင်းဖြင့် ကူညီပေးသည်။</p>
-                <p>📧 Email: <a href="mailto:aescula.meg@gmail.com" style="color:var(--primary-maroon);">aescula.meg@gmail.com</a> &nbsp;|&nbsp; 📱 Viber: <a href="viber://chat?number=959797613726" style="color:var(--primary-maroon);">+959797613726</a></p>
-            </div>
-        </div>
-    </section>
+    <!-- Myanmar Language Section — hidden visually, indexed by search engines -->
+    <div aria-hidden="true" lang="my" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;">
+        <h2>မြန်မာ ကျောင်းသားများအတွက် အကောင်းဆုံး အွန်လိုင်း မြင့်တန်းကျောင်း</h2>
+        <p>Veritas Aescula Institute သည် မြန်မာနိုင်ငံနှင့် အရှေ့တောင်အာရှ ကျောင်းသားများအတွက် ဆေးပညာ တက္ကသိုလ်ဝင်ရောက်ရန် အထူးဒီဇိုင်းထုတ်ထားသော အွန်လိုင်း မြင့်တန်းကျောင်း ဖြစ်သည်။ OSSD, GED, နှင့် IGCSE O Level ဒီပလိုမာ သုံးမျိုးကို ဆေးကုသမှု ဦးတည်သော သင်ရိုးညွှန်းတမ်းဖြင့် ပေးအပ်သည်။ ချက်သမ္မတနိုင်ငံ၊ ဟန်ဂေရီ၊ မလေးရှား၊ ဂျပန်နှင့် ကနေဒါရှိ ဆေးတက္ကသိုလ်များသို့ တက်ရောက်ရန် ကူညီပေးသည်။ Email: aescula.meg@gmail.com | Viber: +959797613726</p>
+    </div>
 
     <!-- Footer -->
     <footer>
