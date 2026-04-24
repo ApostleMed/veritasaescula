@@ -4,13 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Performance: Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+
     <!-- Primary SEO -->
-    <title>Veritas Aescula Institute | Best Online High School for Southeast Asia Medical Students | OSSD, GED, IGCSE</title>
-    <meta name="description" content="Veritas Aescula Institute offers online high school diplomas (OSSD, GED, IGCSE) specialized for Southeast Asian students from Myanmar, Thailand, Vietnam, Cambodia, Laos, Indonesia, Philippines & Malaysia pursuing medical school admission worldwide. Healthcare-focused curriculum. Study online. Pre-register now.">
-    <meta name="keywords" content="online high school Southeast Asia, online high school Myanmar, online high school Thailand, online high school Vietnam, online high school Cambodia, online high school Indonesia, online high school Philippines, online high school Malaysia, OSSD Southeast Asia, GED Southeast Asia, IGCSE Southeast Asia, medical school preparation Southeast Asia, best online school Myanmar, best online school Vietnam, best online school Cambodia, best online school Laos, best online school Thailand, online diploma Southeast Asia, healthcare education Southeast Asia, medical university admission Southeast Asia, OSSD Myanmar, GED Myanmar, IGCSE Myanmar, Veritas Aescula Institute, study medicine abroad Southeast Asia, online secondary school Southeast Asia">
+    <title>Veritas Aescula Institute | Online OSSD, GED & IGCSE for Medical School | Southeast Asia</title>
+    <meta name="description" content="Southeast Asia's #1 online high school for medical aspirants. Veritas Aescula offers OSSD, GED & IGCSE programs specialized for students from Myanmar, Thailand, Vietnam, Cambodia, Indonesia & more — with healthcare curriculum & clinical hours. Pre-register now.">
+    <meta name="keywords" content="online high school Southeast Asia, online high school Myanmar, မြန်မာ အွန်လိုင်း မြင့်မားသောကျောင်း, OSSD Myanmar, GED Myanmar, IGCSE Myanmar, IGCSE O level medical school, best high school Myanmar, best online high school Myanmar, medical school preparation Southeast Asia, online diploma Southeast Asia, healthcare education Myanmar, study medicine abroad Southeast Asia, Veritas Aescula Institute, online secondary school Myanmar, online high school Thailand, online high school Vietnam, online high school Cambodia, online high school Indonesia, online high school Philippines">
     <meta name="author" content="Veritas Aescula Institute">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <link rel="canonical" href="https://veritasaescula.com/">
+
+    <!-- Geo Targeting -->
+    <meta name="geo.region" content="MM">
+    <meta name="geo.placename" content="Myanmar">
+    <meta name="geo.region" content="TH">
+
+    <!-- Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://veritasaescula.com/">
+    <link rel="alternate" hreflang="my" href="https://veritasaescula.com/">
+    <link rel="alternate" hreflang="x-default" href="https://veritasaescula.com/">
 
     <!-- Open Graph (Facebook, WhatsApp previews) -->
     <meta property="og:type" content="website">
@@ -193,6 +208,37 @@
             "text": "Yes. IGCSE O Level is accepted as a qualifying credential for medical university admission in Czech Republic, Hungary, Bulgaria, Poland, Malaysia, Philippines, Thailand, Japan, China, UK, Canada, and Australia. Veritas Aescula Institute offers a healthcare-specialized IGCSE O Level program designed specifically to meet medical school entry requirements, helping Southeast Asian students transition from IGCSE directly into medical degree programs."
           }
         }
+      ]
+    }
+    </script>
+
+    <!-- WebSite Schema with SearchAction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Veritas Aescula Institute",
+      "url": "https://veritasaescula.com",
+      "description": "Southeast Asia's leading online high school for healthcare and medical school aspirants, offering OSSD, GED, and IGCSE O Level programs.",
+      "inLanguage": ["en", "my"],
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://veritasaescula.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://veritasaescula.com/"},
+        {"@type": "ListItem", "position": 2, "name": "Programs", "item": "https://veritasaescula.com/#programs"},
+        {"@type": "ListItem", "position": 3, "name": "Success Stories", "item": "https://veritasaescula.com/success-stories.html"},
+        {"@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://veritasaescula.com/#faq"}
       ]
     }
     </script>
@@ -779,6 +825,44 @@
             .comparison-card.highlight { transform: scale(1); }
         }
 
+        /* University Destinations */
+        .university-section { background: var(--background-light); }
+        .uni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .uni-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.8rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(125,36,43,0.1);
+            transition: transform 0.3s ease;
+        }
+        .uni-card:hover { transform: translateY(-5px); }
+        .uni-flag { font-size: 2.5rem; display: block; margin-bottom: 0.8rem; }
+        .uni-card strong { color: var(--primary-maroon); font-size: 1rem; display: block; margin-bottom: 0.5rem; }
+        .uni-card p { color: var(--text-light); font-size: 0.85rem; line-height: 1.5; }
+
+        /* Myanmar Language Section */
+        .myanmar-section { background: var(--white); border-top: 3px solid var(--light-beige); }
+        .myanmar-content {
+            background: var(--background-light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            border-left: 4px solid var(--primary-maroon);
+            margin-top: 2rem;
+        }
+        .myanmar-content p {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+        .myanmar-content p:last-child { margin-bottom: 0; }
+
         /* Countries Section */
         .countries-section {
             background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
@@ -1002,35 +1086,35 @@
             <p class="section-subtitle animate-on-scroll">Our students participate in meaningful volunteer and community involvement hours, gaining real-world healthcare experience through clinical observations, community health initiatives, and hands-on learning opportunities.</p>
             <div class="gallery-grid">
                 <div class="gallery-item animate-on-scroll">
-                    <img src="student1.jpg" alt="Physical Therapy Volunteer Work">
+                    <img src="student1.jpg" alt="Physical Therapy Volunteer Work - Veritas Aescula Myanmar Student" loading="lazy" width="400" height="300">
                     <div class="gallery-overlay">
                         <h3>Rehabilitation & Physical Therapy</h3>
                         <p>Students assisting patients with mobility rehabilitation in clinical settings</p>
                     </div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="student2.jpg" alt="Respiratory Care Training">
+                    <img src="student2.jpg" alt="Respiratory Care Training - Veritas Aescula Myanmar Student" loading="lazy" width="400" height="300">
                     <div class="gallery-overlay">
                         <h3>Respiratory Care Observation</h3>
                         <p>Hands-on experience with oxygen therapy and respiratory equipment</p>
                     </div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="student3.jpg" alt="Sterile Technique Practice">
+                    <img src="student3.jpg" alt="Sterile Technique Practice - Veritas Aescula Southeast Asia" loading="lazy" width="400" height="300">
                     <div class="gallery-overlay">
                         <h3>Surgical & Sterile Technique Skills</h3>
                         <p>Practicing proper surgical instrument handling and sterile field maintenance</p>
                     </div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="student4.jpg" alt="Wound Care Clinical Observation">
+                    <img src="student4.jpg" alt="Wound Care Clinical Observation - Veritas Aescula Student" loading="lazy" width="400" height="300">
                     <div class="gallery-overlay">
                         <h3>Wound Care & Dressing</h3>
                         <p>Observing and assisting with clinical wound care procedures</p>
                     </div>
                 </div>
                 <div class="gallery-item animate-on-scroll">
-                    <img src="student5.jpg" alt="Patient Vital Signs Monitoring">
+                    <img src="student5.jpg" alt="Patient Vital Signs Monitoring - Veritas Aescula Myanmar" loading="lazy" width="400" height="300">
                     <div class="gallery-overlay">
                         <h3>Patient Care & Vital Signs</h3>
                         <p>Learning to assess and monitor patient vitals in community healthcare settings</p>
@@ -1344,6 +1428,34 @@
                     <h4>📘 Facebook</h4>
                     <p><a href="https://www.facebook.com/profile.php?id=61560294959066" target="_blank" rel="noopener">Veritas Aescula Institute</a></p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- University Destinations -->
+    <section class="section university-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">Where Our Students Get Accepted</h2>
+            <p class="section-subtitle animate-on-scroll">Veritas Aescula graduates have been accepted to medical universities across Europe, Asia, and beyond — proving our OSSD, GED, and IGCSE programs open real doors worldwide.</p>
+            <div class="uni-grid">
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇿</span><strong>Czech Republic</strong><p>Masaryk University, Charles University, Palacký University</p></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇭🇺</span><strong>Hungary</strong><p>University of Debrecen, Semmelweis University, Pécs</p></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇧🇬</span><strong>Bulgaria</strong><p>Medical University Sofia, Plovdiv, Varna</p></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇲🇾</span><strong>Malaysia</strong><p>IMU, UTAR, UCSI, Monash Malaysia</p></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇯🇵</span><strong>Japan</strong><p>Selected Japanese medical universities</p></div>
+                <div class="uni-card animate-on-scroll"><span class="uni-flag">🇨🇦</span><strong>Canada</strong><p>Canadian universities via OSSD pathway</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Myanmar Language Section (for Myanmar-language searches) -->
+    <section class="section myanmar-section" lang="my">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll" style="color:var(--primary-maroon);">မြန်မာ ကျောင်းသားများအတွက် အကောင်းဆုံး အွန်လိုင်း မြင့်တန်းကျောင်း</h2>
+            <div class="myanmar-content animate-on-scroll">
+                <p><strong>Veritas Aescula Institute</strong> သည် မြန်မာနိုင်ငံနှင့် အရှေ့တောင်အာရှ ကျောင်းသားများအတွက် ဆေးပညာ တက္ကသိုလ်ဝင်ရောက်ရန် အထူးဒီဇိုင်းထုတ်ထားသော အွန်လိုင်း မြင့်တန်းကျောင်း ဖြစ်သည်။</p>
+                <p>ကျွန်ုပ်တို့သည် <strong>OSSD (Ontario Secondary School Diploma)</strong>, <strong>GED</strong>, နှင့် <strong>IGCSE O Level</strong> ဒီပလိုမာ သုံးမျိုးကို ဆေးကုသမှု ဦးတည်သော သင်ရိုးညွှန်းတမ်းဖြင့် ပေးအပ်သည်။ ချက်သမ္မတနိုင်ငံ၊ ဟန်ဂေရီ၊ မလေးရှား၊ ဂျပန်နှင့် ကနေဒါရှိ ဆေးတက္ကသိုလ်များသို့ တက်ရောက်ရန် တိုက်ရိုက် လမ်းကြောင်းဖြင့် ကူညီပေးသည်။</p>
+                <p>📧 Email: <a href="mailto:aescula.meg@gmail.com" style="color:var(--primary-maroon);">aescula.meg@gmail.com</a> &nbsp;|&nbsp; 📱 Viber: <a href="viber://chat?number=959797613726" style="color:var(--primary-maroon);">+959797613726</a></p>
             </div>
         </div>
     </section>
