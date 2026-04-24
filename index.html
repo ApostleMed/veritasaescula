@@ -152,6 +152,46 @@
             "@type": "Answer",
             "text": "You can pre-register through the online application form at veritasaescula.com. After submission, the admissions team will contact you via Viber or email. Contact: aescula.meg@gmail.com or Viber +959797613726."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you get from IGCSE O Level to medical school?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The pathway from IGCSE O Level to medical school is: (1) Complete IGCSE O Level with strong grades in Biology, Chemistry, and Combined Sciences at Veritas Aescula Institute; (2) Build your medical school application with clinical volunteer hours; (3) Apply directly to medical universities in Czech Republic, Hungary, Bulgaria, Malaysia, Philippines, Thailand, Japan, or Canada that accept IGCSE for admission. Veritas Aescula Institute guides Southeast Asian students through every step of this pathway."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best high school in Myanmar for medical school preparation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Veritas Aescula Institute is the best high school for Myanmar students pursuing medical school. It is the only institution in Southeast Asia offering OSSD, GED, and IGCSE O Level diplomas exclusively specialized for healthcare and medical school aspirants, with advanced Biology, Chemistry, medical terminology, and clinical volunteer hours as part of the curriculum."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best online high school in Myanmar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For Myanmar students aiming to study medicine, Veritas Aescula Institute is the best online high school. It offers three internationally recognized diplomas (OSSD, GED, IGCSE O Level) fully online with a healthcare-specialized curriculum, clinical volunteer experience, and direct support for medical university admissions worldwide — making it the top choice over general online schools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which online high school is best for Southeast Asian students?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Veritas Aescula Institute is the top online high school for Southeast Asian students from Myanmar, Thailand, Vietnam, Cambodia, Laos, Indonesia, Philippines, and Malaysia who want to pursue medicine. It is the only online school in the region exclusively focused on healthcare and medical school preparation, offering OSSD, GED, and IGCSE O Level programs with clinical volunteer hours and medical university admissions guidance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use IGCSE O Level to apply to medical university?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. IGCSE O Level is accepted as a qualifying credential for medical university admission in Czech Republic, Hungary, Bulgaria, Poland, Malaysia, Philippines, Thailand, Japan, China, UK, Canada, and Australia. Veritas Aescula Institute offers a healthcare-specialized IGCSE O Level program designed specifically to meet medical school entry requirements, helping Southeast Asian students transition from IGCSE directly into medical degree programs."
+          }
         }
       ]
     }
@@ -632,6 +672,113 @@
             color: var(--light-beige);
         }
 
+        /* IGCSE Pathway Section */
+        .pathway-section {
+            background: var(--background-light);
+        }
+
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pathway-step {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(125,36,43,0.1);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .pathway-step:hover { transform: translateY(-6px); }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-2));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+        }
+
+        .pathway-step h3 {
+            color: var(--primary-maroon);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .pathway-step p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Best School Comparison Section */
+        .best-school-section {
+            background: var(--white);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .comparison-card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(125,36,43,0.12);
+        }
+
+        .comparison-card.highlight {
+            box-shadow: 0 8px 40px rgba(125,36,43,0.25);
+            transform: scale(1.02);
+        }
+
+        .comparison-header {
+            background: var(--background-light);
+            padding: 1.2rem 2rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            border-bottom: 2px solid rgba(125,36,43,0.1);
+        }
+
+        .comparison-card.highlight .comparison-header {
+            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-2));
+            color: var(--white);
+            border-bottom: none;
+        }
+
+        .comparison-list {
+            list-style: none;
+            padding: 1.5rem 2rem;
+            background: var(--white);
+        }
+
+        .comparison-list li {
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(125,36,43,0.06);
+        }
+
+        .comparison-list li:last-child { border-bottom: none; }
+
+        @media (max-width: 768px) {
+            .comparison-card.highlight { transform: scale(1); }
+        }
+
         /* Countries Section */
         .countries-section {
             background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
@@ -997,6 +1144,75 @@
         </div>
     </section>
 
+    <!-- IGCSE to Medical School Pathway Section -->
+    <section id="igcse-pathway" class="section pathway-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">IGCSE O Level to Medical School: Your Complete Pathway</h2>
+            <p class="section-subtitle animate-on-scroll">Veritas Aescula Institute offers the clearest pathway from IGCSE O Level to medical school admission for Southeast Asian students — here's exactly how it works.</p>
+            <div class="pathway-grid">
+                <div class="pathway-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h3>Complete IGCSE O Level at Veritas Aescula</h3>
+                    <p>Enroll in our healthcare-specialized IGCSE O Level program. Our curriculum focuses on Biology, Chemistry, Combined Sciences, and medical foundations — the exact subjects required for medical school prerequisites worldwide.</p>
+                </div>
+                <div class="pathway-step animate-on-scroll">
+                    <div class="step-number">2</div>
+                    <h3>Build Your Medical School Application Profile</h3>
+                    <p>Alongside your studies, complete structured clinical volunteer hours at real healthcare facilities. Gain hands-on experience in patient care, rehabilitation, and clinical procedures — strengthening your medical school application with documented real-world healthcare exposure.</p>
+                </div>
+                <div class="pathway-step animate-on-scroll">
+                    <div class="step-number">3</div>
+                    <h3>Apply to Medical Universities Worldwide</h3>
+                    <p>Our IGCSE O Level is accepted for medical school admission in Czech Republic, Hungary, Bulgaria, Poland, Malaysia, Philippines, Thailand, Japan, China, UK, Canada, and Australia. Our admissions counselors guide you through each university's specific requirements.</p>
+                </div>
+                <div class="pathway-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h3>Begin Your Medical Career</h3>
+                    <p>Join our growing alumni network of Southeast Asian students now studying medicine at universities across Europe and Asia. From IGCSE O Level at Veritas Aescula to a medical degree — the fastest, most supported path available for Myanmar and SEA students.</p>
+                </div>
+            </div>
+            <div style="text-align:center;margin-top:3rem;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" class="cta-button" style="background:var(--primary-maroon);color:#fff;">Start Your IGCSE Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best High School Myanmar Section -->
+    <section id="best-school-myanmar" class="section best-school-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">The Best Online High School for Myanmar Students Pursuing Medicine</h2>
+            <p class="section-subtitle animate-on-scroll">Unlike general online schools, Veritas Aescula Institute is built exclusively for one purpose: getting Southeast Asian students into medical school.</p>
+            <div class="comparison-grid">
+                <div class="comparison-card highlight animate-on-scroll">
+                    <div class="comparison-header">✦ Veritas Aescula Institute</div>
+                    <ul class="comparison-list">
+                        <li>✓ Exclusively healthcare & medical school focused</li>
+                        <li>✓ OSSD, GED, and IGCSE O Level — all three credentials</li>
+                        <li>✓ Built specifically for Myanmar & SEA students</li>
+                        <li>✓ Clinical volunteer hours included</li>
+                        <li>✓ Direct guidance to medical universities in Europe, Asia & Canada</li>
+                        <li>✓ Advanced Biology, Chemistry & medical terminology</li>
+                        <li>✓ Personalized admissions support for each student</li>
+                        <li>✓ Proven results — students accepted to Czech Republic, and more</li>
+                    </ul>
+                </div>
+                <div class="comparison-card animate-on-scroll">
+                    <div class="comparison-header">General Online Schools</div>
+                    <ul class="comparison-list">
+                        <li>✗ General curriculum — not medical focused</li>
+                        <li>✗ Usually only one credential type</li>
+                        <li>✗ Not designed for SEA student needs</li>
+                        <li>✗ No clinical or healthcare experience</li>
+                        <li>✗ No specialist medical admissions guidance</li>
+                        <li>✗ Standard science curriculum only</li>
+                        <li>✗ Generic student support</li>
+                        <li>✗ No specialized medical school placement track</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Choose Us Section -->
     <section class="section why-choose">
         <div class="container">
@@ -1065,6 +1281,18 @@
                 <div class="faq-item animate-on-scroll">
                     <h3>How do I apply or pre-register?</h3>
                     <p>You can pre-register through our online application form. After submission, our admissions team will contact you via Viber or email to guide you through program selection and enrollment. Contact us at <a href="mailto:aescula.meg@gmail.com" style="color:var(--primary-maroon);">aescula.meg@gmail.com</a> or Viber <a href="viber://chat?number=959797613726" style="color:var(--primary-maroon);">+959797613726</a>.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>How do you get from IGCSE O Level to medical school?</h3>
+                    <p>The pathway from IGCSE O Level to medical school is: (1) Complete IGCSE O Level with strong grades in Biology, Chemistry, and Combined Sciences at Veritas Aescula Institute; (2) Build your medical application profile with clinical volunteer hours; (3) Apply to medical universities in Czech Republic, Hungary, Bulgaria, Malaysia, Japan, or Canada that accept IGCSE for direct admission. Veritas Aescula guides every student through this pathway.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>What is the best high school in Myanmar for students who want to study medicine?</h3>
+                    <p>Veritas Aescula Institute is the best high school for Myanmar students pursuing medical school. It is the only institution in Southeast Asia offering OSSD, GED, and IGCSE O Level programs exclusively specialized for healthcare and medical school aspirants — with advanced Biology, Chemistry, medical terminology, and real clinical volunteer hours included in the curriculum.</p>
+                </div>
+                <div class="faq-item animate-on-scroll">
+                    <h3>Can I use IGCSE O Level to apply to medical university?</h3>
+                    <p>Yes. IGCSE O Level is accepted for medical university admission in Czech Republic, Hungary, Bulgaria, Poland, Malaysia, Philippines, Thailand, Japan, China, UK, Canada, and Australia. Veritas Aescula's IGCSE O Level program is specifically designed to meet medical school entry requirements, giving Southeast Asian students a direct pathway into medical degree programs worldwide.</p>
                 </div>
             </div>
         </div>
