@@ -337,15 +337,16 @@
         .dropdown-menu {
             display: none;
             position: absolute;
-            top: calc(100% + 10px);
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
             background: var(--white);
-            border-radius: 10px;
+            border-radius: 0 0 10px 10px;
             box-shadow: 0 8px 30px rgba(125,36,43,0.2);
             min-width: 180px;
             overflow: hidden;
             z-index: 2000;
+            padding-top: 10px;
         }
 
         .nav-dropdown:hover .dropdown-menu,
