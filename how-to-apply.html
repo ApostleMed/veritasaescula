@@ -520,156 +520,72 @@
         .assessed-row strong { color: var(--text-dark); }
 
         /* ── Steps Section ────────────────────────────────────── */
-        /* ── Journey Flow (Snake) ─────────────────────────────── */
-        .journey-row {
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-            margin-top: 2rem;
-        }
-
-        .journey-row + .journey-row { margin-top: 0; }
-
-        /* alternate rows reverse for snake pattern */
-        .journey-row.reverse { flex-direction: row-reverse; }
-
-        .journey-step {
-            flex: 1;
+        /* ── Journey Flow (Snake SVG) ─────────────────────────── */
+        .snake-flow-container {
             background: var(--white);
-            border-radius: 14px;
-            padding: 1.4rem 1.25rem 1.2rem;
-            box-shadow: 0 4px 16px rgba(125,36,43,0.09);
-            position: relative;
-            text-align: center;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            border-radius: 20px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 6px 28px rgba(125,36,43,0.1);
+            margin-top: 2rem;
+            overflow: visible;
+        }
+
+        .snake-desktop { display: block; }
+        .snake-mobile  { display: none; }
+
+        /* Mobile fallback — simple numbered list */
+        .snake-mobile-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .snake-mobile-list li {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 0.85rem 0;
+            border-bottom: 1px solid var(--beige-light);
         }
 
-        .journey-step:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 28px rgba(125,36,43,0.18);
-        }
+        .snake-mobile-list li:last-child { border-bottom: none; }
 
-        /* horizontal arrow between steps */
-        .h-arrow {
-            display: flex;
-            align-items: center;
-            padding: 0 4px;
-            color: var(--primary-maroon);
-            opacity: 0.35;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            align-self: center;
-        }
-
-        /* down-turn arrow between rows */
-        .row-connector {
-            display: flex;
-            justify-content: flex-end;
-            padding-right: 1.5rem;
-            margin: 2px 0;
-        }
-
-        .row-connector.left { justify-content: flex-start; padding-right: 0; padding-left: 1.5rem; }
-
-        .row-connector svg {
-            color: var(--primary-maroon);
-            opacity: 0.35;
-            width: 28px;
-            height: 28px;
-        }
-
-        /* step number badge */
-        .step-num {
+        .snake-ml-num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             width: 2rem;
             height: 2rem;
+            min-width: 2rem;
             background: var(--primary-maroon);
             color: var(--white);
             border-radius: 50%;
             font-weight: 800;
-            font-size: 0.8rem;
-            margin-bottom: 0.6rem;
-            flex-shrink: 0;
+            font-size: 0.85rem;
         }
 
-        /* step icon */
-        .step-icon {
-            font-size: 1.6rem;
-            margin-bottom: 0.4rem;
-            line-height: 1;
+        .snake-ml-num.final-num {
+            background: var(--primary-maroon);
+            box-shadow: 0 0 0 3px var(--light-beige);
         }
 
-        .journey-step h3 {
+        .snake-mobile-list strong {
+            display: block;
             color: var(--primary-maroon);
-            font-size: 0.82rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
-            line-height: 1.25;
         }
 
-        .journey-step p {
-            font-size: 0.76rem;
+        .snake-mobile-list span {
+            font-size: 0.82rem;
             color: var(--text-light);
-            line-height: 1.45;
-            margin: 0;
         }
 
-        /* Final admission step */
-        .journey-final {
-            background: linear-gradient(135deg, var(--primary-maroon), var(--maroon-variant-3));
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 0;
-            box-shadow: 0 8px 30px rgba(125,36,43,0.3);
+        @media (max-width: 700px) {
+            .snake-desktop { display: none; }
+            .snake-mobile  { display: block; }
         }
 
-        .journey-final .step-num {
-            background: rgba(255,255,255,0.2);
-            width: 2.6rem;
-            height: 2.6rem;
-            font-size: 1rem;
-            margin: 0 auto 0.5rem;
-        }
-
-        .journey-final .step-icon { font-size: 2rem; margin-bottom: 0.5rem; }
-
-        .journey-final h3 {
-            color: var(--white);
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.4rem;
-        }
-
-        .journey-final p { color: rgba(255,255,255,0.85); font-size: 0.9rem; }
-
-        /* down arrow before final */
-        .final-connector {
-            display: flex;
-            justify-content: center;
-            margin: 4px 0 8px;
-        }
-
-        .final-connector svg {
-            color: var(--primary-maroon);
-            opacity: 0.35;
-            width: 28px; height: 28px;
-        }
-
-        @media (max-width: 768px) {
-            .journey-row, .journey-row.reverse {
-                flex-direction: column;
-                align-items: center;
-                gap: 0.5rem;
-            }
-            .h-arrow { transform: rotate(90deg); padding: 4px 0; }
-            .row-connector, .row-connector.left { justify-content: center; padding: 0; }
-        }
 
         /* ── FAQ ──────────────────────────────────────────────── */
         .faq-list { margin-top: 2rem; }
@@ -1314,106 +1230,141 @@
             <h2 class="section-title animate-on-scroll">Your Enrollment Journey</h2>
             <p class="section-subtitle animate-on-scroll">From first inquiry to full admission — 9 steps to becoming a Veritas Aescula student.</p>
 
-            <div class="animate-on-scroll">
+            <div class="snake-flow-container animate-on-scroll">
 
-                <!-- Row 1 → steps 1 2 3 -->
-                <div class="journey-row">
-                    <div class="journey-step">
-                        <div class="step-num">1</div>
-                        <div class="step-icon">✉️</div>
-                        <h3>Pre-Enrollment</h3>
-                        <p>Contact us via Viber or email to express interest</p>
-                    </div>
-                    <div class="h-arrow">›</div>
-                    <div class="journey-step">
-                        <div class="step-num">2</div>
-                        <div class="step-icon">🔍</div>
-                        <h3>Eligibility Check</h3>
-                        <p>We review your qualifications &amp; confirm your pathway</p>
-                    </div>
-                    <div class="h-arrow">›</div>
-                    <div class="journey-step">
-                        <div class="step-num">3</div>
-                        <div class="step-icon">💳</div>
-                        <h3>Registration Fee</h3>
-                        <p>One-time fee to secure your place &amp; unlock the diagnostic</p>
-                    </div>
-                </div>
+                <!-- ── Desktop: SVG snake infographic ──────────── -->
+                <div class="snake-desktop">
+                  <svg viewBox="0 0 1000 290" xmlns="http://www.w3.org/2000/svg"
+                       style="width:100%;display:block;overflow:visible;"
+                       font-family="Montserrat,sans-serif">
 
-                <!-- Connector: turn down-right → down-left -->
-                <div class="row-connector">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </div>
+                    <defs>
+                      <!-- Drop shadow for circles -->
+                      <filter id="cshadow" x="-30%" y="-30%" width="160%" height="160%">
+                        <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#7D242B" flood-opacity="0.18"/>
+                      </filter>
+                      <!-- Gradient along ribbon -->
+                      <linearGradient id="ribGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%"   stop-color="#A84B52"/>
+                        <stop offset="50%"  stop-color="#7D242B"/>
+                        <stop offset="100%" stop-color="#5C1A20"/>
+                      </linearGradient>
+                    </defs>
 
-                <!-- Row 2 ← steps 6 5 4 (reversed display) -->
-                <div class="journey-row reverse">
-                    <div class="journey-step">
-                        <div class="step-num">6</div>
-                        <div class="step-icon">📝</div>
-                        <h3>Diagnostic Test</h3>
-                        <p>Sit the exam across 5 subjects for placement &amp; scholarship</p>
-                    </div>
-                    <div class="h-arrow">›</div>
-                    <div class="journey-step">
-                        <div class="step-num">5</div>
-                        <div class="step-icon">📋</div>
-                        <h3>Enrollment &amp; Application</h3>
-                        <p>Submit required documents with admissions team support</p>
-                    </div>
-                    <div class="h-arrow">›</div>
-                    <div class="journey-step">
-                        <div class="step-num">4</div>
-                        <div class="step-icon">📖</div>
-                        <h3>Diagnostic Briefing</h3>
-                        <p>Full prep briefing — format, subjects &amp; what to expect</p>
-                    </div>
-                </div>
+                    <!-- ── Snake ribbon ── -->
+                    <!-- Glow/shadow layer -->
+                    <path d="M 55 85
+                             C 92 85,  129 195, 166 195
+                             C 203 195, 240 85,  277 85
+                             C 314 85,  351 195, 388 195
+                             C 425 195, 462 85,  499 85
+                             C 536 85,  573 195, 610 195
+                             C 647 195, 684 85,  721 85
+                             C 758 85,  795 195, 832 195
+                             C 869 195, 906 85,  943 85"
+                          stroke="#7D242B" stroke-width="58" fill="none"
+                          stroke-linecap="round" opacity="0.10"/>
+                    <!-- Main ribbon -->
+                    <path d="M 55 85
+                             C 92 85,  129 195, 166 195
+                             C 203 195, 240 85,  277 85
+                             C 314 85,  351 195, 388 195
+                             C 425 195, 462 85,  499 85
+                             C 536 85,  573 195, 610 195
+                             C 647 195, 684 85,  721 85
+                             C 758 85,  795 195, 832 195
+                             C 869 195, 906 85,  943 85"
+                          stroke="url(#ribGrad)" stroke-width="46" fill="none"
+                          stroke-linecap="round"/>
 
-                <!-- Connector: turn down-left → down-right -->
-                <div class="row-connector left">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
-                </div>
+                    <!-- ══ LABELS ABOVE (peaks: nodes 1 3 5 7 9 at y=85) ══ -->
 
-                <!-- Row 3 → steps 7 8 -->
-                <div class="journey-row">
-                    <div class="journey-step">
-                        <div class="step-num">7</div>
-                        <div class="step-icon">🏅</div>
-                        <h3>Scholarship Offer</h3>
-                        <p>Merit-based tuition reduction based on your diagnostic result</p>
-                    </div>
-                    <div class="h-arrow">›</div>
-                    <div class="journey-step">
-                        <div class="step-num">8</div>
-                        <div class="step-icon">💰</div>
-                        <h3>Tuition — 1st Installment</h3>
-                        <p>Confirm your place with the first payment. Flexible plans available</p>
-                    </div>
-                    <!-- empty spacer to keep grid balanced -->
-                    <div class="h-arrow" style="opacity:0;">›</div>
-                    <div class="journey-step" style="visibility:hidden;box-shadow:none;background:transparent;"></div>
-                </div>
+                    <!-- Node 1 label -->
+                    <text x="55"  y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Pre-Enrollment</text>
+                    <text x="55"  y="34" text-anchor="middle" font-size="9.5" fill="#888">Contact us to begin</text>
 
-                <!-- Final down arrow -->
-                <div class="final-connector">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </div>
+                    <!-- Node 3 label -->
+                    <text x="277" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Registration Fee</text>
+                    <text x="277" y="34" text-anchor="middle" font-size="9.5" fill="#888">Secure your place</text>
 
-                <!-- Step 9 — Admission -->
-                <div class="journey-final">
-                    <div class="step-num">9</div>
-                    <div class="step-icon">🎓</div>
-                    <h3>Admission</h3>
-                    <p>You are officially a Veritas Aescula student. Welcome.</p>
-                </div>
+                    <!-- Node 5 label -->
+                    <text x="499" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Enrollment &amp; App</text>
+                    <text x="499" y="34" text-anchor="middle" font-size="9.5" fill="#888">Submit your documents</text>
 
-            </div><!-- /animate-on-scroll -->
+                    <!-- Node 7 label -->
+                    <text x="721" y="18" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Scholarship Offer</text>
+                    <text x="721" y="34" text-anchor="middle" font-size="9.5" fill="#888">Merit-based award</text>
+
+                    <!-- Node 9 label — Admission (special gold) -->
+                    <text x="943" y="18" text-anchor="middle" font-size="12" font-weight="800" fill="#7D242B">Admission</text>
+                    <text x="943" y="34" text-anchor="middle" font-size="9.5" fill="#888">Welcome to VAI ✦</text>
+
+                    <!-- ══ LABELS BELOW (valleys: nodes 2 4 6 8 at y=195) ══ -->
+
+                    <!-- Node 2 label -->
+                    <text x="166" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Eligibility Check</text>
+                    <text x="166" y="248" text-anchor="middle" font-size="9.5" fill="#888">Confirm your pathway</text>
+
+                    <!-- Node 4 label -->
+                    <text x="388" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Diagnostic Briefing</text>
+                    <text x="388" y="248" text-anchor="middle" font-size="9.5" fill="#888">Prep guide &amp; format</text>
+
+                    <!-- Node 6 label -->
+                    <text x="610" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">Diagnostic Test</text>
+                    <text x="610" y="248" text-anchor="middle" font-size="9.5" fill="#888">5-subject assessment</text>
+
+                    <!-- Node 8 label -->
+                    <text x="832" y="232" text-anchor="middle" font-size="11" font-weight="700" fill="#7D242B">1st Installment</text>
+                    <text x="832" y="248" text-anchor="middle" font-size="9.5" fill="#888">Flexible plans available</text>
+
+                    <!-- ══ WHITE CIRCLES on ribbon ══ -->
+
+                    <!-- Peaks (y=85) -->
+                    <circle cx="55"  cy="85"  r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="277" cy="85"  r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="499" cy="85"  r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="721" cy="85"  r="28" fill="white" filter="url(#cshadow)"/>
+                    <!-- Node 9 — Admission: filled maroon -->
+                    <circle cx="943" cy="85"  r="30" fill="#7D242B" filter="url(#cshadow)"/>
+                    <circle cx="943" cy="85"  r="26" fill="#7D242B" stroke="#D7CAB7" stroke-width="2"/>
+
+                    <!-- Valleys (y=195) -->
+                    <circle cx="166" cy="195" r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="388" cy="195" r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="610" cy="195" r="28" fill="white" filter="url(#cshadow)"/>
+                    <circle cx="832" cy="195" r="28" fill="white" filter="url(#cshadow)"/>
+
+                    <!-- ══ STEP NUMBERS inside circles ══ -->
+                    <text x="55"  y="90"  text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">1</text>
+                    <text x="166" y="200" text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">2</text>
+                    <text x="277" y="90"  text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">3</text>
+                    <text x="388" y="200" text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">4</text>
+                    <text x="499" y="90"  text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">5</text>
+                    <text x="610" y="200" text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">6</text>
+                    <text x="721" y="90"  text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">7</text>
+                    <text x="832" y="200" text-anchor="middle" font-size="15" font-weight="800" fill="#7D242B">8</text>
+                    <!-- Node 9: white number on maroon -->
+                    <text x="943" y="91"  text-anchor="middle" font-size="15" font-weight="800" fill="white">9</text>
+
+                  </svg>
+                </div><!-- /snake-desktop -->
+
+                <!-- ── Mobile: simple numbered list ──────────── -->
+                <div class="snake-mobile">
+                    <ul class="snake-mobile-list">
+                        <li><span class="snake-ml-num">1</span><div><strong>Pre-Enrollment</strong><span>Contact us via Viber or email to express interest</span></div></li>
+                        <li><span class="snake-ml-num">2</span><div><strong>Eligibility Check</strong><span>We confirm your qualifications &amp; entry pathway</span></div></li>
+                        <li><span class="snake-ml-num">3</span><div><strong>Registration Fee</strong><span>One-time fee to secure your place</span></div></li>
+                        <li><span class="snake-ml-num">4</span><div><strong>Diagnostic Briefing</strong><span>Full prep guide — format, subjects &amp; timing</span></div></li>
+                        <li><span class="snake-ml-num">5</span><div><strong>Enrollment &amp; Application</strong><span>Submit required documents with team support</span></div></li>
+                        <li><span class="snake-ml-num">6</span><div><strong>Diagnostic Test</strong><span>5-subject placement &amp; scholarship exam</span></div></li>
+                        <li><span class="snake-ml-num">7</span><div><strong>Scholarship Offer</strong><span>Merit-based tuition reduction awarded</span></div></li>
+                        <li><span class="snake-ml-num">8</span><div><strong>Tuition — 1st Installment</strong><span>Confirm your place. Flexible plans available</span></div></li>
+                        <li><span class="snake-ml-num final-num">9</span><div><strong>Admission 🎓</strong><span>Welcome to Veritas Aescula Institute</span></div></li>
+                    </ul>
+                </div><!-- /snake-mobile -->
+
+            </div><!-- /snake-flow-container -->
 
             <div style="text-align:center; margin-top: 2.5rem;">
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" rel="noopener" class="cta-button" style="background:var(--primary-maroon);color:var(--white);box-shadow:0 4px 15px rgba(125,36,43,0.3);">
