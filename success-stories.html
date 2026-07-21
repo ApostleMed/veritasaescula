@@ -269,6 +269,28 @@
             margin-bottom: 0.5rem;
         }
 
+        /* Separator between multiple acceptances on one card */
+        .university-divider {
+            height: 1px;
+            background: rgba(255,255,255,0.3);
+            margin: 0.75rem auto;
+            width: 60%;
+            position: relative;
+        }
+
+        .university-divider::after {
+            content: "&";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--primary-maroon);
+            padding: 0 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 400;
+            opacity: 0.85;
+        }
+
         /* Floating Viber Button */
         .viber-float {
             position: fixed;
@@ -417,22 +439,12 @@
                     <img src="success1.jpg" alt="Ms. Sut Ngai Pan" class="student-photo">
                     <h3 class="student-name">Ms. Sut Ngai Pan</h3>
                     <p class="student-program">OSSD Healthcare Track Graduate, Class of 2025</p>
-                    <p class="student-testimony">"Veritas Aescula and Canaway High School gave me the foundation I needed to pursue my dream of becoming a physician. The personalized support and rigorous curriculum prepared me perfectly for medical school."</p>
-                    <div class="accepted-university">
-                        <div class="university-label">Accepted to</div>
-                        <div>Masaryk University — Czech Republic</div>
-                    </div>
-                </div>
-
-                <!-- Success Story 2 -->
-                <div class="success-card animate-on-scroll">
-                    <img src="success1.jpg" alt="Ms. Sut Ngai Pan" class="student-photo">
-                    <h3 class="student-name">Ms. Sut Ngai Pan</h3>
-                    <p class="student-program">OSSD Healthcare Track Graduate, Class of 2025</p>
-                    <p class="student-testimony">"The OSSD program at Veritas Aescula and Canaway High School opened doors I never thought possible. Being accepted to one of Europe's most prestigious medical faculties is a dream come true."</p>
+                    <p class="student-testimony">"Veritas Aescula and Canaway High School gave me the foundation I needed to pursue my dream of becoming a physician. The personalized support and rigorous curriculum opened doors I never thought possible — earning me offers from two of Europe's most prestigious medical faculties."</p>
                     <div class="accepted-university">
                         <div class="university-label">Accepted to</div>
                         <div>First Faculty of Medicine, Charles University — Czech Republic</div>
+                        <div class="university-divider"></div>
+                        <div>Masaryk University — Czech Republic</div>
                     </div>
                 </div>
 
