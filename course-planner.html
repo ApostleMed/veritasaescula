@@ -237,14 +237,30 @@
             border-radius:10px;
             padding:.6rem .75rem;
             cursor:grab;
-            transition:all .2s ease;
+            transition:border-color .2s ease, background .2s ease, transform .2s ease;
             display:flex; align-items:center; gap:.6rem;
             user-select:none;
+            touch-action:none;          /* let the pointer engine own the gesture */
         }
         .course-chip:hover { border-color:var(--primary-maroon); background:var(--beige-light); transform:translateX(3px); }
         .course-chip:active { cursor:grabbing; }
-        .course-chip.dragging { opacity:.4; }
+        .course-chip.dragging { opacity:.3; }
         .course-chip.used { opacity:.35; pointer-events:none; filter:grayscale(.6); }
+
+        /* floating element that follows the pointer while dragging */
+        .drag-ghost {
+            position:fixed; z-index:99999;
+            pointer-events:none;
+            opacity:.96;
+            margin:0;
+            transform:rotate(-1.5deg) scale(1.04);
+            box-shadow:0 14px 34px rgba(125,36,43,.38);
+            border-color:var(--primary-maroon)!important;
+            background:var(--white)!important;
+            cursor:grabbing;
+        }
+        body.is-dragging { cursor:grabbing; user-select:none; }
+        body.is-dragging .course-chip:hover { transform:none; }
 
         .chip-code { font-size:.78rem; font-weight:800; color:var(--primary-maroon); letter-spacing:.02em; min-width:52px; }
         .chip-body { flex:1; min-width:0; }
@@ -287,9 +303,12 @@
             padding:.7rem;
             display:flex; align-items:center; gap:.6rem;
             background:var(--beige-light);
-            transition:all .2s ease;
+            transition:border-color .18s ease, background .18s ease, transform .18s ease, box-shadow .18s ease;
             position:relative;
         }
+        .slot.filled { cursor:grab; touch-action:none; }
+        .slot.filled:active { cursor:grabbing; }
+        .slot.source-slot { opacity:.35; }
         .slot.drag-over {
             border-color:var(--primary-maroon);
             background:var(--beige-mid);
@@ -548,7 +567,7 @@
             <div class="builder-wrap" id="builderWrap">
                 <div class="step-label">Step 2</div>
                 <h2 class="section-title" id="builderTitle">Build Your Credit Blocks</h2>
-                <p class="section-subtitle">Drag a course from the pool into any slot — or simply tap it. Required courses must all be placed; for each choice pair, pick one.</p>
+                <p class="section-subtitle">Drag a course from the pool into any slot — or simply tap it. Already-placed courses can be dragged between slots to rearrange your terms. Required courses must all be placed; for each choice pair, pick one.</p>
 
                 <div class="builder-grid">
 
@@ -557,7 +576,7 @@
                         <div class="panel-head">
                             <h3>📚 Course Pool</h3>
                         </div>
-                        <p class="panel-hint">Tap or drag a course into a block slot on the right.</p>
+                        <p class="panel-hint">Tap a course to place it, or drag it into any slot. Drag placed courses between slots to reorder.</p>
                         <div class="pool-list" id="poolList"></div>
                     </div>
 
@@ -734,7 +753,7 @@ const PATHWAYS = [
 /* ════════ STATE ════════ */
 let currentStream = null;
 let slots = new Array(8).fill(null);   // slot index → course code
-let dragCode = null;
+let drag = null;                       // in-flight drag state, see startDrag()
 
 /* ════════ INIT ════════ */
 function initStreams() {
@@ -776,10 +795,9 @@ function renderPool() {
 function chipHTML(code, used, kind) {
   const c = COURSES[code];
   const isUsed = used.includes(code);
-  return `<div class="course-chip ${isUsed ? 'used' : ''}" draggable="${!isUsed}"
+  return `<div class="course-chip ${isUsed ? 'used' : ''}"
       data-code="${code}"
-      ondragstart="onDragStart(event,'${code}')" ondragend="onDragEnd(event)"
-      onclick="quickPlace('${code}')">
+      onpointerdown="startDrag(event,'${code}',null)">
     <span class="chip-code">${code}</span>
     <span class="chip-body">
       <span class="chip-name">${c.n}</span>
@@ -795,14 +813,14 @@ function renderSlots() {
     const start = bi * 4;
     document.getElementById(blockId).innerHTML = [0,1,2,3].map(i => {
       const idx = start + i, code = slots[idx];
-      if (!code) return `<div class="slot" data-slot="${idx}"
-          ondragover="onDragOver(event,${idx})" ondragleave="onDragLeave(event)" ondrop="onDrop(event,${idx})">
+      if (!code) return `<div class="slot" data-slot="${idx}">
           <span class="slot-empty-text">Drop course here</span>
         </div>`;
       const c = COURSES[code];
       return `<div class="slot filled" data-slot="${idx}"
-          ondragover="onDragOver(event,${idx})" ondragleave="onDragLeave(event)" ondrop="onDrop(event,${idx})">
-          <button class="slot-remove" onclick="removeSlot(${idx})" title="Remove">✕</button>
+          onpointerdown="startDrag(event,'${code}',${idx})">
+          <button class="slot-remove" onpointerdown="event.stopPropagation()"
+                  onclick="removeSlot(${idx})" title="Remove">✕</button>
           <span class="chip-code">${code}</span>
           <span class="chip-body"><span class="chip-name">${c.n}</span></span>
           <span class="lvl lvl-${c.l}">${c.l}</span>
@@ -815,14 +833,91 @@ function renderSlots() {
   badgeB.textContent = `${b} / 4`; badgeB.classList.toggle('full', b === 4);
 }
 
-/* ════════ DRAG & DROP ════════ */
-function onDragStart(e, code) { dragCode = code; e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
-function onDragEnd(e) { e.currentTarget.classList.remove('dragging'); dragCode = null; }
-function onDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
-function onDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
-function onDrop(e, idx) {
-  e.preventDefault(); e.currentTarget.classList.remove('drag-over');
-  if (dragCode) place(dragCode, idx);
+/* ════════ DRAG ENGINE ════════
+   Pointer-based rather than HTML5 drag-and-drop: one code path for mouse,
+   touch and pen, with hit-testing we control via elementFromPoint. A drag
+   below the movement threshold falls through to tap-to-place.            */
+
+const DRAG_THRESHOLD = 6;   // px of travel before a press becomes a drag
+
+function startDrag(e, code, fromSlot) {
+  if (e.pointerType === 'mouse' && e.button !== 0) return;   // left button only
+  if (drag) return;                                          // ignore second finger
+
+  const rect = e.currentTarget.getBoundingClientRect();
+  drag = {
+    code, fromSlot,
+    src: e.currentTarget,
+    startX: e.clientX, startY: e.clientY,
+    offsetX: e.clientX - rect.left,
+    offsetY: e.clientY - rect.top,
+    width: rect.width, height: rect.height,
+    active: false, ghost: null, overSlot: null
+  };
+
+  window.addEventListener('pointermove', onPointerMove, { passive:false });
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
+}
+
+function beginGhost() {
+  const g = drag.src.cloneNode(true);
+  g.classList.add('drag-ghost');
+  g.classList.remove('used', 'source-slot');
+  g.querySelector('.slot-remove')?.remove();
+  g.style.width  = drag.width + 'px';
+  g.style.height = drag.height + 'px';
+  document.body.appendChild(g);
+  drag.ghost = g;
+  drag.active = true;
+
+  document.body.classList.add('is-dragging');
+  drag.src.classList.add(drag.fromSlot === null ? 'dragging' : 'source-slot');
+}
+
+function onPointerMove(e) {
+  if (!drag) return;
+
+  if (!drag.active) {
+    if (Math.hypot(e.clientX - drag.startX, e.clientY - drag.startY) < DRAG_THRESHOLD) return;
+    beginGhost();
+  }
+
+  e.preventDefault();   // stop text selection / scroll once we're really dragging
+
+  drag.ghost.style.left = (e.clientX - drag.offsetX) + 'px';
+  drag.ghost.style.top  = (e.clientY - drag.offsetY) + 'px';
+
+  // ghost is pointer-events:none, so this returns whatever is underneath it
+  const under = document.elementFromPoint(e.clientX, e.clientY);
+  const slot = under ? under.closest('.slot') : null;
+
+  if (slot !== drag.overSlot) {
+    drag.overSlot?.classList.remove('drag-over');
+    drag.overSlot = slot;
+    slot?.classList.add('drag-over');
+  }
+}
+
+function onPointerUp() {
+  window.removeEventListener('pointermove', onPointerMove);
+  window.removeEventListener('pointerup', onPointerUp);
+  window.removeEventListener('pointercancel', onPointerUp);
+  if (!drag) return;
+
+  const d = drag;
+  drag = null;
+
+  d.ghost?.remove();
+  d.overSlot?.classList.remove('drag-over');
+  d.src?.classList.remove('dragging', 'source-slot');
+  document.body.classList.remove('is-dragging');
+
+  if (!d.active) {                       // never passed the threshold → a tap
+    if (d.fromSlot === null) quickPlace(d.code);
+    return;
+  }
+  if (d.overSlot) place(d.code, +d.overSlot.dataset.slot, d.fromSlot);
 }
 
 /* tap-to-place: swaps a placed sibling, else fills the first empty slot */
@@ -840,10 +935,14 @@ function quickPlace(code) {
   if (idx !== -1) place(code, idx);
 }
 
-function place(code, idx) {
-  if (slots.includes(code)) slots[slots.indexOf(code)] = null;  // move, don't duplicate
+function place(code, idx, fromSlot = null) {
+  const displaced = slots[idx];
+  if (displaced === code) return;                               // dropped on itself
 
-  // if this course belongs to a choice pair, drop the sibling so only one is ever placed
+  const prev = slots.indexOf(code);
+  if (prev !== -1) slots[prev] = null;                          // move, don't duplicate
+
+  // a course from a choice pair evicts its sibling — only one may be placed
   const group = currentStream.picks.find(g => g.length > 1 && g.includes(code));
   if (group) group.filter(c => c !== code).forEach(sib => {
     const si = slots.indexOf(sib);
@@ -851,6 +950,11 @@ function place(code, idx) {
   });
 
   slots[idx] = code;
+
+  // slot→slot drop onto an occupied slot swaps the two courses
+  if (fromSlot !== null && fromSlot !== idx && displaced && slots[fromSlot] === null)
+    slots[fromSlot] = displaced;
+
   renderPool(); renderSlots(); updateProgress();
 }
 
