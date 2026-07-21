@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OSSD Course Planner | Build Your Credit Blocks | Veritas Aescula Institute</title>
+    <meta name="description" content="Interactive OSSD course planner for GED, Grade 11 and IGCSE O Level finishers. Choose your stream, build your 8-course credit blocks, and see which university pathways unlock — Healthcare, Engineering, IT, Business, Social Science, Arts and Architecture.">
+    <meta name="keywords" content="OSSD course planner, OSSD credits Myanmar, Ontario Secondary School Diploma courses, ENG4U SBI4U SCH4U, OSSD for O Level students, OSSD for GED students, university prerequisite planner Southeast Asia">
+    <meta name="author" content="Veritas Aescula Institute">
+    <meta name="robots" content="index, follow, max-snippet:-1">
+    <link rel="canonical" href="https://veritasaescula.com/course-planner.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://veritasaescula.com/course-planner.html">
+    <meta property="og:title" content="OSSD Course Planner | Veritas Aescula Institute">
+    <meta property="og:description" content="Choose your stream, build your OSSD credit blocks, and see which university pathways unlock.">
+    <meta property="og:image" content="https://veritasaescula.com/logo.png">
+    <meta property="og:site_name" content="Veritas Aescula Institute">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "OSSD Course Planner",
+      "url": "https://veritasaescula.com/course-planner.html",
+      "description": "Interactive planner to build OSSD credit blocks by stream and see unlocked university pathways.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://veritasaescula.com"},
+          {"@type": "ListItem", "position": 2, "name": "Programs", "item": "https://veritasaescula.com/index.html#programs"},
+          {"@type": "ListItem", "position": 3, "name": "Course Planner", "item": "https://veritasaescula.com/course-planner.html"}
+        ]
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        :root {
+            --primary-maroon:#7D242B;
+            --maroon-2:#7F242B;
+            --maroon-3:#80242B;
+            --maroon-soft:#A84B52;
+            --light-beige:#D7CAB7;
+            --beige-light:#F5EFE6;
+            --beige-mid:#ECE4D8;
+            --text-dark:#2C2C2C;
+            --text-light:#666;
+            --white:#FFF;
+            --bg:#FAFAFA;
+            --amber:#B07A1E;
+            --amber-bg:#FBF3E2;
+            --slate:#5A6672;
+            --slate-bg:#EEF1F4;
+            --green:#2E7D52;
+            --green-bg:#E9F5EE;
+        }
+
+        body {
+            font-family:'Montserrat',sans-serif;
+            line-height:1.6;
+            color:var(--text-dark);
+            background:var(--bg);
+        }
+
+        /* ── Header ─────────────────────────────── */
+        header {
+            background:linear-gradient(135deg,var(--primary-maroon),var(--maroon-3));
+            color:var(--white);
+            padding:1rem 0;
+            position:fixed;
+            width:100%; top:0; z-index:1000;
+            box-shadow:0 2px 10px rgba(0,0,0,.1);
+        }
+        nav {
+            max-width:1200px; margin:0 auto;
+            display:flex; justify-content:space-between; align-items:center;
+            padding:0 2rem;
+        }
+        .logo { display:flex; align-items:center; font-size:1.3rem; font-weight:700; text-decoration:none; color:var(--white); }
+        .logo-icon { width:60px; height:60px; margin-right:15px; object-fit:contain; display:block; }
+        .nav-links { display:flex; list-style:none; gap:2rem; align-items:center; }
+        .nav-links a { color:var(--white); text-decoration:none; font-weight:500; transition:color .3s; }
+        .nav-links a:hover { color:var(--light-beige); }
+        .nav-dropdown { position:relative; }
+        .nav-dropdown > a::after { content:" ▾"; font-size:.75rem; opacity:.8; }
+        .dropdown-menu {
+            display:none; position:absolute; top:100%; left:50%;
+            transform:translateX(-50%);
+            background:var(--white); border-radius:0 0 10px 10px;
+            box-shadow:0 8px 30px rgba(125,36,43,.2);
+            min-width:190px; overflow:hidden; z-index:2000; padding-top:10px;
+        }
+        .nav-dropdown:hover .dropdown-menu, .nav-dropdown:focus-within .dropdown-menu { display:block; }
+        .dropdown-menu a {
+            display:block; padding:.75rem 1.25rem;
+            color:var(--text-dark)!important; font-size:.9rem; font-weight:500;
+            transition:background .2s; white-space:nowrap;
+        }
+        .dropdown-menu a:hover { background:var(--beige-light); color:var(--primary-maroon)!important; }
+        .dropdown-menu a.active { background:var(--beige-light); color:var(--primary-maroon)!important; font-weight:600; }
+        .menu-toggle { display:none; background:none; border:none; color:var(--white); font-size:1.5rem; cursor:pointer; }
+
+        /* ── Page header ────────────────────────── */
+        .page-header {
+            background:linear-gradient(135deg,rgba(125,36,43,.96),rgba(128,36,43,.96)),
+                       url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover;
+            color:var(--white); padding:140px 0 70px; text-align:center;
+        }
+        .page-header h1 { font-size:2.8rem; font-weight:800; margin-bottom:.75rem; }
+        .page-header p { font-size:1.1rem; max-width:720px; margin:0 auto; opacity:.9; }
+
+        .container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+        .section { padding:60px 0; }
+
+        .section-title { color:var(--primary-maroon); font-size:1.9rem; font-weight:800; margin-bottom:.4rem; }
+        .section-subtitle { color:var(--text-light); font-size:1rem; margin-bottom:2rem; }
+
+        /* ── Eligibility banner ─────────────────── */
+        .elig-banner {
+            background:linear-gradient(135deg,var(--beige-light),var(--beige-mid));
+            border-left:6px solid var(--primary-maroon);
+            border-radius:0 16px 16px 0;
+            padding:1.75rem 2.25rem;
+            display:flex; gap:1.5rem; align-items:flex-start;
+        }
+        .elig-icon { font-size:2.5rem; line-height:1; flex-shrink:0; }
+        .elig-banner h2 { color:var(--primary-maroon); font-size:1.3rem; font-weight:700; margin-bottom:.5rem; }
+        .elig-banner p { font-size:.95rem; margin-bottom:.75rem; }
+        .elig-pills { display:flex; gap:.5rem; flex-wrap:wrap; }
+        .elig-pill {
+            background:var(--white); color:var(--primary-maroon);
+            border:1px solid var(--light-beige);
+            padding:.35rem .9rem; border-radius:20px;
+            font-size:.82rem; font-weight:600;
+        }
+
+        /* ── Step label ─────────────────────────── */
+        .step-label {
+            display:inline-flex; align-items:center; gap:.6rem;
+            background:var(--primary-maroon); color:var(--white);
+            padding:.35rem 1rem; border-radius:30px;
+            font-size:.78rem; font-weight:700;
+            letter-spacing:.06em; text-transform:uppercase;
+            margin-bottom:.9rem;
+        }
+
+        /* ── Stream cards ───────────────────────── */
+        .stream-grid {
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+            gap:1.1rem;
+        }
+        .stream-card {
+            background:var(--white); border-radius:14px;
+            padding:1.4rem 1.25rem;
+            border:2px solid transparent;
+            box-shadow:0 3px 14px rgba(125,36,43,.09);
+            cursor:pointer;
+            transition:all .25s ease;
+            position:relative;
+            text-align:left;
+            font-family:inherit;
+            width:100%;
+        }
+        .stream-card:hover { transform:translateY(-4px); box-shadow:0 10px 28px rgba(125,36,43,.18); border-color:var(--light-beige); }
+        .stream-card.selected {
+            border-color:var(--primary-maroon);
+            background:var(--beige-light);
+            box-shadow:0 8px 26px rgba(125,36,43,.22);
+        }
+        .stream-card.selected::after {
+            content:"✓"; position:absolute; top:.9rem; right:1rem;
+            background:var(--primary-maroon); color:var(--white);
+            width:1.5rem; height:1.5rem; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:.8rem; font-weight:800;
+        }
+        .stream-icon { font-size:1.9rem; margin-bottom:.5rem; display:block; }
+        .stream-card h3 { color:var(--primary-maroon); font-size:.98rem; font-weight:700; margin-bottom:.25rem; line-height:1.25; }
+        .stream-card .stream-tag {
+            display:inline-block; background:var(--beige-mid); color:var(--primary-maroon);
+            font-size:.7rem; font-weight:700; padding:.15rem .55rem;
+            border-radius:12px; margin-bottom:.5rem;
+        }
+        .stream-card.selected .stream-tag { background:var(--white); }
+        .stream-card p { font-size:.8rem; color:var(--text-light); line-height:1.45; }
+
+        /* ── Builder layout ─────────────────────── */
+        .builder-wrap { display:none; }
+        .builder-wrap.active { display:block; }
+
+        .builder-grid {
+            display:grid;
+            grid-template-columns:minmax(280px,340px) 1fr;
+            gap:1.75rem;
+            align-items:start;
+        }
+
+        /* Course pool */
+        .pool-panel {
+            background:var(--white); border-radius:16px;
+            padding:1.4rem;
+            box-shadow:0 4px 20px rgba(125,36,43,.1);
+            position:sticky; top:110px;
+        }
+        .panel-head {
+            display:flex; justify-content:space-between; align-items:center;
+            margin-bottom:.4rem;
+        }
+        .panel-head h3 { color:var(--primary-maroon); font-size:1rem; font-weight:700; }
+        .panel-hint { font-size:.76rem; color:var(--text-light); margin-bottom:1rem; line-height:1.4; }
+        .pool-list { display:flex; flex-direction:column; gap:.5rem; max-height:60vh; overflow-y:auto; padding-right:4px; }
+
+        .choice-group {
+            background:var(--beige-light);
+            border:1px dashed var(--light-beige);
+            border-radius:10px; padding:.6rem;
+        }
+        .choice-group-label {
+            font-size:.68rem; font-weight:700; color:var(--primary-maroon);
+            text-transform:uppercase; letter-spacing:.05em;
+            margin-bottom:.4rem; display:block;
+        }
+        .choice-group .course-chip { margin-bottom:.4rem; }
+        .choice-group .course-chip:last-child { margin-bottom:0; }
+
+        /* Course chip */
+        .course-chip {
+            background:var(--white);
+            border:1.5px solid var(--beige-mid);
+            border-radius:10px;
+            padding:.6rem .75rem;
+            cursor:grab;
+            transition:all .2s ease;
+            display:flex; align-items:center; gap:.6rem;
+            user-select:none;
+        }
+        .course-chip:hover { border-color:var(--primary-maroon); background:var(--beige-light); transform:translateX(3px); }
+        .course-chip:active { cursor:grabbing; }
+        .course-chip.dragging { opacity:.4; }
+        .course-chip.used { opacity:.35; pointer-events:none; filter:grayscale(.6); }
+
+        .chip-code { font-size:.78rem; font-weight:800; color:var(--primary-maroon); letter-spacing:.02em; min-width:52px; }
+        .chip-body { flex:1; min-width:0; }
+        .chip-name { font-size:.78rem; font-weight:600; color:var(--text-dark); line-height:1.2; }
+        .chip-req {
+            font-size:.63rem; font-weight:700; text-transform:uppercase;
+            letter-spacing:.04em; color:var(--maroon-soft); margin-top:1px; display:block;
+        }
+        .lvl {
+            font-size:.62rem; font-weight:800; padding:.12rem .38rem;
+            border-radius:5px; flex-shrink:0;
+        }
+        .lvl-U { background:var(--green-bg); color:var(--green); }
+        .lvl-M { background:var(--amber-bg); color:var(--amber); }
+        .lvl-O { background:var(--slate-bg); color:var(--slate); }
+
+        /* Blocks */
+        .blocks-panel { display:flex; flex-direction:column; gap:1.25rem; }
+
+        .block-card {
+            background:var(--white); border-radius:16px;
+            padding:1.4rem;
+            box-shadow:0 4px 20px rgba(125,36,43,.1);
+        }
+        .block-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+        .block-head h3 { color:var(--primary-maroon); font-size:1.05rem; font-weight:700; display:flex; align-items:center; gap:.5rem; }
+        .block-badge {
+            background:var(--beige-light); color:var(--primary-maroon);
+            font-size:.72rem; font-weight:700;
+            padding:.25rem .7rem; border-radius:14px;
+        }
+        .block-badge.full { background:var(--green-bg); color:var(--green); }
+
+        .slot-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.75rem; }
+
+        .slot {
+            border:2px dashed var(--light-beige);
+            border-radius:12px;
+            min-height:74px;
+            padding:.7rem;
+            display:flex; align-items:center; gap:.6rem;
+            background:var(--beige-light);
+            transition:all .2s ease;
+            position:relative;
+        }
+        .slot.drag-over {
+            border-color:var(--primary-maroon);
+            background:var(--beige-mid);
+            transform:scale(1.02);
+            border-style:solid;
+        }
+        .slot.filled {
+            border-style:solid;
+            border-color:var(--primary-maroon);
+            background:var(--white);
+            box-shadow:0 3px 12px rgba(125,36,43,.12);
+        }
+        .slot-empty-text {
+            font-size:.74rem; color:var(--text-light);
+            width:100%; text-align:center; opacity:.75;
+        }
+        .slot-remove {
+            position:absolute; top:5px; right:6px;
+            background:none; border:none;
+            color:var(--maroon-soft); cursor:pointer;
+            font-size:.95rem; line-height:1;
+            padding:2px 4px; border-radius:4px;
+            transition:all .2s;
+        }
+        .slot-remove:hover { background:var(--beige-light); color:var(--primary-maroon); }
+
+        /* Progress */
+        .progress-wrap { margin:1.5rem 0 .5rem; }
+        .progress-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem; }
+        .progress-top span { font-size:.85rem; font-weight:600; color:var(--text-dark); }
+        .progress-count { color:var(--primary-maroon); font-weight:800; }
+        .progress-bar { height:9px; background:var(--beige-mid); border-radius:10px; overflow:hidden; }
+        .progress-fill {
+            height:100%; width:0%;
+            background:linear-gradient(90deg,var(--maroon-soft),var(--primary-maroon));
+            border-radius:10px;
+            transition:width .45s cubic-bezier(.4,0,.2,1);
+        }
+
+        /* Validation */
+        .validation {
+            margin-top:1rem; border-radius:12px;
+            padding:1rem 1.25rem; font-size:.85rem;
+            display:none;
+        }
+        .validation.show { display:block; }
+        .validation.warn { background:var(--amber-bg); border-left:4px solid var(--amber); color:#7a5410; }
+        .validation.ok { background:var(--green-bg); border-left:4px solid var(--green); color:#1d5a39; }
+        .validation strong { display:block; margin-bottom:.35rem; font-size:.9rem; }
+        .validation ul { margin:.4rem 0 0 1.1rem; }
+        .validation li { margin-bottom:.2rem; }
+
+        .builder-actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.25rem; }
+        .btn {
+            font-family:inherit; font-size:.88rem; font-weight:700;
+            padding:.8rem 1.6rem; border-radius:30px;
+            border:none; cursor:pointer;
+            transition:all .25s ease;
+            text-decoration:none; display:inline-flex; align-items:center; gap:.5rem;
+        }
+        .btn-primary { background:var(--primary-maroon); color:var(--white); box-shadow:0 4px 14px rgba(125,36,43,.3); }
+        .btn-primary:hover:not(:disabled) { background:var(--maroon-3); transform:translateY(-2px); box-shadow:0 8px 22px rgba(125,36,43,.4); }
+        .btn-primary:disabled { opacity:.4; cursor:not-allowed; box-shadow:none; }
+        .btn-ghost { background:transparent; color:var(--primary-maroon); border:2px solid var(--light-beige); }
+        .btn-ghost:hover { border-color:var(--primary-maroon); background:var(--beige-light); }
+
+        /* ── Results ────────────────────────────── */
+        .results { display:none; margin-top:2rem; }
+        .results.show { display:block; animation:fadeUp .6s ease forwards; }
+
+        .results-head {
+            background:linear-gradient(135deg,var(--primary-maroon),var(--maroon-3));
+            color:var(--white); border-radius:16px 16px 0 0;
+            padding:1.75rem 2rem; text-align:center;
+        }
+        .results-head h3 { font-size:1.5rem; font-weight:800; margin-bottom:.3rem; }
+        .results-head p { opacity:.88; font-size:.92rem; }
+
+        .results-body {
+            background:var(--white); border-radius:0 0 16px 16px;
+            padding:1.75rem 2rem 2rem;
+            box-shadow:0 6px 26px rgba(125,36,43,.13);
+        }
+
+        .unlock-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1rem; }
+        .unlock-card {
+            border-radius:12px; padding:1.1rem 1.2rem;
+            border:1.5px solid var(--beige-mid);
+            background:var(--white);
+            transition:all .25s ease;
+        }
+        .unlock-card.open {
+            border-color:var(--green); background:var(--green-bg);
+        }
+        .unlock-card.locked { opacity:.55; background:var(--bg); }
+        .unlock-top { display:flex; align-items:center; gap:.6rem; margin-bottom:.4rem; }
+        .unlock-icon { font-size:1.35rem; }
+        .unlock-card h4 { font-size:.92rem; font-weight:700; color:var(--text-dark); line-height:1.2; flex:1; }
+        .unlock-card.open h4 { color:#1d5a39; }
+        .unlock-status {
+            font-size:.65rem; font-weight:800; text-transform:uppercase;
+            letter-spacing:.04em; padding:.18rem .5rem; border-radius:12px;
+        }
+        .unlock-card.open .unlock-status { background:var(--green); color:#fff; }
+        .unlock-card.locked .unlock-status { background:var(--slate-bg); color:var(--slate); }
+        .unlock-card p { font-size:.76rem; color:var(--text-light); line-height:1.45; }
+        .unlock-missing { font-size:.72rem; color:var(--amber); margin-top:.4rem; font-weight:600; }
+
+        .results-summary {
+            background:var(--beige-light); border-radius:12px;
+            padding:1.1rem 1.3rem; margin-bottom:1.5rem;
+            font-size:.88rem;
+        }
+        .results-summary strong { color:var(--primary-maroon); }
+
+        .selected-list { display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.6rem; }
+        .selected-tag {
+            background:var(--white); border:1px solid var(--light-beige);
+            color:var(--primary-maroon); font-size:.72rem; font-weight:700;
+            padding:.25rem .6rem; border-radius:14px;
+        }
+
+        /* ── CTA ────────────────────────────────── */
+        .cta-section {
+            background:linear-gradient(135deg,var(--primary-maroon),var(--maroon-3));
+            color:var(--white); padding:60px 0; text-align:center;
+        }
+        .cta-section h2 { font-size:1.9rem; font-weight:800; margin-bottom:.9rem; }
+        .cta-section p { font-size:1rem; opacity:.9; margin-bottom:1.8rem; max-width:600px; margin-left:auto; margin-right:auto; }
+        .cta-button {
+            display:inline-block; background:var(--white); color:var(--primary-maroon);
+            padding:1rem 2.5rem; border-radius:50px; text-decoration:none;
+            font-weight:700; font-size:1rem; transition:all .3s;
+            box-shadow:0 4px 15px rgba(0,0,0,.2);
+        }
+        .cta-button:hover { background:var(--light-beige); transform:translateY(-3px); box-shadow:0 8px 25px rgba(0,0,0,.25); }
+
+        /* ── Viber ──────────────────────────────── */
+        .viber-float {
+            position:fixed; bottom:28px; right:28px; z-index:9999;
+            background:#7360f2; color:#fff;
+            display:flex; align-items:center; gap:10px;
+            padding:13px 20px; border-radius:50px; text-decoration:none;
+            font-family:'Montserrat',sans-serif; font-weight:600; font-size:.9rem;
+            box-shadow:0 4px 20px rgba(115,96,242,.45);
+            transition:all .3s; animation:pulse-viber 2.5s infinite;
+        }
+        .viber-float:hover { background:#5b4cd4; transform:translateY(-3px); box-shadow:0 8px 30px rgba(115,96,242,.6); animation:none; }
+        @keyframes pulse-viber {
+            0%{box-shadow:0 4px 20px rgba(115,96,242,.45);}
+            50%{box-shadow:0 4px 30px rgba(115,96,242,.75),0 0 0 8px rgba(115,96,242,.12);}
+            100%{box-shadow:0 4px 20px rgba(115,96,242,.45);}
+        }
+
+        footer { background:var(--maroon-3); color:var(--white); text-align:center; padding:2rem 0; }
+
+        @keyframes fadeUp { from{opacity:0;transform:translateY(22px);} to{opacity:1;transform:translateY(0);} }
+        .animate-on-scroll { opacity:0; transform:translateY(22px); transition:all .7s ease; }
+        .animate-on-scroll.visible { opacity:1; transform:translateY(0); }
+
+        /* ── Responsive ─────────────────────────── */
+        @media (max-width:900px) {
+            .builder-grid { grid-template-columns:1fr; }
+            .pool-panel { position:static; }
+            .pool-list { max-height:none; }
+        }
+        @media (max-width:768px) {
+            .nav-links {
+                display:none; position:absolute; top:100%; left:0; right:0;
+                background:var(--primary-maroon); flex-direction:column;
+                padding:1rem 2rem; gap:1rem;
+            }
+            .nav-links.active { display:flex; }
+            .menu-toggle { display:block; }
+            .dropdown-menu { position:static; transform:none; box-shadow:none; padding-top:0; background:rgba(0,0,0,.15); }
+            .dropdown-menu a { color:var(--white)!important; }
+            .page-header h1 { font-size:1.9rem; }
+            .elig-banner { flex-direction:column; gap:.85rem; padding:1.4rem 1.5rem; }
+            .slot-grid { grid-template-columns:1fr; }
+            .container { padding:0 1.25rem; }
+        }
+        @media (max-width:480px) {
+            .viber-float span { display:none; }
+            .viber-float { padding:14px; border-radius:50%; bottom:20px; right:20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Veritas Aescula Institute Logo" class="logo-icon" width="60" height="60">
+                Veritas Aescula Institute
+            </a>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="success-stories.html">Success Stories</a></li>
+                <li><a href="index.html#activities">Student Life</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li class="nav-dropdown">
+                    <a href="index.html#programs">Programs</a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#programs">All Programs</a>
+                        <a href="how-to-apply.html">How to Apply</a>
+                        <a href="course-planner.html" class="active">Course Planner</a>
+                    </div>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>OSSD Course Planner</h1>
+            <p>Choose your stream, build your two credit blocks, and instantly see which university pathways your course selection unlocks.</p>
+        </div>
+    </section>
+
+    <!-- Eligibility -->
+    <section class="section" style="padding-bottom:0;">
+        <div class="container">
+            <div class="elig-banner animate-on-scroll">
+                <div class="elig-icon">🎓</div>
+                <div>
+                    <h2>Already finished GED, Grade 11, or IGCSE O Level?</h2>
+                    <p>You only need <strong>7 more credits — plus the OSSLT literacy requirement</strong> — to complete your Ontario Secondary School Diploma. Your prior study is assessed for equivalency credits, so you finish faster.</p>
+                    <div class="elig-pills">
+                        <span class="elig-pill">✓ GED finishers</span>
+                        <span class="elig-pill">✓ Grade 11 finishers</span>
+                        <span class="elig-pill">✓ IGCSE O Level finishers</span>
+                        <span class="elig-pill">7 credits + OSSLT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 1 — Stream -->
+    <section class="section" style="padding-bottom:30px;">
+        <div class="container">
+            <div class="step-label animate-on-scroll">Step 1</div>
+            <h2 class="section-title animate-on-scroll">Choose Your Stream</h2>
+            <p class="section-subtitle animate-on-scroll">Each stream is a curated set of 8 Grade 12 courses aligned to a university destination.</p>
+            <div class="stream-grid" id="streamGrid"></div>
+        </div>
+    </section>
+
+    <!-- Step 2 — Builder -->
+    <section class="section" style="padding-top:20px;">
+        <div class="container">
+            <div class="builder-wrap" id="builderWrap">
+                <div class="step-label">Step 2</div>
+                <h2 class="section-title" id="builderTitle">Build Your Credit Blocks</h2>
+                <p class="section-subtitle">Drag a course from the pool into any slot — or simply tap it. Required courses must all be placed; for each choice pair, pick one.</p>
+
+                <div class="builder-grid">
+
+                    <!-- Pool -->
+                    <div class="pool-panel">
+                        <div class="panel-head">
+                            <h3>📚 Course Pool</h3>
+                        </div>
+                        <p class="panel-hint">Tap or drag a course into a block slot on the right.</p>
+                        <div class="pool-list" id="poolList"></div>
+                    </div>
+
+                    <!-- Blocks -->
+                    <div class="blocks-panel">
+
+                        <div class="block-card">
+                            <div class="block-head">
+                                <h3>🅰️ Block A <span style="font-weight:400;font-size:.8rem;color:var(--text-light);">— Term 1</span></h3>
+                                <span class="block-badge" id="badgeA">0 / 4</span>
+                            </div>
+                            <div class="slot-grid" id="blockA"></div>
+                        </div>
+
+                        <div class="block-card">
+                            <div class="block-head">
+                                <h3>🅱️ Block B <span style="font-weight:400;font-size:.8rem;color:var(--text-light);">— Term 2</span></h3>
+                                <span class="block-badge" id="badgeB">0 / 4</span>
+                            </div>
+                            <div class="slot-grid" id="blockB"></div>
+                        </div>
+
+                        <div>
+                            <div class="progress-wrap">
+                                <div class="progress-top">
+                                    <span>Courses placed</span>
+                                    <span class="progress-count"><span id="progNum">0</span> / 8</span>
+                                </div>
+                                <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
+                            </div>
+
+                            <div class="validation" id="validation"></div>
+
+                            <div class="builder-actions">
+                                <button class="btn btn-primary" id="btnUnlock" disabled onclick="showResults()">🔓 Show Unlocked Pathways</button>
+                                <button class="btn btn-ghost" onclick="autoFill()">⚡ Auto-fill Recommended</button>
+                                <button class="btn btn-ghost" onclick="resetBuilder()">↺ Reset</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Step 3 — Results -->
+                <div class="results" id="results">
+                    <div style="margin-top:2.5rem;">
+                        <div class="step-label">Step 3</div>
+                    </div>
+                    <div class="results-head">
+                        <h3>🔓 Your Unlocked University Pathways</h3>
+                        <p>Based on the 8 courses you selected</p>
+                    </div>
+                    <div class="results-body">
+                        <div class="results-summary" id="resultsSummary"></div>
+                        <div class="unlock-grid" id="unlockGrid"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Start Your OSSD?</h2>
+            <p>Share your course plan with our admissions team and we'll confirm your equivalency credits and build your personalised schedule.</p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSf5M_d1M7HsM7hNgpSSgs23wKNDu63g_oHB8SPKEgAucKi8gQ/viewform?usp=dialog" target="_blank" rel="noopener" class="cta-button">Pre-Register Now</a>
+        </div>
+    </section>
+
+    <!-- Viber -->
+    <a href="https://viber.click/959797613726" target="_blank" rel="noopener" class="viber-float" aria-label="Chat with us on Viber">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="white" width="28" height="28">
+            <path d="M11.995 2C6.472 2 2 6.236 2 11.473c0 2.545 1.066 4.876 2.808 6.57L4 22l4.167-1.07A10.17 10.17 0 0 0 11.995 22C17.518 22 22 17.764 22 12.527 22 7.29 17.518 2 11.995 2zm4.683 14.04c-.23.633-1.352 1.21-1.863 1.247-.474.034-.922.17-3.095-.645-2.607-1.003-4.276-3.65-4.406-3.82-.13-.17-1.056-1.403-1.056-2.678 0-1.275.668-1.9.905-2.16.236-.26.516-.325.688-.325l.494.01c.158.006.373-.06.583.445.217.525.735 1.81.8 1.94.065.13.107.282.02.453-.087.17-.13.278-.26.428-.13.15-.272.334-.388.45-.13.13-.265.27-.114.53.15.26.668 1.103 1.434 1.787.985.878 1.816 1.15 2.076 1.28.26.13.41.108.56-.065.15-.173.643-.75.814-1.008.17-.26.34-.216.57-.13.23.087 1.458.688 1.708.814.25.13.416.19.476.3.06.107.06.62-.17 1.252z"/>
+        </svg>
+        <span>Chat on Viber</span>
+    </a>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Veritas Aescula Institute. All rights reserved. | In partnership with Canaway High School, Ontario, Canada</p>
+        </div>
+    </footer>
+
+<script>
+/* ════════ COURSE CATALOG ════════ */
+const COURSES = {
+  ENG4U:{n:'English',l:'U'},            OLC4O:{n:'Ontario Literacy Course',l:'O'},
+  SBI4U:{n:'Biology',l:'U'},            SCH4U:{n:'Chemistry',l:'U'},
+  SPH4U:{n:'Physics',l:'U'},            SES4U:{n:'Earth & Space Science',l:'U'},
+  MHF4U:{n:'Advanced Functions',l:'U'}, MCV4U:{n:'Calculus & Vectors',l:'U'},
+  MDM4U:{n:'Data Management',l:'U'},    ICS4U:{n:'Computer Science',l:'U'},
+  HZT4U:{n:'Philosophy',l:'U'},         PSK4U:{n:'Kinesiology',l:'U'},
+  CIA4U:{n:'Economic Issues',l:'U'},    CGW4U:{n:'World Issues',l:'U'},
+  CPW4U:{n:'Politics',l:'U'},           CHY4U:{n:'World History',l:'U'},
+  CLN4U:{n:'Law',l:'U'},                CHI4U:{n:'Canada: History & Identity',l:'U'},
+  HSB4U:{n:'Challenge & Change',l:'U'}, HHS4U:{n:'Families in Canada',l:'U'},
+  EWC4U:{n:"The Writer's Craft",l:'U'}, ETS4U:{n:'Studies in Literature',l:'U'},
+  BAT4M:{n:'Financial Accounting',l:'M'},BBB4M:{n:'International Business',l:'M'},
+  BOH4M:{n:'Business Leadership',l:'M'}, AVI4M:{n:'Visual Arts',l:'M'},
+  ADA4M:{n:'Dramatic Arts',l:'M'},       AMU4M:{n:'Music',l:'M'},
+  TGJ4M:{n:'Communications Tech',l:'M'}, TDJ4M:{n:'Technological Design',l:'M'}
+};
+
+/* ════════ STREAMS ════════ */
+const STREAMS = [
+  { id:'health', icon:'🩺', name:'Healthcare & Pre-Medical', tag:'8 U courses',
+    desc:'Medicine, dentistry, pharmacy, nursing, physiotherapy',
+    picks:[['ENG4U'],['OLC4O'],['SBI4U'],['SCH4U'],['SPH4U'],['MHF4U'],['MCV4U'],['HZT4U','PSK4U']] },
+
+  { id:'eng', icon:'⚙️', name:'Engineering', tag:'all U courses',
+    desc:'Civil, mechanical, electrical, chemical & biomedical engineering',
+    picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MCV4U'],['SPH4U'],['SCH4U'],['ICS4U','SBI4U'],['MDM4U','SES4U']] },
+
+  { id:'it', icon:'💻', name:'IT / Computer Science', tag:'all U courses',
+    desc:'Software engineering, data science, AI & cybersecurity',
+    picks:[['ENG4U'],['OLC4O'],['ICS4U'],['MHF4U'],['MCV4U'],['MDM4U'],['SPH4U','SBI4U'],['SCH4U','SES4U']] },
+
+  { id:'biz', icon:'📈', name:'Business, Finance & Commerce', tag:'6 U + business core',
+    desc:'Commerce, accounting, finance, management & economics',
+    picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MDM4U'],['CIA4U'],['MCV4U','ICS4U'],['BAT4M','BBB4M'],['BOH4M','CGW4U']] },
+
+  { id:'social', icon:'🌍', name:'Social Science & International Relations', tag:'all U courses',
+    desc:'Politics, law, diplomacy, sociology & global studies',
+    picks:[['ENG4U'],['OLC4O'],['CPW4U'],['CGW4U'],['CHY4U','CLN4U'],['HSB4U','HZT4U'],['CIA4U','CHI4U'],['MDM4U','MHF4U']] },
+
+  { id:'arts', icon:'🎨', name:'Arts (Visual, Creative & Performing)', tag:'6 U + studio core',
+    desc:'Fine arts, design, media, music, theatre & creative writing',
+    picks:[['ENG4U'],['OLC4O'],['EWC4U','ETS4U'],['HZT4U'],['HSB4U','HHS4U'],['AVI4M','ADA4M'],['AMU4M','TGJ4M'],['MDM4U','CHY4U']] },
+
+  { id:'arch', icon:'🏛️', name:'Architecture', tag:'6 U + design core',
+    desc:'Architecture, urban planning, interior & industrial design',
+    picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MCV4U'],['SPH4U'],['SCH4U','MDM4U'],['TDJ4M','AVI4M'],['SES4U','CGW4U']] }
+];
+
+/* ════════ UNIVERSITY PATHWAYS ════════ */
+/* all: every code required · anyOf: at least one from each sub-array */
+const PATHWAYS = [
+  { icon:'🩺', name:'Medicine (MD)', all:['SBI4U','SCH4U','ENG4U'], anyOf:[['SPH4U','MHF4U']],
+    where:'Czech Republic, Hungary, Poland, Bulgaria, China, Philippines' },
+  { icon:'🦷', name:'Dentistry', all:['SBI4U','SCH4U','ENG4U'], anyOf:[],
+    where:'Hungary, Czech Republic, Malaysia, China' },
+  { icon:'💊', name:'Pharmacy', all:['SBI4U','SCH4U'], anyOf:[['MHF4U','MCV4U','MDM4U']],
+    where:'UK, Canada, Malaysia, Thailand' },
+  { icon:'🏥', name:'Nursing & Allied Health', all:['SBI4U'], anyOf:[['SCH4U','PSK4U']],
+    where:'Canada, Australia, UK, Singapore' },
+  { icon:'🏃', name:'Physiotherapy & Kinesiology', all:['SBI4U'], anyOf:[['PSK4U','SCH4U']],
+    where:'Canada, Australia, New Zealand' },
+  { icon:'⚙️', name:'Engineering', all:['MHF4U','MCV4U','SPH4U'], anyOf:[['SCH4U','ICS4U']],
+    where:'Canada, UK, Germany, Singapore, Australia' },
+  { icon:'💻', name:'Computer Science & AI', all:['MHF4U','MCV4U'], anyOf:[['ICS4U','MDM4U']],
+    where:'Canada, UK, USA, Singapore, Netherlands' },
+  { icon:'📊', name:'Data Science & Statistics', all:['MHF4U'], anyOf:[['MDM4U','ICS4U']],
+    where:'Canada, UK, Netherlands, Australia' },
+  { icon:'📈', name:'Business & Commerce', all:['ENG4U'], anyOf:[['MHF4U','MDM4U'],['CIA4U','BAT4M','BBB4M','BOH4M','MDM4U']],
+    where:'Canada, UK, Singapore, Hong Kong, Australia' },
+  { icon:'💰', name:'Accounting & Finance', all:['MHF4U'], anyOf:[['BAT4M','CIA4U','MDM4U']],
+    where:'UK, Canada, Singapore, Australia' },
+  { icon:'⚖️', name:'Law & Legal Studies', all:['ENG4U'], anyOf:[['CLN4U','CPW4U','CHY4U','HZT4U']],
+    where:'UK, Canada, Australia' },
+  { icon:'🌍', name:'International Relations & Politics', all:['ENG4U'], anyOf:[['CPW4U','CGW4U','CHY4U']],
+    where:'UK, Netherlands, Canada, Czech Republic' },
+  { icon:'🧠', name:'Psychology & Social Sciences', all:['ENG4U'], anyOf:[['HSB4U','SBI4U','HHS4U','HZT4U']],
+    where:'Canada, UK, Australia, Netherlands' },
+  { icon:'🏛️', name:'Architecture & Urban Design', all:['MHF4U','SPH4U'], anyOf:[['TDJ4M','AVI4M','MCV4U']],
+    where:'Canada, UK, Italy, Australia' },
+  { icon:'🎨', name:'Fine Arts, Design & Media', all:['ENG4U'], anyOf:[['AVI4M','ADA4M','AMU4M','TGJ4M','EWC4U']],
+    where:'Canada, UK, Italy, Australia' },
+  { icon:'🔬', name:'Pure & Applied Sciences', all:[], anyOf:[['SBI4U','SCH4U','SPH4U','SES4U'],['MHF4U','MCV4U']],
+    where:'Canada, UK, Germany, Australia' }
+];
+
+/* ════════ STATE ════════ */
+let currentStream = null;
+let slots = new Array(8).fill(null);   // slot index → course code
+let dragCode = null;
+
+/* ════════ INIT ════════ */
+function initStreams() {
+  document.getElementById('streamGrid').innerHTML = STREAMS.map(s => `
+    <button class="stream-card animate-on-scroll" data-stream="${s.id}" onclick="selectStream('${s.id}')">
+      <span class="stream-icon">${s.icon}</span>
+      <span class="stream-tag">${s.tag}</span>
+      <h3>${s.name}</h3>
+      <p>${s.desc}</p>
+    </button>`).join('');
+  observeAll();
+}
+
+function selectStream(id) {
+  currentStream = STREAMS.find(s => s.id === id);
+  slots = new Array(8).fill(null);
+  document.querySelectorAll('.stream-card').forEach(c =>
+    c.classList.toggle('selected', c.dataset.stream === id));
+  document.getElementById('builderTitle').textContent = `Build Your Credit Blocks — ${currentStream.name}`;
+  document.getElementById('builderWrap').classList.add('active');
+  document.getElementById('results').classList.remove('show');
+  renderPool(); renderSlots(); updateProgress();
+  document.getElementById('builderWrap').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+/* ════════ POOL ════════ */
+function renderPool() {
+  const used = slots.filter(Boolean);
+  document.getElementById('poolList').innerHTML = currentStream.picks.map(group => {
+    if (group.length === 1) return chipHTML(group[0], used, 'Required');
+    const picked = group.some(c => used.includes(c));
+    return `<div class="choice-group">
+        <span class="choice-group-label">${picked ? '✓ Choice made' : 'Choose one of these'}</span>
+        ${group.map(c => chipHTML(c, used, 'Choice')).join('')}
+      </div>`;
+  }).join('');
+}
+
+function chipHTML(code, used, kind) {
+  const c = COURSES[code];
+  const isUsed = used.includes(code);
+  return `<div class="course-chip ${isUsed ? 'used' : ''}" draggable="${!isUsed}"
+      data-code="${code}"
+      ondragstart="onDragStart(event,'${code}')" ondragend="onDragEnd(event)"
+      onclick="quickPlace('${code}')">
+    <span class="chip-code">${code}</span>
+    <span class="chip-body">
+      <span class="chip-name">${c.n}</span>
+      <span class="chip-req">${kind}</span>
+    </span>
+    <span class="lvl lvl-${c.l}">${c.l}</span>
+  </div>`;
+}
+
+/* ════════ SLOTS ════════ */
+function renderSlots() {
+  ['blockA','blockB'].forEach((blockId, bi) => {
+    const start = bi * 4;
+    document.getElementById(blockId).innerHTML = [0,1,2,3].map(i => {
+      const idx = start + i, code = slots[idx];
+      if (!code) return `<div class="slot" data-slot="${idx}"
+          ondragover="onDragOver(event,${idx})" ondragleave="onDragLeave(event)" ondrop="onDrop(event,${idx})">
+          <span class="slot-empty-text">Drop course here</span>
+        </div>`;
+      const c = COURSES[code];
+      return `<div class="slot filled" data-slot="${idx}"
+          ondragover="onDragOver(event,${idx})" ondragleave="onDragLeave(event)" ondrop="onDrop(event,${idx})">
+          <button class="slot-remove" onclick="removeSlot(${idx})" title="Remove">✕</button>
+          <span class="chip-code">${code}</span>
+          <span class="chip-body"><span class="chip-name">${c.n}</span></span>
+          <span class="lvl lvl-${c.l}">${c.l}</span>
+        </div>`;
+    }).join('');
+  });
+  const a = slots.slice(0,4).filter(Boolean).length, b = slots.slice(4,8).filter(Boolean).length;
+  const badgeA = document.getElementById('badgeA'), badgeB = document.getElementById('badgeB');
+  badgeA.textContent = `${a} / 4`; badgeA.classList.toggle('full', a === 4);
+  badgeB.textContent = `${b} / 4`; badgeB.classList.toggle('full', b === 4);
+}
+
+/* ════════ DRAG & DROP ════════ */
+function onDragStart(e, code) { dragCode = code; e.currentTarget.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
+function onDragEnd(e) { e.currentTarget.classList.remove('dragging'); dragCode = null; }
+function onDragOver(e) { e.preventDefault(); e.currentTarget.classList.add('drag-over'); }
+function onDragLeave(e) { e.currentTarget.classList.remove('drag-over'); }
+function onDrop(e, idx) {
+  e.preventDefault(); e.currentTarget.classList.remove('drag-over');
+  if (dragCode) place(dragCode, idx);
+}
+
+/* tap-to-place: swaps a placed sibling, else fills the first empty slot */
+function quickPlace(code) {
+  if (slots.includes(code)) return;
+
+  // if a sibling from the same choice pair is already placed, take its slot
+  const group = currentStream.picks.find(g => g.length > 1 && g.includes(code));
+  if (group) {
+    const sibIdx = slots.findIndex(s => s && s !== code && group.includes(s));
+    if (sibIdx !== -1) return place(code, sibIdx);
+  }
+
+  const idx = slots.findIndex(s => s === null);
+  if (idx !== -1) place(code, idx);
+}
+
+function place(code, idx) {
+  if (slots.includes(code)) slots[slots.indexOf(code)] = null;  // move, don't duplicate
+
+  // if this course belongs to a choice pair, drop the sibling so only one is ever placed
+  const group = currentStream.picks.find(g => g.length > 1 && g.includes(code));
+  if (group) group.filter(c => c !== code).forEach(sib => {
+    const si = slots.indexOf(sib);
+    if (si !== -1) slots[si] = null;
+  });
+
+  slots[idx] = code;
+  renderPool(); renderSlots(); updateProgress();
+}
+
+function removeSlot(idx) { slots[idx] = null; renderPool(); renderSlots(); updateProgress(); }
+
+/* ════════ PROGRESS & VALIDATION ════════ */
+function updateProgress() {
+  const filled = slots.filter(Boolean).length;
+  document.getElementById('progNum').textContent = filled;
+  document.getElementById('progFill').style.width = (filled / 8 * 100) + '%';
+
+  const v = document.getElementById('validation');
+  const btn = document.getElementById('btnUnlock');
+  const chosen = slots.filter(Boolean);
+  const problems = [];
+
+  currentStream.picks.forEach(group => {
+    const hits = group.filter(c => chosen.includes(c)).length;
+    if (group.length === 1 && hits === 0)
+      problems.push(`Missing required: <strong>${group[0]}</strong> — ${COURSES[group[0]].n}`);
+    if (group.length > 1) {
+      if (hits === 0) problems.push(`Choose one: ${group.map(c => `<strong>${c}</strong>`).join(' or ')}`);
+      if (hits > 1)  problems.push(`Pick only one of: ${group.map(c => `<strong>${c}</strong>`).join(' / ')}`);
+    }
+  });
+
+  if (filled === 0) { v.className = 'validation'; btn.disabled = true; return; }
+
+  if (problems.length) {
+    v.className = 'validation warn show';
+    v.innerHTML = `<strong>⚠ ${problems.length} item${problems.length>1?'s':''} to resolve</strong>
+      <ul>${problems.slice(0,5).map(p => `<li>${p}</li>`).join('')}</ul>`;
+    btn.disabled = true;
+  } else {
+    v.className = 'validation ok show';
+    v.innerHTML = `<strong>✓ Your course plan is complete</strong>
+      All required courses placed and every choice resolved — 8 credits including the literacy requirement.`;
+    btn.disabled = false;
+  }
+}
+
+/* ════════ AUTO-FILL / RESET ════════ */
+function autoFill() {
+  slots = currentStream.picks.map(g => g[0]);
+  renderPool(); renderSlots(); updateProgress();
+}
+function resetBuilder() {
+  slots = new Array(8).fill(null);
+  document.getElementById('results').classList.remove('show');
+  renderPool(); renderSlots(); updateProgress();
+}
+
+/* ════════ RESULTS ════════ */
+function showResults() {
+  const chosen = slots.filter(Boolean);
+  const results = PATHWAYS.map(p => {
+    const missAll = p.all.filter(c => !chosen.includes(c));
+    const missAny = p.anyOf.filter(g => !g.some(c => chosen.includes(c)));
+    return { ...p, open: missAll.length === 0 && missAny.length === 0, missAll, missAny };
+  }).sort((a, b) => b.open - a.open);
+
+  const openCount = results.filter(r => r.open).length;
+
+  document.getElementById('resultsSummary').innerHTML =
+    `<strong>${openCount} of ${PATHWAYS.length} university pathways unlocked</strong> with your
+     ${currentStream.name} plan. Your selected courses:
+     <div class="selected-list">${chosen.map(c => `<span class="selected-tag">${c}</span>`).join('')}</div>`;
+
+  document.getElementById('unlockGrid').innerHTML = results.map(r => {
+    const missing = [...r.missAll, ...r.missAny.map(g => g.join(' or '))];
+    return `<div class="unlock-card ${r.open ? 'open' : 'locked'}">
+      <div class="unlock-top">
+        <span class="unlock-icon">${r.icon}</span>
+        <h4>${r.name}</h4>
+        <span class="unlock-status">${r.open ? 'Open' : 'Locked'}</span>
+      </div>
+      <p>${r.where}</p>
+      ${r.open ? '' : `<div class="unlock-missing">Needs: ${missing.join(', ')}</div>`}
+    </div>`;
+  }).join('');
+
+  const res = document.getElementById('results');
+  res.classList.add('show');
+  setTimeout(() => res.scrollIntoView({behavior:'smooth', block:'start'}), 120);
+}
+
+/* ════════ MISC ════════ */
+function toggleMenu() { document.getElementById('navLinks').classList.toggle('active'); }
+
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold:.1, rootMargin:'0px 0px -40px 0px' });
+function observeAll() { document.querySelectorAll('.animate-on-scroll').forEach(el => io.observe(el)); }
+
+window.addEventListener('scroll', () => {
+  const h = document.querySelector('header');
+  if (window.scrollY > 100) { h.style.background = 'rgba(125,36,43,.95)'; h.style.backdropFilter = 'blur(10px)'; }
+  else { h.style.background = 'linear-gradient(135deg,var(--primary-maroon),var(--maroon-3))'; h.style.backdropFilter = 'none'; }
+});
+
+initStreams(); observeAll();
+</script>
+</body>
+</html>
