@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pre-register or apply for a scholarship | Veritas Aescula Institute</title>
+  <meta name="description" content="Pre-register for OSSD, GED, IGCSE O Level or ALMA A Levels at Veritas Aescula Institute, or apply for the 2027 Med Aspirant Discount: USD 5,600 off OSSD tuition for the December 2026 intake.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://veritasaescula.com/apply.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://veritasaescula.com/apply.html">
+  <meta property="og:title" content="Pre-register or apply for a scholarship | Veritas Aescula Institute">
+  <meta property="og:description" content="Pre-register for OSSD, GED, IGCSE O Level or ALMA A Levels, or apply for the 2027 Med Aspirant Discount.">
+  <meta property="og:image" content="https://veritasaescula.com/logo.png">
+  <meta property="og:site_name" content="Veritas Aescula Institute">
+
+  <link rel="icon" type="image/png" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --maroon: #7D242B; --deep: #5A161C; --beige: #D7CAB7;
+      --cream: #F6EEE0; --gold: #C8A55A; --ink: #3A1A1D; --line: #CDBFAA; --error: #A3121F;
+      --muted: #7A5F57;
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      line-height: 1.55;
+    }
+    .top {
+      background: var(--maroon);
+      color: var(--cream);
+      padding: 28px 20px 36px;
+    }
+    .top__inner { max-width: 720px; margin: 0 auto; }
+    .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; color: inherit; text-decoration: none; }
+    .brand img { width: 56px; height: 56px; border-radius: 50%; }
+    .brand span { font-weight: 600; font-size: .95rem; }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: clamp(1.9rem, 5vw, 2.6rem);
+      line-height: 1.1;
+      margin: 0 0 12px;
+    }
+    .top p { margin: 0; color: var(--beige); max-width: 60ch; }
+    .left {
+      display: inline-block;
+      margin-top: 18px;
+      background: var(--cream);
+      color: var(--maroon);
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: .95rem;
+    }
+    main { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    .intro { margin: 0 0 28px; font-size: .92rem; color: var(--muted); }
+    fieldset { border: 0; padding: 0; margin: 0 0 32px; min-width: 0; }
+    legend {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--maroon);
+      margin-bottom: 14px;
+      padding: 0;
+    }
+    .field { margin-bottom: 18px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; font-weight: 600; font-size: .95rem; margin-bottom: 6px; }
+    .hint { font-weight: 400; color: var(--muted); font-size: .85rem; }
+    input[type=text], input[type=email], input[type=tel], select, textarea {
+      width: 100%;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+      border: 1.5px solid var(--line);
+      border-radius: 10px;
+      padding: 12px 14px;
+      min-height: 48px;
+    }
+    textarea { min-height: 110px; resize: vertical; }
+    input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible, a:focus-visible {
+      outline: 3px solid var(--gold); outline-offset: 2px; border-color: var(--maroon);
+    }
+
+    /* "What would you like to do?" — two selectable cards */
+    .options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .option {
+      display: flex; gap: 12px; align-items: flex-start; margin: 0; cursor: pointer;
+      background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 14px 16px;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    .option input { margin-top: 3px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--maroon); }
+    .option strong { display: block; font-weight: 700; line-height: 1.3; }
+    .option small { display: block; margin-top: 4px; font-weight: 400; font-size: .85rem; color: var(--muted); }
+    .option:has(input:checked) { border-color: var(--maroon); box-shadow: 0 0 0 2px var(--maroon); }
+    .option:has(input:focus-visible) { outline: 3px solid var(--gold); outline-offset: 2px; }
+    .option:has(input:disabled) { cursor: not-allowed; opacity: .6; }
+
+    .choice { display: flex; gap: 10px; align-items: flex-start; font-weight: 500; margin-bottom: 0; cursor: pointer; }
+    .choice input { margin-top: 4px; width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--maroon); }
+    .guardian {
+      border-left: 3px solid var(--gold);
+      padding: 4px 0 4px 16px;
+      margin-bottom: 18px;
+    }
+    .consent { background: #fff; border: 1.5px solid var(--line); border-radius: 12px; padding: 16px; }
+    .notice { background: #fff; border: 1.5px solid var(--line); border-left: 5px solid var(--gold); border-radius: 12px; padding: 16px 18px; margin: 0 0 24px; }
+    .notice h2 { font-family: var(--serif); color: var(--maroon); font-size: 1.2rem; margin: 0 0 6px; }
+    .notice p { margin: 0; }
+    .notice a { color: var(--maroon); font-weight: 600; }
+    .form-error {
+      background: #fff; border: 1.5px solid var(--error); border-left-width: 5px; border-radius: 12px;
+      color: var(--error); font-weight: 600; padding: 14px 16px; margin: 0 0 18px;
+    }
+    .form-error a { color: var(--error); }
+    button[type=submit] {
+      font: inherit; font-weight: 700; font-size: 1.05rem;
+      background: var(--maroon); color: var(--cream);
+      border: 0; border-radius: 999px;
+      padding: 16px 32px; cursor: pointer; width: 100%;
+      transition: background .15s ease;
+    }
+    button[type=submit]:hover { background: var(--deep); }
+    button[disabled] { opacity: .6; cursor: wait; }
+    .contact { margin-top: 28px; font-size: .95rem; color: var(--muted); text-align: center; }
+    .contact a { color: var(--maroon); font-weight: 600; }
+    .hp { position: absolute; left: -9999px; }
+    @media (max-width: 600px) {
+      .row { grid-template-columns: 1fr; gap: 0; }
+      .options { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { button[type=submit], .option { transition: none; } }
+  </style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top__inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Veritas Aescula Institute logo" width="56" height="56">
+      <span>Veritas Aescula Institute, in partnership with Canaway Global Learning</span>
+    </a>
+    <!-- Default text is the pre-registration version; the script swaps it in scholarship mode. -->
+    <h1 id="page-title">Pre-register with Veritas Aescula Institute</h1>
+    <p id="page-lede">Tell us about yourself and the programme you are interested in. Our admissions team will contact you by Viber or email.</p>
+    <span class="left" id="places-pill" data-mad-left hidden>11 of 11 places left</span>
+  </div>
+</header>
+
+<main>
+
+  <noscript>
+    <div class="notice">
+      <h2>This form needs JavaScript</h2>
+      <p>Please switch JavaScript on in your browser, or message us on Viber at
+        <a href="https://viber.click/959797613726">+95 9 797 613 726</a> and we will register you.</p>
+    </div>
+  </noscript>
+
+  <div class="notice" id="mad-closed" hidden>
+    <h2>All scholarship places have been awarded</h2>
+    <p>You can still pre-register for a programme below. To join the waiting list for the next scholarship round, message us on Viber at
+      <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>.</p>
+  </div>
+
+  <!-- One form, two uses. application_type decides which fields show, which Google
+       Sheet tab the row goes to, and the wording of the email. Every "Pre-Register"
+       button and the "Apply for the scholarship" button on the site lead here.
+       data-netlify also lets Netlify Forms store a copy if it is ever switched on. -->
+  <form name="vai-application" method="POST" action="/thank-you.html"
+        data-netlify="true" netlify-honeypot="company" id="apply-form">
+
+    <input type="hidden" name="form-name" value="vai-application">
+    <input type="hidden" name="subject" id="subject" value="New pre-registration">
+    <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+
+    <p class="intro">Every question needs an answer unless it is marked optional. The form takes about five minutes.</p>
+
+    <fieldset>
+      <legend>What would you like to do?</legend>
+      <div class="options">
+        <label class="option">
+          <input type="radio" name="application_type" value="preregister" checked>
+          <span>
+            <strong>Pre-register for a programme</strong>
+            <small>OSSD, GED, IGCSE O Level or ALMA A Levels</small>
+          </span>
+        </label>
+        <label class="option">
+          <input type="radio" name="application_type" value="scholarship">
+          <span>
+            <strong>Apply for the 2027 Med Aspirant Discount</strong>
+            <small>USD 5,600 off OSSD tuition, December 2026 intake</small>
+            <small data-mad-left>11 of 11 places left</small>
+          </span>
+        </label>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>About you</legend>
+      <div class="field">
+        <label for="full_name">Full name <span class="hint">(as on your passport)</span></label>
+        <input id="full_name" name="full_name" type="text" required autocomplete="name">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="phone">Viber or WhatsApp number</label>
+          <input id="phone" name="phone" type="tel" required placeholder="+95 9…" autocomplete="tel">
+        </div>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="country">Country you live in</label>
+          <input id="country" name="country" type="text" required autocomplete="country-name">
+        </div>
+        <div class="field">
+          <label for="under18">Are you under 18?</label>
+          <select id="under18" name="under_18" required>
+            <option value="">Select</option>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="guardian" id="guardian" hidden>
+        <p class="hint" style="margin-top:0">Applicants under 18 need a parent or guardian we can contact.</p>
+        <div class="row">
+          <div class="field">
+            <label for="guardian_name">Parent or guardian name</label>
+            <input id="guardian_name" name="guardian_name" type="text">
+          </div>
+          <div class="field">
+            <label for="guardian_contact">Parent or guardian phone or email</label>
+            <input id="guardian_contact" name="guardian_contact" type="text">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your studies</legend>
+      <div class="field">
+        <label for="level">Highest level you have completed</label>
+        <select id="level" name="current_level" required>
+          <option value="">Select</option>
+          <option>Grade 10 / Matthayom 4 (M.4) / Secondary 4</option>
+          <option>Grade 11 / Matthayom 5 (M.5)</option>
+          <option>GCE O Level</option>
+          <option>IB Diploma Year 1</option>
+          <option>GED – General Educational Development</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="results">Recent results <span class="hint">(optional, e.g. grades in Biology, Chemistry, Maths)</span></label>
+        <textarea id="results" name="recent_results"></textarea>
+      </div>
+
+      <!-- Both selects are named "programme"; only the one for the current mode is enabled. -->
+      <div class="field" data-mode="preregister">
+        <label for="programme_pre">Which programme are you interested in?</label>
+        <select id="programme_pre" name="programme" required>
+          <option value="">Select</option>
+          <option data-key="ossd">OSSD – Ontario Secondary School Diploma</option>
+          <option data-key="ged">GED – General Educational Development</option>
+          <option data-key="igcse">IGCSE O Level</option>
+          <option data-key="alma">ALMA – A Levels for Med Aspirants</option>
+          <option data-key="unsure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="field" data-mode="scholarship" hidden>
+        <label for="programme_mad">Which OSSD programme are you interested in?</label>
+        <select id="programme_mad" name="programme" required disabled>
+          <option value="">Select</option>
+          <option>OSSD Year 12</option>
+          <option>OSSD Year 11 and Year 12</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+    </fieldset>
+
+    <fieldset data-mode="scholarship" hidden>
+      <legend>Your medical school plans</legend>
+      <div class="field">
+        <label for="exam">Which entrance exam(s) will you sit?</label>
+        <input id="exam" name="target_exams" type="text" required disabled placeholder="e.g. Hungarian university entrance exam, CSCA, IMAT">
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="window">When do you plan to sit it?</label>
+          <select id="window" name="exam_window" required disabled>
+            <option value="">Select</option>
+            <option>January to March 2027</option>
+            <option>April to June 2027</option>
+            <option>Later in 2027</option>
+            <option>Not decided yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="countries">Target countries</label>
+          <input id="countries" name="target_countries" type="text" required disabled placeholder="e.g. Hungary, Czech Republic">
+        </div>
+      </div>
+      <div class="field">
+        <label for="why">Why do you want to study medicine or healthcare? <span class="hint">(up to 100 words)</span></label>
+        <textarea id="why" name="motivation" required disabled maxlength="700"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Last details</legend>
+      <div class="field" data-mode="preregister">
+        <label for="message">Anything you would like to ask or tell us? <span class="hint">(optional)</span></label>
+        <textarea id="message" name="message" maxlength="1500"></textarea>
+      </div>
+      <div class="row">
+        <div class="field">
+          <label for="source">How did you hear about us? <span class="hint">(optional)</span></label>
+          <select id="source" name="heard_from">
+            <option value="">Select</option>
+            <option>Facebook</option>
+            <option>TikTok</option>
+            <option>Instagram</option>
+            <option>Viber or WhatsApp</option>
+            <option>Friend or family</option>
+            <option>School or agent</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field" data-mode="scholarship" hidden>
+          <label for="coupon">MAD coupon code <span class="hint">(if you have one)</span></label>
+          <input id="coupon" name="coupon_code" type="text" disabled placeholder="MAD27-XXXX" autocapitalize="characters">
+        </div>
+      </div>
+      <div class="consent">
+        <label class="choice">
+          <input type="checkbox" name="consent" value="Yes" required>
+          <span>The information I have given is true. Veritas Aescula Institute may contact me (and my parent or guardian, if I am under 18) by email, Viber or WhatsApp about this application.</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="form-error" id="form-error" role="alert" hidden>
+      We could not send your form just now. Your answers are still here, so please try again in a minute, or message us on Viber at
+      <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>.
+    </div>
+
+    <button type="submit" id="submit-btn">Submit pre-registration</button>
+  </form>
+
+  <p class="contact">Questions? Viber <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a> or visit <a href="index.html">veritasaescula.com</a></p>
+</main>
+
+<script src="mad-slots.js"></script>
+<script src="form-config.js"></script>
+<script>
+  (function () {
+    var form = document.getElementById('apply-form');
+    var btn = document.getElementById('submit-btn');
+    var errorBox = document.getElementById('form-error');
+    var params = new URLSearchParams(window.location.search);
+    var TIMEOUT_MS = 25000;
+
+    // Wording for each use of the form.
+    var MODES = {
+      preregister: {
+        title: 'Pre-register with Veritas Aescula Institute',
+        lede: 'Tell us about yourself and the programme you are interested in. Our admissions team will contact you by Viber or email.',
+        button: 'Submit pre-registration',
+        subject: 'New pre-registration',
+        tab: 'Pre-register | Veritas Aescula Institute'
+      },
+      scholarship: {
+        title: 'Apply for the 2027 Med Aspirant Discount',
+        lede: 'USD 5,600 off OSSD tuition for December 2026 intake students who will sit a medical school entrance exam in early 2027.',
+        button: 'Submit application',
+        subject: 'New MAD scholarship application',
+        tab: 'Apply: 2027 Med Aspirant Discount | Veritas Aescula Institute'
+      }
+    };
+
+    // mad-slots.js sets the number of places; at 0 the scholarship closes.
+    var madClosed = window.MAD_SLOTS_LEFT != null && Number(window.MAD_SLOTS_LEFT) <= 0;
+    var radios = form.elements.application_type;
+    var mode = 'preregister';
+
+    function setMode(next) {
+      mode = (next === 'scholarship' && !madClosed) ? 'scholarship' : 'preregister';
+      var text = MODES[mode];
+
+      // Show the blocks for this mode. Disabled fields are neither validated nor sent.
+      form.querySelectorAll('[data-mode]').forEach(function (block) {
+        var on = block.getAttribute('data-mode') === mode;
+        block.hidden = !on;
+        block.querySelectorAll('input, select, textarea').forEach(function (control) { control.disabled = !on; });
+      });
+
+      radios.forEach(function (r) { r.checked = r.value === mode; });
+      document.getElementById('page-title').textContent = text.title;
+      document.getElementById('page-lede').textContent = text.lede;
+      document.getElementById('places-pill').hidden = mode !== 'scholarship';
+      document.getElementById('subject').value = text.subject;
+      document.title = text.tab;
+      if (!btn.disabled) btn.textContent = text.button;
+    }
+
+    radios.forEach(function (r) {
+      r.addEventListener('change', function () { if (r.checked) setMode(r.value); });
+    });
+
+    if (madClosed) {
+      form.querySelector('input[value=scholarship]').disabled = true;
+      document.getElementById('mad-closed').hidden = params.get('type') !== 'scholarship';
+    }
+    setMode(params.get('type'));
+
+    // ?program=ossd|ged|igcse|alma preselects the programme (set by the button that was clicked)
+    var wanted = (params.get('program') || '').toLowerCase();
+    if (wanted) {
+      var match = document.querySelector('#programme_pre option[data-key="' + wanted.replace(/[^a-z]/g, '') + '"]');
+      if (match) match.selected = true;
+    }
+
+    // Show guardian fields for applicants under 18
+    var under18 = document.getElementById('under18');
+    var guardian = document.getElementById('guardian');
+    var guardianFields = guardian.querySelectorAll('input');
+    function syncGuardian() {
+      var on = under18.value === 'Yes';
+      guardian.hidden = !on;
+      guardianFields.forEach(function (f) { f.required = on; });
+    }
+    under18.addEventListener('change', syncGuardian); syncGuardian();
+
+    function timedFetch(url, options) {
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, TIMEOUT_MS);
+      options.signal = ctrl.signal;
+      return fetch(url, options).finally(function () { clearTimeout(timer); });
+    }
+
+    // Google Sheet (Apps Script web app). Form-encoded bodies need no CORS
+    // preflight, and the script answers {"result":"success"} once the row is saved.
+    function sendToSheet(body) {
+      var sheetUrl = (window.VAI_FORM && window.VAI_FORM.sheetEndpoint) || '';
+      if (!sheetUrl) return Promise.resolve(false);
+      return timedFetch(sheetUrl, { method: 'POST', body: body })
+        .then(function (res) { return res.json(); })
+        .then(function (data) { return !!data && data.result === 'success'; })
+        .catch(function () { return false; });
+    }
+
+    // Netlify Forms backup. An unregistered form answers 404, so res.ok is a real signal.
+    function sendToNetlify(body) {
+      return timedFetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: body.toString()
+      })
+        .then(function (res) { return res.ok; })
+        .catch(function () { return false; });
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (btn.disabled) return;                       // prevent double submissions
+
+      var thankYou = 'thank-you.html?type=' + mode;
+      if (form.elements.company.value) {              // honeypot: bots get no feedback
+        window.location.href = thankYou;
+        return;
+      }
+
+      errorBox.hidden = true;
+      btn.disabled = true;
+      btn.textContent = 'Submitting…';
+
+      var body = new URLSearchParams(new FormData(form));
+      Promise.all([sendToSheet(body), sendToNetlify(body)]).then(function (saved) {
+        if (saved[0] || saved[1]) {
+          window.location.href = thankYou;
+          return;
+        }
+        btn.disabled = false;
+        btn.textContent = MODES[mode].button;
+        errorBox.hidden = false;
+        errorBox.scrollIntoView({ block: 'center' });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
