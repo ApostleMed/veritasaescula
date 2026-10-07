@@ -4,7 +4,8 @@
 
 ## Programmes
 
-- [ALMA — A Levels for Med Aspirants](https://veritasaescula.com/#alma): An 18-month, fully online, fast-track programme in Pearson Edexcel International Advanced Level (IAL) Biology (YBI11), Chemistry (YCH11) and Mathematics (YMA01), covering the full specification and the same official Pearson exams. The first cohort runs from January 2027 to June 2028. Students sit IAS exams in the January 2028 series and apply to medical school with predicted scores built on those exams; final IA2 exams are in May/June 2028. O Level and Grade 11 finishers enter directly; Grade 10 and GED finishers enter after a Diagnostic Placement Exam and Structured Admissions Interview, with a 6-month Pre-A Level Bridging Course if required. Teaching is online; the official Pearson exams are sat in person — in Myanmar at centres assigned by the British Council and at Pearson centres, and in Thailand at the Pearson centre in Bangkok.
+- [ALMA – A Levels for Medical Aspirants](https://veritasaescula.com/#alma): An 18-month, fully online, fast-track programme in Pearson Edexcel International Advanced Level (IAL) Biology (YBI11), Chemistry (YCH11) and Mathematics (YMA01) for students aiming to study medicine in the EU and China. It covers the full specification and the same official Pearson exams. The first cohort runs from January 2027 to June 2028. Exams are sat at the British Council exam centre in Myanmar, or at the Pearson centre in Bangkok for students in Thailand, in the June 2027, October 2027 and June 2028 series, in one of three formats (Regular, BCM or BC+M), and all three subjects appear on one combined certificate, subject to Pearson Edexcel's certification requirements. Preparation for the CSCA (China), the IMAT (Italy) and EU university entrance exams starts in July 2027. O Level and Grade 11 finishers enter directly; Grade 10 and GED finishers enter after a Diagnostic Placement Exam and Structured Admissions Interview, with a 6–12-month bridge if required.
+- [GED → ALMA Bridge](https://veritasaescula.com/#alma-bridge): A 6-, 9- or 12-month online bridge for GED holders, sized by a diagnostic, that closes the gaps between the GED and A Level: algebra and trigonometry, quantitative chemistry, precise biology and A Level exam technique. Students then join ALMA in the BC+M format, so the whole route takes about 24–30 months. Unique to VAI.
 - [Program Highlights](https://veritasaescula.com/#programs): The four programmes side by side — Ontario Secondary School Diploma (OSSD), GED, IGCSE O Level and ALMA.
 - [IGCSE O Level to Medical School](https://veritasaescula.com/#igcse-pathway): Why IGCSE O Level alone is rarely enough for direct Year 1 medical entry, and how students bridge to a full secondary diploma.
 
@@ -19,7 +20,7 @@
 
 - [Success Stories](https://veritasaescula.com/success-stories.html): VAI graduates and the medical universities that accepted them.
 - [Frequently Asked Questions](https://veritasaescula.com/#faq): Answers about the OSSD, GED and IGCSE O Level programmes.
-- [ALMA FAQ](https://veritasaescula.com/#faq-alma): Answers about ALMA's subjects, pace, practical assessment, entry routes and application timeline.
+- [ALMA FAQ](https://veritasaescula.com/#faq-alma): Answers about ALMA's subjects, exam formats, exam centre, certificate, entry routes, the GED bridge and the application timeline.
 
 ## Contact
 
