@@ -1235,8 +1235,11 @@
 
         @media (max-width: 768px) {
             .countries-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: .75rem;
             }
+            .country-card { padding: 1.25rem .4rem; }
+            .country-card span { font-size: .78rem; }
         }
 
         /* FAQ Section */
@@ -1872,74 +1875,6 @@
         .alma-card h4 { font-size: 1.08rem; font-weight: 700; line-height: 1.3; color: var(--alma-red); margin-bottom: .5rem; }
         .alma-card p { font-size: .95rem; line-height: 1.7; color: var(--alma-muted); }
 
-        /* 4B subjects */
-        .alma-subjects { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; align-items: stretch; }
-        .alma-subject {
-            display: flex; flex-direction: column; overflow: hidden;
-            background: #fff; border: 1px solid var(--alma-line); border-radius: 20px; box-shadow: var(--shadow-md);
-        }
-        .alma-subject-head {
-            display: flex; flex-direction: column;
-            padding: 1.5rem 1.6rem; background: var(--alma-mahogany); color: var(--alma-ivory);
-            border-bottom: 3px solid var(--alma-gold);
-        }
-        /* Three-column layout: headers share one row so the unit lists line up */
-        @media (min-width: 961px) {
-            @supports (grid-template-rows: subgrid) {
-                .alma-subjects { grid-template-rows: auto 1fr; }
-                .alma-subject { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0; }
-            }
-        }
-        .alma-subject-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .6rem; }
-        .alma-subject h4 {
-            display: flex; align-items: center; gap: .6rem;
-            font-family: var(--serif); font-size: 1.5rem; font-weight: 600; color: #fff;
-        }
-        .alma-subject h4 svg { width: 24px; height: 24px; color: var(--alma-gold); }
-        .alma-code {
-            padding: .2rem .55rem; border: 1px solid rgba(200,167,94,.6); border-radius: 6px;
-            font-size: .72rem; font-weight: 700; letter-spacing: .1em; white-space: nowrap; color: var(--alma-gold);
-        }
-        .alma-subject-why { font-size: .92rem; line-height: 1.6; color: rgba(247,241,232,.92); }
-        .alma-glh { display: block; margin-top: auto; padding-top: .8rem; font-size: .8rem; font-weight: 700; letter-spacing: .04em; color: var(--alma-gold); }
-        .alma-subject-body { flex: 1; display: grid; align-content: start; gap: 1.25rem; padding: 1.4rem 1.6rem 1.6rem; }
-        .alma-stage h5 {
-            margin-bottom: .55rem; padding-bottom: .45rem; border-bottom: 1px solid var(--alma-line);
-            font-size: .74rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--alma-red);
-        }
-        .alma-units { list-style: none; display: grid; gap: .5rem; }
-        .alma-units li {
-            display: grid; grid-template-columns: 3.4rem 1fr; gap: .6rem;
-            font-size: .9rem; line-height: 1.45; color: var(--alma-charcoal);
-        }
-        .alma-unit-no { padding-top: .12rem; font-size: .76rem; font-weight: 700; color: var(--alma-muted); }
-
-        /* Formats table — a real table on wide screens, one card per format on phones */
-        .alma-h4 {
-            margin: 2.75rem 0 1rem;
-            font-family: var(--serif); font-weight: 600; font-size: 1.35rem; color: var(--alma-red);
-        }
-        .alma-table-wrap {
-            overflow-x: auto; background: #fff; border: 1px solid var(--alma-line);
-            border-radius: 18px; box-shadow: var(--shadow-sm);
-        }
-        .alma-formats { width: 100%; border-collapse: collapse; font-size: .92rem; line-height: 1.55; }
-        .alma-formats caption {
-            caption-side: top; text-align: left; padding: 1rem 1.25rem;
-            font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--alma-muted);
-        }
-        .alma-formats th, .alma-formats td {
-            padding: 1rem 1.25rem; text-align: left; vertical-align: top; border-top: 1px solid var(--alma-line);
-        }
-        .alma-formats thead th {
-            background: var(--alma-mahogany); color: var(--alma-ivory); border-top: 0; white-space: nowrap;
-            font-size: .76rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-        }
-        .alma-formats tbody th { width: 19%; font-weight: 700; color: var(--alma-red); }
-        .alma-formats tbody th span { display: block; margin-top: .25rem; font-size: .84rem; font-weight: 500; color: var(--alma-muted); }
-        .alma-formats td { color: var(--alma-charcoal); }
-        .alma-formats td:last-child { color: var(--alma-muted); }
-
         /* Roadmap — numbered steps, four across, joined by a line within each row */
         .alma-roadmap {
             list-style: none; counter-reset: road;
@@ -2037,34 +1972,6 @@
         .alma-bridge-foot { margin-top: 1.75rem; font-size: .98rem; font-weight: 600; line-height: 1.6; color: #F3E7CF; }
         .alma-bridge .alma-actions { margin-top: 1.5rem; }
 
-        /* One certificate */
-        .alma-cert {
-            display: grid; grid-template-columns: auto 1fr; gap: 1.5rem; align-items: start;
-            background: #fff; border: 1px solid var(--alma-line); border-left: 6px solid var(--alma-gold);
-            border-radius: 18px; padding: clamp(1.5rem, 4vw, 2.25rem); box-shadow: var(--shadow-sm);
-        }
-        .alma-cert-icon {
-            width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
-            background: var(--alma-mahogany); color: var(--alma-gold);
-        }
-        .alma-cert-icon svg { width: 28px; height: 28px; }
-        .alma-cert p { max-width: 820px; font-size: 1rem; line-height: 1.8; color: var(--alma-muted); }
-
-        /* How you learn */
-        .alma-learn {
-            background: rgba(215,202,183,.35); border: 1px solid var(--alma-line); border-radius: 22px;
-            padding: clamp(1.75rem, 4vw, 2.75rem);
-        }
-        .alma-learn-list {
-            list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: .9rem 1.5rem; margin-top: 1.25rem;
-        }
-        .alma-learn-list li {
-            display: flex; align-items: flex-start; gap: .75rem;
-            font-size: .98rem; font-weight: 500; line-height: 1.6; color: var(--alma-charcoal);
-        }
-        .alma-learn-list svg { width: 22px; height: 22px; flex-shrink: 0; margin-top: .15rem; color: var(--alma-red); }
-
         /* 4F call to action */
         .alma-cta {
             background: linear-gradient(135deg, var(--alma-mahogany), #5C1A20);
@@ -2128,7 +2035,6 @@
         }
         @media (max-width: 960px) {
             .alma-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-            .alma-subjects { grid-template-columns: 1fr; }
         }
         @media (max-width: 900px) {
             /* Roadmap becomes a vertical timeline */
@@ -2149,32 +2055,206 @@
                 top: auto; bottom: -1.45rem; right: 50%; transform: translateX(50%) rotate(135deg);
             }
         }
-        @media (max-width: 760px) {
-            /* Formats table: one card per format, each cell labelled with its column heading */
-            .alma-table-wrap { overflow: visible; background: none; border: 0; box-shadow: none; }
-            .alma-formats, .alma-formats tbody, .alma-formats tr, .alma-formats th, .alma-formats td { display: block; }
-            .alma-formats caption { display: block; padding: 0 0 .75rem; }
-            .alma-formats thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-            .alma-formats tr {
-                margin-bottom: 1rem; padding: .35rem 0; background: #fff;
-                border: 1px solid var(--alma-line); border-top: 4px solid var(--alma-gold);
-                border-radius: 16px; box-shadow: var(--shadow-sm);
-            }
-            .alma-formats tbody th { width: auto; border-top: 0; font-size: 1.05rem; }
-            .alma-formats td { padding: .75rem 1.25rem; }
-            .alma-formats td::before {
-                content: attr(data-label); display: block; margin-bottom: .2rem;
-                font-size: .72rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--alma-red);
-            }
-        }
         @media (max-width: 600px) {
             .alma-cards { grid-template-columns: 1fr; }
             .alma-intro, .alma-cta, .alma-bridge { border-radius: 20px; }
             .alma-actions > a { width: 100%; text-align: center; }
-            .alma-cert { grid-template-columns: 1fr; gap: 1rem; }
         }
         @media (max-width: 540px) {
             .alma-facts { grid-template-columns: 1fr; }
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           HERO — volunteer photos drifting behind the text, with the
+           scholarship spotlight beside it
+           ══════════════════════════════════════════════════════════ */
+        .hero { background: #4A1419; text-align: left; }
+        /* Overlay between the moving photos and the text: darkest behind the
+           headline, lighter on the right so the photos show through */
+        .hero::before {
+            z-index: 1;
+            background: linear-gradient(100deg, rgba(74,20,25,.95) 0%, rgba(92,26,32,.9) 40%, rgba(92,26,32,.6) 100%);
+        }
+        .hero-reel {
+            position: absolute; inset: -12% -8%; z-index: 0;
+            display: flex; flex-direction: column; justify-content: center; gap: 18px;
+            transform: rotate(-6deg);
+        }
+        .hero-reel-row { overflow: visible; }
+        .hero-reel-track {
+            display: flex; width: max-content;
+            animation: heroReel 70s linear infinite;
+            will-change: transform;
+        }
+        .hero-reel-row:nth-child(2) .hero-reel-track { animation-duration: 85s; animation-direction: reverse; }
+        .hero-reel-row:nth-child(3) .hero-reel-track { animation-duration: 100s; }
+        /* margin (not gap) so the duplicated half is exactly 50% wide and the loop has no jump */
+        .hero-reel img {
+            display: block; height: clamp(150px, 22vh, 230px); width: auto; margin-right: 18px;
+            border-radius: 18px; object-fit: cover; filter: saturate(.9);
+        }
+        @keyframes heroReel { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .hero.motion-paused .hero-reel-track,
+        .hero.motion-paused .hero-mad { animation-play-state: paused; }
+
+        .hero-grid {
+            display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+            gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+        }
+        .hero-main .hero-description { margin-left: 0; margin-right: 0; }
+        .hero-main .tagline::before, .hero-main .tagline::after { content: none; }
+
+        /* Scholarship spotlight card */
+        .hero-mad {
+            position: relative;
+            background: #F6EEE0; color: #4A1419;
+            border-radius: 24px; padding: clamp(1.5rem, 3vw, 2.25rem);
+            box-shadow: 0 30px 70px rgba(0,0,0,.35), 0 0 0 1px rgba(200,165,90,.5);
+            animation: heroFloat 7s ease-in-out infinite;
+        }
+        .hero-mad::before {               /* gold ribbon edge */
+            content: ''; position: absolute; left: 24px; right: 24px; top: 0; height: 4px;
+            border-radius: 0 0 4px 4px; background: linear-gradient(90deg, #C8A55A, #E5C878);
+        }
+        @keyframes heroFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .hero-mad [hidden] { display: none !important; }
+        .hero-mad-eyebrow {
+            margin: 0 0 .6rem; font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+            color: #7D242B;
+        }
+        .hero-mad-title { font-family: var(--serif); font-weight: 600; font-size: clamp(1.35rem, 2.2vw, 1.7rem); line-height: 1.2; color: #4A1419; margin: 0 0 .5rem; }
+        .hero-mad-amount { margin: 0 0 1.1rem; font-weight: 600; color: #5B4648; }
+        .hero-mad-amount span {
+            display: block; font-family: var(--serif); font-weight: 700; letter-spacing: -.02em;
+            font-size: clamp(2.6rem, 5vw, 3.6rem); line-height: 1; color: #7D242B;
+        }
+        .hero-mad-seats { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 5px; }
+        .hero-mad-seats .mad-seat {
+            aspect-ratio: auto; height: 30px; border-radius: 6px; font-size: .78rem; font-family: 'Montserrat', sans-serif;
+        }
+        .hero-mad-seats .mad-seat::before, .hero-mad-seats .mad-seat::after { content: none; }
+        .hero-mad-seats .mad-seat.is-open { background: #7D242B; color: #F6EEE0; }
+        .hero-mad-seats .mad-seat.is-taken { color: rgba(125,36,43,.4); border-color: rgba(125,36,43,.35); }
+        .hero-mad-left { margin: .7rem 0 1.25rem; font-weight: 700; font-size: .95rem; color: #7D242B; }
+        .hero-mad-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1.25rem; }
+        .hero-mad-btn {
+            display: inline-block; padding: 14px 24px; border-radius: 999px;
+            background: #7D242B; color: #fff; text-decoration: none; font-weight: 700;
+            box-shadow: 0 10px 24px rgba(125,36,43,.3);
+            transition: background .2s var(--ease), transform .2s var(--ease);
+        }
+        .hero-mad-btn:hover { background: #5A161C; transform: translateY(-2px); }
+        .hero-mad-link { color: #7D242B; font-weight: 700; text-underline-offset: 4px; padding: 10px 0; }
+        .hero-mad-closed { margin: 0; font-weight: 600; color: #5B4648; }
+
+        .motion-toggle {
+            position: absolute; right: 1.25rem; bottom: 1.25rem; z-index: 3;
+            min-height: 44px; padding: .5rem 1rem; border-radius: 999px; cursor: pointer;
+            border: 1px solid rgba(255,255,255,.35); background: rgba(0,0,0,.25); color: #fff;
+            font: 600 .82rem 'Montserrat', sans-serif;
+            -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+        }
+        .motion-toggle:hover { background: rgba(0,0,0,.4); }
+
+        @media (max-width: 980px) {
+            /* One column; the scholarship card comes straight after the headline */
+            .hero-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .hero-main { display: contents; }
+            .hero-main .hero-pill { order: 1; justify-self: start; }
+            .hero-main h1 { order: 2; }
+            .hero-main .tagline { order: 3; margin-bottom: .5rem; }
+            .hero-mad { order: 4; }
+            .hero-main .hero-description { order: 5; margin-top: 1rem; margin-bottom: 1.5rem; }
+            .hero-main .cta-button { order: 6; justify-self: start; }
+            .hero::before { background: linear-gradient(180deg, rgba(74,20,25,.82) 0%, rgba(92,26,32,.88) 40%, rgba(92,26,32,.94) 100%); }
+            /* The hero is tall here: keep the photos behind the first screen (pill, headline, top of the card) */
+            .hero-reel { inset: 0 -40% auto; height: 780px; }
+        }
+        @media (max-width: 600px) {
+            .hero-pill {
+                flex-wrap: nowrap; justify-content: flex-start; text-align: left;
+                border-radius: 18px; padding: .55rem .9rem .55rem .55rem; font-size: .85rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-mad-seats { gap: 3px; }
+            .hero-mad-seats .mad-seat { height: 26px; font-size: .68rem; }
+            .motion-toggle { right: .75rem; bottom: .75rem; }
+        }
+
+        /* ══════════════════════════════════════════════════════════
+           STUDENT LIFE — volunteer photo carousel
+           ══════════════════════════════════════════════════════════ */
+        .vcarousel { position: relative; margin-top: 2.5rem; }
+        .vc-viewport {
+            overflow-x: auto; overscroll-behavior-x: contain;
+            scroll-snap-type: x mandatory; scrollbar-width: none;
+            padding: 1.25rem 0 1.75rem;
+        }
+        .vc-viewport::-webkit-scrollbar { display: none; }
+        .vc-viewport:focus-visible { outline-offset: -3px; }
+        .vc-track {
+            list-style: none; display: flex; gap: 1.25rem; width: max-content;
+            padding-inline: calc(50vw - clamp(112px, 15vw, 165px));
+        }
+        .vc-slide {
+            flex: 0 0 auto; scroll-snap-align: center;
+            height: clamp(300px, 40vw, 440px);
+            transform: scale(.9); opacity: .6;
+            transition: transform .6s var(--ease), opacity .6s var(--ease);
+        }
+        .vc-slide.is-center, html:not(.js) .vc-slide { transform: scale(1); opacity: 1; }
+        .vc-slide figure {
+            position: relative; height: 100%; margin: 0; overflow: hidden;
+            border-radius: 22px; background: #E9DFD2; box-shadow: var(--shadow-md);
+        }
+        .vc-slide.is-center figure { box-shadow: var(--shadow-lg); }
+        .vc-slide img {
+            display: block; height: 100%; width: auto; object-fit: cover;
+            transition: transform 6s ease-out;
+        }
+        .vc-slide.is-center img { transform: scale(1.07); }        /* slow Ken Burns zoom */
+        .vc-slide figcaption {
+            position: absolute; inset: auto 0 0 0; padding: 3.5rem 1.1rem 1rem;
+            display: flex; flex-direction: column; gap: .3rem; color: #fff;
+            background: linear-gradient(to top, rgba(44,12,16,.92), rgba(44,12,16,.55) 55%, transparent);
+        }
+        .vc-tag {
+            align-self: flex-start; padding: .2rem .6rem; border-radius: 999px;
+            background: var(--gold); color: var(--maroon-deep);
+            font-size: .68rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+        }
+        .vc-cap { font-weight: 700; font-size: 1rem; line-height: 1.35; }
+        .vc-place { display: inline-flex; align-items: center; gap: .3rem; font-size: .82rem; opacity: .9; }
+        .vc-place svg { width: 14px; height: 14px; }
+
+        .vc-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem 2rem; flex-wrap: wrap; }
+        .vc-note { flex: 1 1 320px; margin: 0; font-size: .88rem; line-height: 1.6; color: var(--text-light); }
+        .vc-controls { display: flex; align-items: center; gap: .6rem; }
+        html:not(.js) .vc-controls { display: none; }
+        .vc-btn {
+            width: 48px; height: 48px; border-radius: 50%; cursor: pointer;
+            display: grid; place-items: center;
+            background: #fff; color: var(--primary-maroon);
+            border: 1px solid var(--beige-mid); box-shadow: var(--shadow-sm);
+            transition: background .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+        }
+        .vc-btn:hover { background: var(--primary-maroon); color: #fff; transform: translateY(-2px); }
+        .vc-btn svg { width: 20px; height: 20px; }
+        .vc-pause .vc-i-play, .vc-pause[aria-pressed="true"] .vc-i-pause { display: none; }
+        .vc-pause[aria-pressed="true"] .vc-i-play { display: block; }
+        .vc-count { min-width: 4.5rem; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--primary-maroon); }
+
+        @media (max-width: 600px) {
+            .vc-track { gap: .9rem; padding-inline: calc(50vw - 128px); }
+            .vc-slide { height: 340px; }
+            .vc-slide img { max-width: 82vw; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .hero-reel-track, .hero-mad { animation: none !important; }
+            .vc-slide, .vc-slide img { transition: none !important; }
+            .vc-slide.is-center img { transform: none; }
+            .vc-viewport { scroll-behavior: auto; }
         }
     </style>
 </head>
@@ -2214,61 +2294,220 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <!-- Decorative: face-blurred volunteer photos drifting behind the hero text -->
+        <div class="hero-reel" aria-hidden="true">
+            <div class="hero-reel-row"><div class="hero-reel-track"><img src="images/volunteers/sm/v02.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v08.webp" alt="" width="320" height="240" decoding="async"><img src="images/volunteers/sm/v16.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v25.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v36.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v42.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v55.webp" alt="" width="317" height="240" decoding="async"><img src="images/volunteers/sm/v66.webp" alt="" width="319" height="240" decoding="async"><img src="images/volunteers/sm/v02.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v08.webp" alt="" width="320" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v16.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v25.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v36.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v42.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v55.webp" alt="" width="317" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v66.webp" alt="" width="319" height="240" decoding="async" loading="lazy"></div></div>
+            <div class="hero-reel-row"><div class="hero-reel-track"><img src="images/volunteers/sm/v04.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v10.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v19.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v31.webp" alt="" width="181" height="240" decoding="async"><img src="images/volunteers/sm/v38.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v46.webp" alt="" width="184" height="240" decoding="async"><img src="images/volunteers/sm/v59.webp" alt="" width="320" height="240" decoding="async"><img src="images/volunteers/sm/v67.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v04.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v10.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v19.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v31.webp" alt="" width="181" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v38.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v46.webp" alt="" width="184" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v59.webp" alt="" width="320" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v67.webp" alt="" width="180" height="240" decoding="async" loading="lazy"></div></div>
+            <div class="hero-reel-row"><div class="hero-reel-track"><img src="images/volunteers/sm/v07.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v13.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v21.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v32.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v40.webp" alt="" width="181" height="240" decoding="async"><img src="images/volunteers/sm/v47.webp" alt="" width="184" height="240" decoding="async"><img src="images/volunteers/sm/v62.webp" alt="" width="320" height="240" decoding="async"><img src="images/volunteers/sm/v68.webp" alt="" width="180" height="240" decoding="async"><img src="images/volunteers/sm/v07.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v13.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v21.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v32.webp" alt="" width="180" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v40.webp" alt="" width="181" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v47.webp" alt="" width="184" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v62.webp" alt="" width="320" height="240" decoding="async" loading="lazy"><img src="images/volunteers/sm/v68.webp" alt="" width="180" height="240" decoding="async" loading="lazy"></div></div>
+        </div>
         <div class="hero-content">
-            <a href="#alma" class="hero-pill fade-in-up"><span class="hero-pill-tag">New</span> ALMA – A Levels for Medical Aspirants · January 2027 cohort <span aria-hidden="true">→</span></a>
-            <h1 class="fade-in-up">Veritas Aescula Institute</h1>
-            <p class="tagline fade-in-up">"Shaping Bright Futures, One Student at a Time"</p>
-            <p class="hero-description fade-in-up">
-                Southeast Asia's leading online high school for healthcare and medical school aspirants.
-                We offer internationally recognized OSSD, GED, and IGCSE O Level diploma programs
-                exclusively designed for students from Myanmar, Thailand, Vietnam, Cambodia, Laos,
-                Indonesia, Philippines, and Malaysia — preparing them for accelerated admission to
-                top medical universities in Europe, Asia, Canada, and beyond.
-            </p>
-            <a href="apply.html" target="_blank" class="cta-button fade-in-up">Start Your Journey Today</a>
+            <div class="hero-grid">
+                <div class="hero-main">
+                    <a href="#alma" class="hero-pill fade-in-up"><span class="hero-pill-tag">New</span> ALMA – A Levels for Medical Aspirants · January 2027 cohort <span aria-hidden="true">→</span></a>
+                    <h1 class="fade-in-up">Veritas Aescula Institute</h1>
+                    <p class="tagline fade-in-up">"Shaping Bright Futures, One Student at a Time"</p>
+                    <p class="hero-description fade-in-up">
+                        Southeast Asia's leading online high school for healthcare and medical school aspirants.
+                        We offer internationally recognized OSSD, GED, and IGCSE O Level diploma programs
+                        exclusively designed for students from Myanmar, Thailand, Vietnam, Cambodia, Laos,
+                        Indonesia, Philippines, and Malaysia — preparing them for accelerated admission to
+                        top medical universities in Europe, Asia, Canada, and beyond.
+                    </p>
+                    <a href="apply.html" target="_blank" class="cta-button fade-in-up">Start Your Journey Today</a>
+                </div>
+
+                <!-- Scholarship spotlight: places are filled in by mad-slots.js -->
+                <aside class="hero-mad" aria-labelledby="hero-mad-title">
+                    <p class="hero-mad-eyebrow">Scholarship · December 2026 intake</p>
+                    <h2 id="hero-mad-title" class="hero-mad-title">2027 Med Aspirant Discount</h2>
+                    <p class="hero-mad-amount"><span>USD&nbsp;5,600</span> off OSSD tuition</p>
+                    <div class="hero-mad-seats" data-mad-seats role="img" aria-label="11 of 11 places left"></div>
+                    <p class="hero-mad-left" data-mad-left>11 of 11 places left</p>
+                    <div class="hero-mad-actions" data-mad-open>
+                        <a class="hero-mad-btn" href="apply.html?type=scholarship" target="_blank" rel="noopener">Apply for the scholarship</a>
+                        <a class="hero-mad-link" href="#scholarships">How it works</a>
+                    </div>
+                    <p class="hero-mad-closed" data-mad-closed hidden>All places for this round have been awarded. Message us on Viber to join the waiting list.</p>
+                </aside>
+            </div>
+        </div>
+        <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
+    </section>
+
+    <!-- Scholarships: 2027 Med Aspirant Discount (MAD).
+         Places left are set in mad-slots.js, which fills the seat grid and closes the offer at 0. -->
+    <section class="mad" id="scholarships" aria-labelledby="mad-title">
+        <div class="mad__inner">
+
+            <div class="mad__text animate-on-scroll">
+                <h2 id="mad-title" class="mad__title">Scholarships</h2>
+                <h3 class="mad__offer">2027 Med Aspirant Discount (MAD)</h3>
+
+                <p class="mad__amount"><span class="mad__figure">USD&nbsp;5,600</span> off OSSD tuition</p>
+
+                <p class="mad__lede">
+                    For students who will sit a medical school entrance exam in early 2027 and
+                    join our December 2026 intake. Complete your Ontario Secondary School Diploma
+                    with medical university entrance preparation alongside it.
+                </p>
+
+                <ol class="mad__steps">
+                    <li><strong>Apply online.</strong> The form takes about five minutes.</li>
+                    <li><strong>Take the VAI Diagnostic Test.</strong> We contact you to book it.</li>
+                    <li><strong>Get your result.</strong> Successful applicants receive a personal MAD coupon code to use at enrolment.</li>
+                </ol>
+
+                <p class="mad__note">
+                    Merit scholarships are also awarded based on the VAI Diagnostic Test and your previous
+                    education results. Terms and conditions apply.
+                </p>
+
+                <a class="mad__btn" href="apply.html?type=scholarship" target="_blank" rel="noopener" data-mad-open>
+                    Apply for the scholarship
+                </a>
+                <p class="mad__closed" data-mad-closed hidden>
+                    All places for this round have been awarded. Message us on Viber to join the waiting list.
+                </p>
+
+                <p class="mad__contact">
+                    Questions? Viber <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>
+                </p>
+            </div>
+
+            <div class="mad__places animate-on-scroll">
+                <div class="mad__seats" data-mad-seats role="img" aria-label="11 of 11 places left"></div>
+                <p class="mad__left" data-mad-left>11 of 11 places left</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- Student Activities Gallery -->
+    <!-- Student Life: carousel of volunteer photos (faces blurred) -->
     <section id="activities" class="section activities-gallery">
         <div class="container">
             <h2 class="section-title animate-on-scroll">Student Life & Community Engagement</h2>
             <p class="section-subtitle animate-on-scroll">Our students participate in meaningful volunteer and community involvement hours, gaining real-world healthcare experience through clinical observations, community health initiatives, and hands-on learning opportunities.</p>
-            <div class="gallery-grid">
-                <div class="gallery-item animate-on-scroll">
-                    <img src="student1.jpg" alt="Physical Therapy Volunteer Work - Veritas Aescula Myanmar Student" loading="lazy" width="400" height="300">
-                    <div class="gallery-overlay">
-                        <h3>Rehabilitation & Physical Therapy</h3>
-                        <p>Students assisting patients with mobility rehabilitation in clinical settings</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="student2.jpg" alt="Respiratory Care Training - Veritas Aescula Myanmar Student" loading="lazy" width="400" height="300">
-                    <div class="gallery-overlay">
-                        <h3>Respiratory Care Observation</h3>
-                        <p>Hands-on experience with oxygen therapy and respiratory equipment</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="student3.jpg" alt="Sterile Technique Practice - Veritas Aescula Southeast Asia" loading="lazy" width="400" height="300">
-                    <div class="gallery-overlay">
-                        <h3>Surgical & Sterile Technique Skills</h3>
-                        <p>Practicing proper surgical instrument handling and sterile field maintenance</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="student4.jpg" alt="Wound Care Clinical Observation - Veritas Aescula Student" loading="lazy" width="400" height="300">
-                    <div class="gallery-overlay">
-                        <h3>Wound Care & Dressing</h3>
-                        <p>Observing and assisting with clinical wound care procedures</p>
-                    </div>
-                </div>
-                <div class="gallery-item animate-on-scroll">
-                    <img src="student5.jpg" alt="Patient Vital Signs Monitoring - Veritas Aescula Myanmar" loading="lazy" width="400" height="300">
-                    <div class="gallery-overlay">
-                        <h3>Patient Care & Vital Signs</h3>
-                        <p>Learning to assess and monitor patient vitals in community healthcare settings</p>
-                    </div>
+        </div>
+        <div class="vcarousel" aria-roledescription="carousel" aria-label="Student volunteer photos">
+            <div class="vc-viewport" tabindex="0" aria-label="Volunteer photos, scroll sideways">
+                <ul class="vc-track">
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="1 of 18">
+                        <figure>
+                            <img src="images/volunteers/v07.webp" alt="VAI student volunteers, checking a resident&#x27;s blood pressure, Mandalay" width="570" height="760" decoding="async">
+                            <figcaption><span class="vc-tag">Vital signs</span><span class="vc-cap">Checking a resident&#x27;s blood pressure</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Mandalay</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="2 of 18">
+                        <figure>
+                            <img src="images/volunteers/v66.webp" alt="VAI student volunteers, memory and dexterity games with a resident, Bangkok" width="1009" height="760" decoding="async">
+                            <figcaption><span class="vc-tag">Rehabilitation</span><span class="vc-cap">Memory and dexterity games with a resident</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="3 of 18">
+                        <figure>
+                            <img src="images/volunteers/v19.webp" alt="VAI student volunteers, practising sterile technique and wound dressing, Yangon" width="570" height="760" decoding="async">
+                            <figcaption><span class="vc-tag">Clinical skills</span><span class="vc-cap">Practising sterile technique and wound dressing</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Yangon</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="4 of 18">
+                        <figure>
+                            <img src="images/volunteers/v38.webp" alt="VAI student volunteers, assisted arm and shoulder exercises, Bangkok" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Physical therapy</span><span class="vc-cap">Assisted arm and shoulder exercises</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="5 of 18">
+                        <figure>
+                            <img src="images/volunteers/v04.webp" alt="VAI student volunteers, assisting with tube feeding at the bedside, Mandalay" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Patient care</span><span class="vc-cap">Assisting with tube feeding at the bedside</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Mandalay</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="6 of 18">
+                        <figure>
+                            <img src="images/volunteers/v55.webp" alt="VAI student volunteers, ball exercises with residents in wheelchairs, Bangkok" width="1003" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Rehabilitation</span><span class="vc-cap">Ball exercises with residents in wheelchairs</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="7 of 18">
+                        <figure>
+                            <img src="images/volunteers/v13.webp" alt="VAI student volunteers, blood pressure screening at a community clinic, Yangon" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Community health</span><span class="vc-cap">Blood pressure screening at a community clinic</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Yangon</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="8 of 18">
+                        <figure>
+                            <img src="images/volunteers/v31.webp" alt="VAI student volunteers, supporting a resident on oxygen therapy, Bangkok" width="572" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Respiratory care</span><span class="vc-cap">Supporting a resident on oxygen therapy</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="9 of 18">
+                        <figure>
+                            <img src="images/volunteers/v25.webp" alt="VAI student volunteers, applying a wrist bandage, Yangon" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Wound care</span><span class="vc-cap">Applying a wrist bandage</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Yangon</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="10 of 18">
+                        <figure>
+                            <img src="images/volunteers/v59.webp" alt="VAI student volunteers, glove and infection-control technique session, Bangkok" width="1013" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Clinical skills</span><span class="vc-cap">Glove and infection-control technique session</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="11 of 18">
+                        <figure>
+                            <img src="images/volunteers/v36.webp" alt="VAI student volunteers, exercise-bike rehabilitation, Bangkok" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Physical therapy</span><span class="vc-cap">Exercise-bike rehabilitation</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="12 of 18">
+                        <figure>
+                            <img src="images/volunteers/v67.webp" alt="VAI student volunteers, mealtime assistance for residents, Bangkok" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Patient care</span><span class="vc-cap">Mealtime assistance for residents</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="13 of 18">
+                        <figure>
+                            <img src="images/volunteers/v16.webp" alt="VAI student volunteers, blood glucose testing at a community clinic, Yangon" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Vital signs</span><span class="vc-cap">Blood glucose testing at a community clinic</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Yangon</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="14 of 18">
+                        <figure>
+                            <img src="images/volunteers/v47.webp" alt="VAI student volunteers, stretching and range-of-motion exercises, Bangkok" width="582" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Physical therapy</span><span class="vc-cap">Stretching and range-of-motion exercises</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="15 of 18">
+                        <figure>
+                            <img src="images/volunteers/v08.webp" alt="VAI student volunteers, peer practice: manual blood pressure, Mandalay" width="1013" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Vital signs</span><span class="vc-cap">Peer practice: manual blood pressure</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Mandalay</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="16 of 18">
+                        <figure>
+                            <img src="images/volunteers/v62.webp" alt="VAI student volunteers, caregiver training session, Bangkok" width="1013" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Training</span><span class="vc-cap">Caregiver training session</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="17 of 18">
+                        <figure>
+                            <img src="images/volunteers/v02.webp" alt="VAI student volunteers, bedside care for an elderly resident, Mandalay" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Patient care</span><span class="vc-cap">Bedside care for an elderly resident</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Mandalay</span></figcaption>
+                        </figure>
+                    </li>
+                    <li class="vc-slide" role="group" aria-roledescription="slide" aria-label="18 of 18">
+                        <figure>
+                            <img src="images/volunteers/v68.webp" alt="VAI student volunteers, finger-prick glucose check, Bangkok" width="570" height="760" loading="lazy" decoding="async">
+                            <figcaption><span class="vc-tag">Vital signs</span><span class="vc-cap">Finger-prick glucose check</span><span class="vc-place"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>Bangkok</span></figcaption>
+                        </figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="container vc-bar">
+                <p class="vc-note">Volunteering in Mandalay, Yangon and Bangkok. Faces are blurred to protect the privacy of the patients, residents and students in these photos.</p>
+                <div class="vc-controls">
+                    <button class="vc-btn vc-prev" type="button" aria-label="Previous photo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                    <span class="vc-count" aria-hidden="true"><span class="vc-now">1</span> / 18</span>
+                    <button class="vc-btn vc-pause" type="button" aria-label="Pause slideshow" aria-pressed="false"><svg class="ico vc-i-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 5v14M15 5v14"/></svg><svg class="ico vc-i-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7 4l13 8-13 8z"/></svg></button>
+                    <button class="vc-btn vc-next" type="button" aria-label="Next photo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
                 </div>
             </div>
         </div>
@@ -2397,53 +2636,6 @@
         </div>
     </section>
 
-    <!-- Scholarships: 2027 Med Aspirant Discount (MAD).
-         Places left are set in mad-slots.js, which fills the seat grid and closes the offer at 0. -->
-    <section class="mad" id="scholarships" aria-labelledby="mad-title">
-        <div class="mad__inner">
-
-            <div class="mad__text animate-on-scroll">
-                <h2 id="mad-title" class="mad__title">Scholarships</h2>
-                <h3 class="mad__offer">2027 Med Aspirant Discount (MAD)</h3>
-
-                <p class="mad__amount"><span class="mad__figure">USD&nbsp;5,600</span> off OSSD tuition</p>
-
-                <p class="mad__lede">
-                    For students who will sit a medical school entrance exam in early 2027 and
-                    join our December 2026 intake. Complete your Ontario Secondary School Diploma
-                    with medical university entrance preparation alongside it.
-                </p>
-
-                <ol class="mad__steps">
-                    <li><strong>Apply online.</strong> The form takes about five minutes.</li>
-                    <li><strong>Take the VAI Diagnostic Test.</strong> We contact you to book it.</li>
-                    <li><strong>Get your result.</strong> Successful applicants receive a personal MAD coupon code to use at enrolment.</li>
-                </ol>
-
-                <p class="mad__note">
-                    Merit scholarships are also awarded based on the VAI Diagnostic Test and your previous
-                    education results. Terms and conditions apply.
-                </p>
-
-                <a class="mad__btn" href="apply.html?type=scholarship" target="_blank" rel="noopener" data-mad-open>
-                    Apply for the scholarship
-                </a>
-                <p class="mad__closed" data-mad-closed hidden>
-                    All places for this round have been awarded. Message us on Viber to join the waiting list.
-                </p>
-
-                <p class="mad__contact">
-                    Questions? Viber <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>
-                </p>
-            </div>
-
-            <div class="mad__places animate-on-scroll">
-                <div class="mad__seats" data-mad-seats role="img" aria-label="11 of 11 places left"></div>
-                <p class="mad__left" data-mad-left>11 of 11 places left</p>
-            </div>
-
-        </div>
-    </section>
 
     <!-- IGCSE to Medical School Pathway Section -->
     <section id="igcse-pathway" class="section pathway-section">
@@ -2576,143 +2768,6 @@
                 </div>
             </div>
 
-            <!-- Subjects and formats -->
-            <div class="alma-block">
-                <h3 class="alma-h3 animate-on-scroll">Three subjects. Eighteen units. Three ways to sit them.</h3>
-                <p class="alma-block-intro animate-on-scroll">Every unit of the Pearson Edexcel IAL specification is taught. Pearson recommends 360 guided learning hours per subject.</p>
-                <div class="alma-subjects">
-
-                    <article class="alma-subject animate-on-scroll">
-                        <div class="alma-subject-head">
-                            <div class="alma-subject-top">
-                                <h4><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6 2.4-.5 4.9-2 5.9-3"/></svg>Biology</h4>
-                                <span class="alma-code">YBI11</span>
-                            </div>
-                            <p class="alma-subject-why">The language of medicine: physiology, genetics, microbiology and immunity.</p>
-                            <span class="alma-glh">360 guided learning hours</span>
-                        </div>
-                        <div class="alma-subject-body">
-                            <div class="alma-stage">
-                                <h5>IAS units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">Unit 1</span><span>Molecules, Diet, Transport and Health</span></li>
-                                    <li><span class="alma-unit-no">Unit 2</span><span>Cells, Development, Biodiversity and Conservation</span></li>
-                                    <li><span class="alma-unit-no">Unit 3</span><span>Practical Skills in Biology I</span></li>
-                                </ul>
-                            </div>
-                            <div class="alma-stage">
-                                <h5>IA2 units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">Unit 4</span><span>Energy, Environment, Microbiology and Immunity</span></li>
-                                    <li><span class="alma-unit-no">Unit 5</span><span>Respiration, Internal Environment, Coordination and Gene Technology</span></li>
-                                    <li><span class="alma-unit-no">Unit 6</span><span>Practical Skills in Biology II</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="alma-subject animate-on-scroll">
-                        <div class="alma-subject-head">
-                            <div class="alma-subject-top">
-                                <h4><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9 3h6M10 3v6l-5.5 9.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3M7.5 15h9"/></svg>Chemistry</h4>
-                                <span class="alma-code">YCH11</span>
-                            </div>
-                            <p class="alma-subject-why">The engine of pharmacology: biochemistry, reaction mechanisms and organic synthesis.</p>
-                            <span class="alma-glh">360 guided learning hours</span>
-                        </div>
-                        <div class="alma-subject-body">
-                            <div class="alma-stage">
-                                <h5>IAS units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">Unit 1</span><span>Structure, Bonding and Introduction to Organic Chemistry</span></li>
-                                    <li><span class="alma-unit-no">Unit 2</span><span>Energetics, Group Chemistry, Halogenoalkanes and Alcohols</span></li>
-                                    <li><span class="alma-unit-no">Unit 3</span><span>Practical Skills in Chemistry I</span></li>
-                                </ul>
-                            </div>
-                            <div class="alma-stage">
-                                <h5>IA2 units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">Unit 4</span><span>Rates, Equilibria and Further Organic Chemistry</span></li>
-                                    <li><span class="alma-unit-no">Unit 5</span><span>Transition Metals and Organic Nitrogen Chemistry</span></li>
-                                    <li><span class="alma-unit-no">Unit 6</span><span>Practical Skills in Chemistry II</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="alma-subject animate-on-scroll">
-                        <div class="alma-subject-head">
-                            <div class="alma-subject-top">
-                                <h4><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18 7V4H6l6 8-6 8h12v-3"/></svg>Mathematics</h4>
-                                <span class="alma-code">YMA01</span>
-                            </div>
-                            <p class="alma-subject-why">The edge in evidence-based medicine: calculus and statistics for research, and the maths section of CSCA and IMAT.</p>
-                            <span class="alma-glh">360 guided learning hours</span>
-                        </div>
-                        <div class="alma-subject-body">
-                            <div class="alma-stage">
-                                <h5>IAS units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">P1</span><span>Pure Mathematics 1</span></li>
-                                    <li><span class="alma-unit-no">P2</span><span>Pure Mathematics 2</span></li>
-                                    <li><span class="alma-unit-no">S1</span><span>Statistics 1</span></li>
-                                </ul>
-                            </div>
-                            <div class="alma-stage">
-                                <h5>IA2 units</h5>
-                                <ul class="alma-units">
-                                    <li><span class="alma-unit-no">P3</span><span>Pure Mathematics 3</span></li>
-                                    <li><span class="alma-unit-no">P4</span><span>Pure Mathematics 4</span></li>
-                                    <li><span class="alma-unit-no">M1</span><span>Mechanics 1</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </article>
-
-                </div>
-
-                <h4 class="alma-h4 animate-on-scroll">Choose your format</h4>
-                <!-- The explicit roles keep this a table for screen readers when it is restyled as cards on phones. -->
-                <div class="alma-table-wrap animate-on-scroll">
-                    <table class="alma-formats" role="table">
-                        <caption>ALMA exam formats, January 2027 to June 2028</caption>
-                        <thead role="rowgroup">
-                            <tr role="row">
-                                <th scope="col" role="columnheader">Format</th>
-                                <th scope="col" role="columnheader">June 2027</th>
-                                <th scope="col" role="columnheader">October 2027</th>
-                                <th scope="col" role="columnheader">June 2028</th>
-                                <th scope="col" role="columnheader">Suits</th>
-                            </tr>
-                        </thead>
-                        <tbody role="rowgroup">
-                            <tr role="row">
-                                <th scope="row" role="rowheader">ALMA Regular <span>(all three subjects in parallel)</span></th>
-                                <td role="cell" data-label="June 2027">Biology U1–2, Chemistry U1–2, Maths P1 + P2</td>
-                                <td role="cell" data-label="October 2027">Biology U3–4, Chemistry U3–4, Maths S1 + P3 (IAS complete in all three)</td>
-                                <td role="cell" data-label="June 2028">Biology U5–6, Chemistry U5–6, Maths P4 + M1 (all three A Levels complete)</td>
-                                <td role="cell" data-label="Suits">Steady pace, early IAS results in all three subjects</td>
-                            </tr>
-                            <tr role="row">
-                                <th scope="row" role="rowheader">ALMA BCM <span>(one subject at a time)</span></th>
-                                <td role="cell" data-label="June 2027">Biology, all 6 units</td>
-                                <td role="cell" data-label="October 2027">Chemistry, all 6 units</td>
-                                <td role="cell" data-label="June 2028">Mathematics, all 6 units</td>
-                                <td role="cell" data-label="Suits">Students who prefer to master one subject before moving on</td>
-                            </tr>
-                            <tr role="row">
-                                <th scope="row" role="rowheader">ALMA BC+M <span>(sciences together, then Maths)</span></th>
-                                <td role="cell" data-label="June 2027">No exams: science study continues</td>
-                                <td role="cell" data-label="October 2027">Biology + Chemistry, all 12 units</td>
-                                <td role="cell" data-label="June 2028">Mathematics, all 6 units</td>
-                                <td role="cell" data-label="Suits">GED students after the Bridge, and strong students ready for one heavy exam series</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <p class="alma-caption">Exact paper dates follow the official Pearson Edexcel timetable for each series.</p>
-            </div>
-
             <!-- Roadmap -->
             <div class="alma-block">
                 <h3 class="alma-h3 animate-on-scroll">Your 18-month roadmap</h3>
@@ -2781,30 +2836,6 @@
                     </div>
                 </div>
                 <p class="alma-caption">Requirements differ by country and university, and change each year. We check each student's target universities.</p>
-            </div>
-
-            <!-- One certificate -->
-            <div class="alma-block">
-                <h3 class="alma-h3 animate-on-scroll">Staggered exams, one certificate</h3>
-                <div class="alma-cert animate-on-scroll">
-                    <div class="alma-cert-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.2 7 22l5-3 5 3-1.2-8.8"/></svg></div>
-                    <p>Whichever format you choose, you sit units across different exam series. Your results are linked by one Unique Candidate Identifier, and you request the cash-in in June 2028, so Biology, Chemistry and Mathematics appear together on one Pearson Edexcel certificate. This is the approach recommended by our exam centre, British Council Myanmar.</p>
-                </div>
-            </div>
-
-            <!-- How you learn -->
-            <div class="alma-block">
-                <div class="alma-learn animate-on-scroll">
-                    <h3 class="alma-h3">Intensive, live and fully online</h3>
-                    <ul class="alma-learn-list">
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Live lectures and seminars with subject specialists</li>
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Weekly exam-style problem sets and timed topic tests</li>
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Full mock exams before every official sitting</li>
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Written practical-skills papers prepared through demonstrations and virtual labs</li>
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Learning analytics that flag gaps early, followed by targeted support</li>
-                        <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>Small cohorts, so places are limited</li>
-                    </ul>
-                </div>
             </div>
 
             <!-- Call to action -->
@@ -3233,6 +3264,93 @@
         const onScroll = () => siteHeader.classList.toggle('scrolled', window.scrollY > 60);
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+
+        // Hero: let visitors stop the drifting background photos
+        const hero = document.querySelector('.hero');
+        const motionToggle = document.querySelector('.motion-toggle');
+        if (hero && motionToggle) {
+            const setMotion = paused => {
+                hero.classList.toggle('motion-paused', paused);
+                motionToggle.setAttribute('aria-pressed', String(paused));
+                motionToggle.textContent = paused ? 'Play motion' : 'Pause motion';
+            };
+            if (reduceMotion.matches) motionToggle.hidden = true;    // nothing moves anyway
+            motionToggle.addEventListener('click', () =>
+                setMotion(!hero.classList.contains('motion-paused')));
+        }
+
+        // Student Life carousel: native scroll-snap, plus autoplay and controls
+        (function () {
+            const root = document.querySelector('.vcarousel');
+            if (!root) return;
+            const viewport = root.querySelector('.vc-viewport');
+            const slides = [...root.querySelectorAll('.vc-slide')];
+            const now = root.querySelector('.vc-now');
+            const pauseBtn = root.querySelector('.vc-pause');
+            const DELAY = 3800;
+            let current = 0, timer = null, userPaused = reduceMotion.matches, hovering = false, inView = false;
+
+            const centreOf = el => el.offsetLeft + el.offsetWidth / 2;
+
+            function goTo(i) {
+                current = (i + slides.length) % slides.length;
+                viewport.scrollTo({
+                    left: centreOf(slides[current]) - viewport.clientWidth / 2,
+                    behavior: reduceMotion.matches ? 'auto' : 'smooth'
+                });
+            }
+
+            // Highlight whichever slide is closest to the middle
+            let raf = 0;
+            function markCentre() {
+                raf = 0;
+                const mid = viewport.scrollLeft + viewport.clientWidth / 2;
+                let best = 0, bestDist = Infinity;
+                slides.forEach((s, i) => {
+                    const d = Math.abs(centreOf(s) - mid);
+                    if (d < bestDist) { bestDist = d; best = i; }
+                });
+                current = best;
+                slides.forEach((s, i) => s.classList.toggle('is-center', i === best));
+                now.textContent = best + 1;
+            }
+            viewport.addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(markCentre); }, { passive: true });
+            window.addEventListener('resize', markCentre);
+
+            function tick() {
+                stop();
+                if (userPaused || hovering || !inView || document.hidden) return;
+                timer = setTimeout(() => { goTo(current + 1); tick(); }, DELAY);
+            }
+            function stop() { clearTimeout(timer); timer = null; }
+
+            function setPaused(p) {
+                userPaused = p;
+                pauseBtn.setAttribute('aria-pressed', String(p));
+                pauseBtn.setAttribute('aria-label', p ? 'Play slideshow' : 'Pause slideshow');
+                tick();
+            }
+
+            root.querySelector('.vc-prev').addEventListener('click', () => { goTo(current - 1); tick(); });
+            root.querySelector('.vc-next').addEventListener('click', () => { goTo(current + 1); tick(); });
+            pauseBtn.addEventListener('click', () => setPaused(!userPaused));
+
+            // Pause while the visitor is looking at or touching a photo, or using the keyboard in it
+            root.addEventListener('mouseenter', () => { hovering = true; stop(); });
+            root.addEventListener('mouseleave', () => { hovering = false; tick(); });
+            root.addEventListener('focusin', () => { hovering = true; stop(); });
+            root.addEventListener('focusout', () => { hovering = false; tick(); });
+            viewport.addEventListener('pointerdown', () => setPaused(true));
+            document.addEventListener('visibilitychange', tick);
+            new IntersectionObserver(entries => {
+                inView = entries[0].isIntersecting;
+                tick();
+            }, { threshold: 0.35 }).observe(root);
+
+            setPaused(userPaused);
+            viewport.scrollLeft = centreOf(slides[0]) - viewport.clientWidth / 2;   // open on the first photo
+            markCentre();
+        })();
     </script>
 </body>
 </html>
