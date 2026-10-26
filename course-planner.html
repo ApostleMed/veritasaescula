@@ -877,13 +877,21 @@ function renderPool() {
   // courses Germany asks for that this stream doesn't already include
   let forGermany = [];
   if (mode === 'germany') {
-    forGermany = [...FOREIGN_LANGS, 'MHF4U', 'MCV4U'];
-    if (!SCIENCES.some(c => inStream.has(c))) forGermany.push(...SCIENCES);
-    forGermany = forGermany.filter(c => !inStream.has(c));
-    html += `<div class="choice-group daad-group">
+    const needed = [...FOREIGN_LANGS, 'MHF4U', 'MCV4U'].filter(c => !inStream.has(c));
+    // Germany asks for one natural science, whatever the student plans to study
+    const sciences = SCIENCES.some(c => inStream.has(c)) ? [] : SCIENCES;
+    forGermany = [...needed, ...sciences];
+    if (needed.length) html += `<div class="choice-group daad-group">
         <span class="choice-group-label">🇩🇪 Needed for Germany</span>
-        ${forGermany.map(c => chipHTML(c, used, 'Germany')).join('')}
+        ${needed.map(c => chipHTML(c, used, 'Germany')).join('')}
       </div>`;
+    if (sciences.length) {
+      const n = sciences.filter(c => used.includes(c)).length;
+      html += `<div class="choice-group daad-group">
+        <span class="choice-group-label">🇩🇪 ${n ? '✓ Science chosen' : 'Germany: pick one science'}</span>
+        ${sciences.map(c => chipHTML(c, used, 'Germany · one of three')).join('')}
+      </div>`;
+    }
   }
 
   const rest = Object.keys(COURSES).filter(c => !inStream.has(c) && !forGermany.includes(c));
