@@ -361,6 +361,38 @@
         .validation ul { margin:.4rem 0 0 1.1rem; }
         .validation li { margin-bottom:.2rem; }
 
+        /* ── Destination (Germany / other) ─────── */
+        .mode-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; max-width:820px; }
+        .daad-note {
+            margin-top:1.25rem; max-width:820px;
+            background:var(--white); border-left:4px solid var(--primary-maroon);
+            border-radius:12px; padding:1.1rem 1.35rem;
+            box-shadow:0 3px 14px rgba(125,36,43,.09);
+            font-size:.88rem; line-height:1.6; color:var(--text-dark);
+        }
+        .daad-note[hidden] { display:none; }
+        .daad-note h3 { color:var(--primary-maroon); font-size:.98rem; margin-bottom:.4rem; }
+        .daad-note ul { margin:.3rem 0 .6rem 1.15rem; }
+        .daad-note small { color:var(--text-light); }
+        .daad-note a { color:var(--primary-maroon); font-weight:600; }
+
+        /* DAAD checklist inside the validation box */
+        .daad-checks { list-style:none; margin:.6rem 0 0 0 !important; padding:0; }
+        .daad-checks li { display:flex; gap:.5rem; align-items:flex-start; }
+        .daad-checks .tick { flex-shrink:0; width:1.2rem; font-weight:800; }
+        .daad-checks .is-ok .tick { color:var(--green); }
+        .daad-checks .is-miss .tick { color:var(--amber); }
+        .daad-checks-title { margin-top:.8rem; font-weight:700; }
+        .daad-foot { margin-top:.5rem; font-size:.78rem; opacity:.85; }
+
+        .pool-more { padding:.6rem .1rem 0; }
+        .pool-more .course-chip { margin-bottom:.4rem; }
+        .daad-group { border-color:var(--primary-maroon); }
+        .block-letter {
+            display:inline-grid; place-items:center; width:1.6rem; height:1.6rem; border-radius:6px;
+            background:var(--primary-maroon); color:var(--white); font-size:.85rem; font-weight:800;
+        }
+
         .builder-actions { display:flex; gap:.75rem; flex-wrap:wrap; margin-top:1.25rem; }
         .btn {
             font-family:inherit; font-size:.88rem; font-weight:700;
@@ -531,7 +563,7 @@
     <section class="page-header">
         <div class="container">
             <h1>OSSD Course Planner</h1>
-            <p>Choose your stream, build your two credit blocks, and instantly see which university pathways your course selection unlocks.</p>
+            <p>Choose where you want to study and your stream, build your credit blocks, and instantly see which university pathways your course selection unlocks.</p>
         </div>
     </section>
 
@@ -554,23 +586,59 @@
         </div>
     </section>
 
-    <!-- Step 1 — Stream -->
-    <section class="section" style="padding-bottom:30px;">
+    <!-- Step 1 — Destination -->
+    <section class="section" style="padding-bottom:10px;">
         <div class="container">
             <div class="step-label animate-on-scroll">Step 1</div>
+            <h2 class="section-title animate-on-scroll">Where Do You Want to Study?</h2>
+            <p class="section-subtitle animate-on-scroll">Germany has its own entry rules for the Ontario diploma, so a Germany plan needs 12 courses instead of 8.</p>
+            <div class="mode-grid" role="radiogroup" aria-label="Study destination">
+                <button class="stream-card selected" data-mode="other" role="radio" aria-checked="true" onclick="selectMode('other')">
+                    <span class="stream-icon">🌍</span>
+                    <span class="stream-tag">8 courses · 2 terms</span>
+                    <h3>Other countries</h3>
+                    <p>Canada, the UK, the rest of Europe, Asia and Australia.</p>
+                </button>
+                <button class="stream-card" data-mode="germany" role="radio" aria-checked="false" onclick="selectMode('germany')">
+                    <span class="stream-icon">🇩🇪</span>
+                    <span class="stream-tag">12 courses · 3 terms</span>
+                    <h3>Germany</h3>
+                    <p>Built to the DAAD entry rules for Ontario graduates.</p>
+                </button>
+            </div>
+            <div class="daad-note" id="daadNote" hidden>
+                <h3>🇩🇪 What Germany asks of Ontario graduates</h3>
+                According to the DAAD admission database, the Ontario Secondary School Diploma gives direct admission to bachelor's study in any subject when it shows:
+                <ul>
+                    <li>at least <strong>12 courses from Grades 11 and 12</strong>, including at least <strong>6 Grade 12 University (U) courses</strong></li>
+                    <li><strong>two languages</strong>: English, plus one foreign language</li>
+                    <li><strong>mathematics</strong>: Advanced Functions and Calculus &amp; Vectors</li>
+                    <li><strong>a natural science</strong>: Biology, Chemistry or Physics</li>
+                    <li><strong>one more academic subject</strong></li>
+                    <li>each of these in at least two annual courses, and an <strong>average of at least 65%</strong> across the 6 U courses</li>
+                </ul>
+                <small>Source: <a href="https://www.daad.de/en/studying-in-germany/requirements/admission-database/?ad-layer=5&amp;ad-layerId=5101" target="_blank" rel="noopener">DAAD admission database</a>. It is guidance only; each university makes the final decision. Our admissions team checks how your earlier credits count towards the two-year rule.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step 2 — Stream -->
+    <section class="section" style="padding-bottom:30px;">
+        <div class="container">
+            <div class="step-label animate-on-scroll">Step 2</div>
             <h2 class="section-title animate-on-scroll">Choose Your Stream</h2>
-            <p class="section-subtitle animate-on-scroll">Each stream is a curated set of 8 Grade 12 courses aligned to a university destination.</p>
+            <p class="section-subtitle animate-on-scroll">Each stream recommends Grade 12 courses aligned to a university destination. You can add any other course too.</p>
             <div class="stream-grid" id="streamGrid"></div>
         </div>
     </section>
 
-    <!-- Step 2 — Builder -->
+    <!-- Step 3 — Builder -->
     <section class="section" style="padding-top:20px;">
         <div class="container">
             <div class="builder-wrap" id="builderWrap">
-                <div class="step-label">Step 2</div>
+                <div class="step-label">Step 3</div>
                 <h2 class="section-title" id="builderTitle">Build Your Credit Blocks</h2>
-                <p class="section-subtitle">Drag a course from the pool into any slot — or simply tap it. Already-placed courses can be dragged between slots to rearrange your terms. Required courses must all be placed; for each choice pair, pick one.</p>
+                <p class="section-subtitle" id="builderIntro">Drag a course from the pool into any slot — or simply tap it. Already-placed courses can be dragged between slots to rearrange your terms.</p>
 
                 <div class="builder-grid">
 
@@ -579,34 +647,20 @@
                         <div class="panel-head">
                             <h3>📚 Course Pool</h3>
                         </div>
-                        <p class="panel-hint">Tap a course to place it, or drag it into any slot. Drag placed courses between slots to reorder.</p>
+                        <p class="panel-hint">Tap a course to place it, or drag it into any slot. Drag placed courses between slots to reorder. Recommended groups take one or more.</p>
                         <div class="pool-list" id="poolList"></div>
                     </div>
 
                     <!-- Blocks -->
                     <div class="blocks-panel">
 
-                        <div class="block-card">
-                            <div class="block-head">
-                                <h3>🅰️ Block A <span style="font-weight:400;font-size:.8rem;color:var(--text-light);">— Term 1</span></h3>
-                                <span class="block-badge" id="badgeA">0 / 4</span>
-                            </div>
-                            <div class="slot-grid" id="blockA"></div>
-                        </div>
-
-                        <div class="block-card">
-                            <div class="block-head">
-                                <h3>🅱️ Block B <span style="font-weight:400;font-size:.8rem;color:var(--text-light);">— Term 2</span></h3>
-                                <span class="block-badge" id="badgeB">0 / 4</span>
-                            </div>
-                            <div class="slot-grid" id="blockB"></div>
-                        </div>
+                        <div id="blocks" class="blocks-panel"></div>
 
                         <div>
                             <div class="progress-wrap">
                                 <div class="progress-top">
                                     <span>Courses placed</span>
-                                    <span class="progress-count"><span id="progNum">0</span> / 8</span>
+                                    <span class="progress-count"><span id="progNum">0</span> / <span id="progCap">8</span></span>
                                 </div>
                                 <div class="progress-bar"><div class="progress-fill" id="progFill"></div></div>
                             </div>
@@ -626,11 +680,11 @@
                 <!-- Step 3 — Results -->
                 <div class="results" id="results">
                     <div style="margin-top:2.5rem;">
-                        <div class="step-label">Step 3</div>
+                        <div class="step-label">Step 4</div>
                     </div>
                     <div class="results-head">
                         <h3>🔓 Your Unlocked University Pathways</h3>
-                        <p>Based on the 8 courses you selected</p>
+                        <p id="resultsSub">Based on the 8 courses you selected</p>
                     </div>
                     <div class="results-body">
                         <div class="results-summary" id="resultsSummary"></div>
@@ -682,7 +736,8 @@ const COURSES = {
   BAT4M:{n:'Financial Accounting',l:'M'},BBB4M:{n:'International Business',l:'M'},
   BOH4M:{n:'Business Leadership',l:'M'}, AVI4M:{n:'Visual Arts',l:'M'},
   ADA4M:{n:'Dramatic Arts',l:'M'},       AMU4M:{n:'Music',l:'M'},
-  TGJ4M:{n:'Communications Tech',l:'M'}, TDJ4M:{n:'Technological Design',l:'M'}
+  TGJ4M:{n:'Communications Tech',l:'M'}, TDJ4M:{n:'Technological Design',l:'M'},
+  LWG4U:{n:'International Language',l:'U'}
 };
 
 /* ════════ STREAMS ════════ */
@@ -753,10 +808,18 @@ const PATHWAYS = [
     where:'Canada, UK, Germany, Australia' }
 ];
 
+/* ════════ DESTINATION ════════
+   Germany follows the DAAD rules for the Ontario diploma (12 courses);
+   every other destination uses the standard 8-course plan.              */
+const MODES = { other:{ slots:8 }, germany:{ slots:12 } };
+const SCIENCES = ['SBI4U','SCH4U','SPH4U'];
+const FOREIGN_LANGS = ['LWG4U'];
+
 /* ════════ STATE ════════ */
+let mode = 'other';
 let currentStream = null;
-let slots = new Array(8).fill(null);   // slot index → course code
-let drag = null;                       // in-flight drag state, see startDrag()
+let slots = new Array(MODES[mode].slots).fill(null);   // slot index → course code
+let drag = null;                                        // in-flight drag state, see startDrag()
 
 /* ════════ INIT ════════ */
 function initStreams() {
@@ -770,10 +833,25 @@ function initStreams() {
   observeAll();
 }
 
+function selectMode(m) {
+  mode = m;
+  document.querySelectorAll('[data-mode]').forEach(c => {
+    const on = c.dataset.mode === m;
+    c.classList.toggle('selected', on);
+    c.setAttribute('aria-checked', String(on));
+  });
+  document.getElementById('daadNote').hidden = m !== 'germany';
+  // keep what is already placed, as far as it fits
+  const cap = MODES[m].slots;
+  slots = Array.from({ length:cap }, (_, i) => slots[i] ?? null);
+  document.getElementById('results').classList.remove('show');
+  if (currentStream) { renderPool(); renderSlots(); updateProgress(); }
+}
+
 function selectStream(id) {
   currentStream = STREAMS.find(s => s.id === id);
-  slots = new Array(8).fill(null);
-  document.querySelectorAll('.stream-card').forEach(c =>
+  slots = new Array(MODES[mode].slots).fill(null);
+  document.querySelectorAll('.stream-card[data-stream]').forEach(c =>
     c.classList.toggle('selected', c.dataset.stream === id));
   document.getElementById('builderTitle').textContent = `Build Your Credit Blocks — ${currentStream.name}`;
   document.getElementById('builderWrap').classList.add('active');
@@ -785,14 +863,36 @@ function selectStream(id) {
 /* ════════ POOL ════════ */
 function renderPool() {
   const used = slots.filter(Boolean);
-  document.getElementById('poolList').innerHTML = currentStream.picks.map(group => {
+  const inStream = new Set(currentStream.picks.flat());
+
+  let html = currentStream.picks.map(group => {
     if (group.length === 1) return chipHTML(group[0], used, 'Required');
-    const picked = group.some(c => used.includes(c));
+    const n = group.filter(c => used.includes(c)).length;
     return `<div class="choice-group">
-        <span class="choice-group-label">${picked ? '✓ Choice made' : 'Choose one of these'}</span>
-        ${group.map(c => chipHTML(c, used, 'Choice')).join('')}
+        <span class="choice-group-label">${n ? `✓ ${n} of ${group.length} chosen` : 'Pick one or more'}</span>
+        ${group.map(c => chipHTML(c, used, 'Recommended')).join('')}
       </div>`;
   }).join('');
+
+  // courses Germany asks for that this stream doesn't already include
+  let forGermany = [];
+  if (mode === 'germany') {
+    forGermany = [...FOREIGN_LANGS, 'MHF4U', 'MCV4U'];
+    if (!SCIENCES.some(c => inStream.has(c))) forGermany.push(...SCIENCES);
+    forGermany = forGermany.filter(c => !inStream.has(c));
+    html += `<div class="choice-group daad-group">
+        <span class="choice-group-label">🇩🇪 Needed for Germany</span>
+        ${forGermany.map(c => chipHTML(c, used, 'Germany')).join('')}
+      </div>`;
+  }
+
+  const rest = Object.keys(COURSES).filter(c => !inStream.has(c) && !forGermany.includes(c));
+  html += `<div class="pool-more">
+      <span class="choice-group-label">All other courses</span>
+      ${rest.map(c => chipHTML(c, used, 'Optional')).join('')}
+    </div>`;
+
+  document.getElementById('poolList').innerHTML = html;
 }
 
 function chipHTML(code, used, kind) {
@@ -812,9 +912,11 @@ function chipHTML(code, used, kind) {
 
 /* ════════ SLOTS ════════ */
 function renderSlots() {
-  ['blockA','blockB'].forEach((blockId, bi) => {
-    const start = bi * 4;
-    document.getElementById(blockId).innerHTML = [0,1,2,3].map(i => {
+  const blocks = slots.length / 4;
+  document.getElementById('blocks').innerHTML = Array.from({ length:blocks }, (_, b) => {
+    const start = b * 4;
+    const filled = slots.slice(start, start + 4).filter(Boolean).length;
+    const cells = [0,1,2,3].map(i => {
       const idx = start + i, code = slots[idx];
       if (!code) return `<div class="slot" data-slot="${idx}">
           <span class="slot-empty-text">Drop course here</span>
@@ -829,11 +931,15 @@ function renderSlots() {
           <span class="lvl lvl-${c.l}">${c.l}</span>
         </div>`;
     }).join('');
-  });
-  const a = slots.slice(0,4).filter(Boolean).length, b = slots.slice(4,8).filter(Boolean).length;
-  const badgeA = document.getElementById('badgeA'), badgeB = document.getElementById('badgeB');
-  badgeA.textContent = `${a} / 4`; badgeA.classList.toggle('full', a === 4);
-  badgeB.textContent = `${b} / 4`; badgeB.classList.toggle('full', b === 4);
+    const letter = 'ABC'[b];
+    return `<div class="block-card">
+        <div class="block-head">
+          <h3><span class="block-letter">${letter}</span> Block ${letter} <span style="font-weight:400;font-size:.8rem;color:var(--text-light);">— Term ${b + 1}</span></h3>
+          <span class="block-badge ${filled === 4 ? 'full' : ''}">${filled} / 4</span>
+        </div>
+        <div class="slot-grid">${cells}</div>
+      </div>`;
+  }).join('');
 }
 
 /* ════════ DRAG ENGINE ════════
@@ -923,17 +1029,9 @@ function onPointerUp() {
   if (d.overSlot) place(d.code, +d.overSlot.dataset.slot, d.fromSlot);
 }
 
-/* tap-to-place: swaps a placed sibling, else fills the first empty slot */
+/* tap-to-place: fills the first empty slot */
 function quickPlace(code) {
   if (slots.includes(code)) return;
-
-  // if a sibling from the same choice pair is already placed, take its slot
-  const group = currentStream.picks.find(g => g.length > 1 && g.includes(code));
-  if (group) {
-    const sibIdx = slots.findIndex(s => s && s !== code && group.includes(s));
-    if (sibIdx !== -1) return place(code, sibIdx);
-  }
-
   const idx = slots.findIndex(s => s === null);
   if (idx !== -1) place(code, idx);
 }
@@ -944,13 +1042,6 @@ function place(code, idx, fromSlot = null) {
 
   const prev = slots.indexOf(code);
   if (prev !== -1) slots[prev] = null;                          // move, don't duplicate
-
-  // a course from a choice pair evicts its sibling — only one may be placed
-  const group = currentStream.picks.find(g => g.length > 1 && g.includes(code));
-  if (group) group.filter(c => c !== code).forEach(sib => {
-    const si = slots.indexOf(sib);
-    if (si !== -1) slots[si] = null;
-  });
 
   slots[idx] = code;
 
@@ -964,48 +1055,81 @@ function place(code, idx, fromSlot = null) {
 function removeSlot(idx) { slots[idx] = null; renderPool(); renderSlots(); updateProgress(); }
 
 /* ════════ PROGRESS & VALIDATION ════════ */
+function daadChecks(chosen) {
+  const u = chosen.filter(c => COURSES[c].l === 'U');
+  const sci = SCIENCES.filter(c => chosen.includes(c));
+  const core = new Set(['ENG4U','MHF4U','MCV4U', ...FOREIGN_LANGS, sci[0]]);
+  return [
+    { ok: u.length >= 6, text:`At least 6 University (U) courses (you have ${u.length})` },
+    { ok: chosen.includes('ENG4U'), text:'English: ENG4U' },
+    { ok: FOREIGN_LANGS.some(c => chosen.includes(c)), text:'A foreign language: LWG4U International Language' },
+    { ok: chosen.includes('MHF4U') && chosen.includes('MCV4U'), text:'Maths: MHF4U Advanced Functions and MCV4U Calculus &amp; Vectors' },
+    { ok: sci.length > 0, text:'A natural science: SBI4U, SCH4U or SPH4U' },
+    { ok: u.some(c => !core.has(c)), text:'One more academic subject (any other U course)' }
+  ];
+}
+
 function updateProgress() {
-  const filled = slots.filter(Boolean).length;
+  const cap = slots.length;
+  const chosen = slots.filter(Boolean);
+  const filled = chosen.length;
   document.getElementById('progNum').textContent = filled;
-  document.getElementById('progFill').style.width = (filled / 8 * 100) + '%';
+  document.getElementById('progCap').textContent = cap;
+  document.getElementById('progFill').style.width = (filled / cap * 100) + '%';
 
   const v = document.getElementById('validation');
   const btn = document.getElementById('btnUnlock');
-  const chosen = slots.filter(Boolean);
   const problems = [];
 
   currentStream.picks.forEach(group => {
     const hits = group.filter(c => chosen.includes(c)).length;
     if (group.length === 1 && hits === 0)
       problems.push(`Missing required: <strong>${group[0]}</strong> — ${COURSES[group[0]].n}`);
-    if (group.length > 1) {
-      if (hits === 0) problems.push(`Choose one: ${group.map(c => `<strong>${c}</strong>`).join(' or ')}`);
-      if (hits > 1)  problems.push(`Pick only one of: ${group.map(c => `<strong>${c}</strong>`).join(' / ')}`);
-    }
+    if (group.length > 1 && hits === 0)
+      problems.push(`Choose at least one: ${group.map(c => `<strong>${c}</strong>`).join(' or ')}`);
   });
+  if (filled < cap) problems.push(`Place ${cap - filled} more course${cap - filled > 1 ? 's' : ''} to fill all ${cap} slots`);
 
-  if (filled === 0) { v.className = 'validation'; btn.disabled = true; return; }
+  const checks = mode === 'germany' ? daadChecks(chosen) : [];
+  const daadMissing = checks.filter(c => !c.ok).length;
+  const checklist = checks.length ? `
+      <div class="daad-checks-title">🇩🇪 Germany (DAAD) checklist</div>
+      <ul class="daad-checks">${checks.map(c =>
+        `<li class="${c.ok ? 'is-ok' : 'is-miss'}"><span class="tick">${c.ok ? '✓' : '○'}</span><span>${c.text}</span></li>`).join('')}</ul>
+      <div class="daad-foot">Also needed: an average of at least 65% across your 6 U courses, and each subject in at least two annual courses.</div>` : '';
 
-  if (problems.length) {
+  if (filled === 0 && !checks.length) { v.className = 'validation'; btn.disabled = true; return; }
+
+  if (problems.length || daadMissing) {
+    const n = problems.length + daadMissing;
     v.className = 'validation warn show';
-    v.innerHTML = `<strong>⚠ ${problems.length} item${problems.length>1?'s':''} to resolve</strong>
-      <ul>${problems.slice(0,5).map(p => `<li>${p}</li>`).join('')}</ul>`;
+    v.innerHTML = `<strong>⚠ ${n} item${n > 1 ? 's' : ''} to resolve</strong>
+      ${problems.length ? `<ul>${problems.slice(0,5).map(p => `<li>${p}</li>`).join('')}</ul>` : ''}${checklist}`;
     btn.disabled = true;
   } else {
     v.className = 'validation ok show';
     v.innerHTML = `<strong>✓ Your course plan is complete</strong>
-      All required courses placed and every choice resolved — 8 credits including the literacy requirement.`;
+      All required courses placed and every recommended group covered — ${cap} courses including the literacy requirement.${checklist}`;
     btn.disabled = false;
   }
 }
 
 /* ════════ AUTO-FILL / RESET ════════ */
 function autoFill() {
-  slots = currentStream.picks.map(g => g[0]);
+  const cap = slots.length, plan = [];
+  const add = c => { if (c && !plan.includes(c) && plan.length < cap) plan.push(c); };
+  currentStream.picks.forEach(g => add(g[0]));
+  if (mode === 'germany') {
+    add(FOREIGN_LANGS[0]); add('MHF4U'); add('MCV4U');
+    if (!SCIENCES.some(c => plan.includes(c))) add(SCIENCES[0]);
+    currentStream.picks.forEach(g => g.slice(1).forEach(add));   // the other recommended options
+    Object.keys(COURSES).filter(c => COURSES[c].l === 'U').forEach(add);
+  }
+  slots = Array.from({ length:cap }, (_, i) => plan[i] ?? null);
   renderPool(); renderSlots(); updateProgress();
 }
 function resetBuilder() {
-  slots = new Array(8).fill(null);
+  slots = new Array(slots.length).fill(null);
   document.getElementById('results').classList.remove('show');
   renderPool(); renderSlots(); updateProgress();
 }
@@ -1019,15 +1143,20 @@ function showResults() {
     return { ...p, open: missAll.length === 0 && missAny.length === 0, missAll, missAny };
   }).sort((a, b) => b.open - a.open);
 
+  // the button only enables once every DAAD check passes, so this card is always open
+  if (mode === 'germany') results.unshift({ icon:'🇩🇪', name:'Germany: direct admission (DAAD)', open:true,
+    where:'Bachelor\'s study in any subject, with at least 65% average across your 6 U courses. Each university decides.' });
+
   const openCount = results.filter(r => r.open).length;
+  document.getElementById('resultsSub').textContent = `Based on the ${chosen.length} courses you selected`;
 
   document.getElementById('resultsSummary').innerHTML =
-    `<strong>${openCount} of ${PATHWAYS.length} university pathways unlocked</strong> with your
+    `<strong>${openCount} of ${results.length} university pathways unlocked</strong> with your
      ${currentStream.name} plan. Your selected courses:
      <div class="selected-list">${chosen.map(c => `<span class="selected-tag">${c}</span>`).join('')}</div>`;
 
   document.getElementById('unlockGrid').innerHTML = results.map(r => {
-    const missing = [...r.missAll, ...r.missAny.map(g => g.join(' or '))];
+    const missing = r.open ? [] : [...r.missAll, ...r.missAny.map(g => g.join(' or '))];
     return `<div class="unlock-card ${r.open ? 'open' : 'locked'}">
       <div class="unlock-top">
         <span class="unlock-icon">${r.icon}</span>
