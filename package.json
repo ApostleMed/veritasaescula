@@ -1,0 +1,11 @@
+{
+  "name": "veritasaescula",
+  "private": true,
+  "type": "module",
+  "description": "Static site plus Netlify Functions for the ALMA diagnostic registration",
+  "dependencies": {
+    "@netlify/blobs": "10.1.0",
+    "nodemailer": "^6.9.16",
+    "qrcode": "^1.5.4"
+  }
+}
