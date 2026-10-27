@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>ALMA Admission Pass | Veritas Aescula Institute</title>
+    <link rel="icon" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/alma-ticket.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { min-height: 100vh; background: #F7F1E8; color: #2B1A1C; font-family: 'Montserrat', Arial, sans-serif; }
+        .pass-top { background: #4A1419; padding: .9rem 1rem; }
+        .pass-top a { display: inline-flex; align-items: center; gap: .7rem; color: #F7F1E8; font-weight: 700; text-decoration: none; }
+        .pass-top img { width: 40px; height: 40px; border-radius: 50%; background: #F7F1E8; }
+        main { max-width: 520px; margin: 0 auto; padding: 2rem 16px 3rem; }
+        h1 { font-family: 'Fraunces', Georgia, serif; font-size: 1.5rem; font-weight: 600; color: #4A1419; text-align: center; margin-bottom: 1.25rem; }
+        .pass-msg { text-align: center; color: #5B4648; line-height: 1.7; }
+        .pass-msg a { color: #7D242B; font-weight: 700; }
+        .pass-bring { margin-top: 1.75rem; padding: 1.1rem 1.25rem; background: #fff; border: 1px solid #D7CAB7; border-radius: 16px; font-size: .9rem; line-height: 1.7; }
+        .pass-bring strong { color: #7D242B; }
+        .pass-bring ul { margin: .4rem 0 0 1.1rem; }
+    </style>
+</head>
+<body>
+    <header class="pass-top"><a href="/alma"><img src="/logo.png" alt="" width="40" height="40">Veritas Aescula Institute</a></header>
+    <main>
+        <h1>Your ALMA Admission Pass</h1>
+        <div id="ticket"><p class="pass-msg">Loading your ticket…</p></div>
+        <div class="vt-actions" id="ticketActions"></div>
+        <div class="pass-bring" id="bring" hidden>
+            <strong>Bring with you</strong>
+            <ul>
+                <li>This pass, on your phone or printed</li>
+                <li>Photo ID matching the name on the pass</li>
+                <li>Pens, pencils and an eraser</li>
+            </ul>
+            Arrive by 1:00 PM MMT for check-in. Questions? Viber <a href="https://viber.click/959797613726">+959797613726</a>.
+        </div>
+    </main>
+    <script src="/alma-ticket.js"></script>
+    <script>
+        (async () => {
+            const box = document.getElementById('ticket');
+            const token = decodeURIComponent(location.pathname.split('/alma/pass/')[1] || new URLSearchParams(location.search).get('t') || '');
+            try {
+                const res = await fetch('/api/alma/pass?t=' + encodeURIComponent(token));
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'This ticket could not be loaded.');
+                VAITicket.render(box, data.ticket, false);
+                VAITicket.actions(document.getElementById('ticketActions'), box, data.ticket);
+                document.getElementById('bring').hidden = false;
+                document.title = data.ticket.ref + ' · ALMA Admission Pass';
+            } catch (err) {
+                box.innerHTML = '<p class="pass-msg"></p>';
+                box.firstChild.textContent = err.message + ' ';
+                box.firstChild.insertAdjacentHTML('beforeend', 'Check the link in your email, or <a href="/alma#register">register here</a>.');
+            }
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* ALMA Admission Pass: shared by alma.html (live preview + issued ticket) and alma-pass.html */
+.vt-ticket {
+    --vt-mahogany: #4A1419; --vt-red: #7D242B; --vt-gold: #C8A75E;
+    --vt-parchment: #D7CAB7; --vt-ivory: #F7F1E8; --vt-ink: #2B1A1C; --vt-muted: #5B4648;
+    position: relative; overflow: hidden; max-width: 440px; margin: 0 auto;
+    background: #fff; color: var(--vt-ink);
+    border: 2px solid var(--vt-gold); border-radius: 22px;
+    box-shadow: 0 24px 60px rgba(74,20,25,.18);
+    font-family: 'Montserrat', Arial, sans-serif;
+}
+.vt-head {
+    display: flex; align-items: center; gap: .8rem; padding: 1.1rem 1.4rem;
+    background: linear-gradient(135deg, var(--vt-mahogany), #5C1A20 70%, var(--vt-red));
+    color: var(--vt-ivory);
+}
+.vt-head img { width: 44px; height: 44px; border-radius: 50%; background: var(--vt-ivory); flex-shrink: 0; }
+.vt-head strong { display: block; font-family: 'Fraunces', Georgia, serif; font-size: 1.15rem; font-weight: 600; line-height: 1.2; }
+.vt-head span { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--vt-gold); }
+.vt-body { padding: 1.3rem 1.4rem .4rem; }
+.vt-name { font-family: 'Fraunces', Georgia, serif; font-size: 1.55rem; font-weight: 600; line-height: 1.15; color: var(--vt-mahogany); overflow-wrap: anywhere; }
+.vt-sub { margin-top: .3rem; font-size: .85rem; color: var(--vt-muted); }
+.vt-ref { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-weight: 700; color: var(--vt-red); letter-spacing: .02em; }
+.vt-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.vt-badge {
+    display: inline-block; padding: .3rem .65rem; border-radius: 999px;
+    font-size: .7rem; font-weight: 700; line-height: 1.3;
+    background: rgba(200,167,94,.16); color: #6B5320; border: 1px solid rgba(200,167,94,.6);
+}
+.vt-badge--vip { background: var(--vt-mahogany); color: var(--vt-gold); border-color: var(--vt-mahogany); }
+.vt-rows { margin: 1rem 0 0; display: grid; gap: .7rem; }
+.vt-rows div { display: grid; grid-template-columns: 82px 1fr; gap: .6rem; }
+.vt-rows dt { font-size: .66rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--vt-red); padding-top: .2rem; }
+.vt-rows dd { margin: 0; font-size: .9rem; font-weight: 600; line-height: 1.45; }
+.vt-rows dd small { display: block; font-size: .78rem; font-weight: 400; color: var(--vt-muted); }
+.vt-tear {
+    position: relative; height: 26px; margin: .9rem 0 0;
+    background: radial-gradient(circle at 0 50%, var(--vt-page, #F7F1E8) 12px, transparent 13px) left / 50% 100% no-repeat,
+                radial-gradient(circle at 100% 50%, var(--vt-page, #F7F1E8) 12px, transparent 13px) right / 50% 100% no-repeat;
+}
+.vt-tear::after { content: ''; position: absolute; left: 20px; right: 20px; top: 50%; border-top: 2px dashed var(--vt-parchment); }
+.vt-qr { display: flex; align-items: center; gap: 1rem; padding: .4rem 1.4rem 1.3rem; }
+.vt-qr img, .vt-qr-empty { width: 132px; height: 132px; flex-shrink: 0; border-radius: 10px; border: 1px solid var(--vt-parchment); }
+.vt-qr-empty {
+    display: grid; place-items: center; padding: .6rem; text-align: center;
+    font-size: .7rem; line-height: 1.4; color: var(--vt-muted); border-style: dashed;
+    background: repeating-linear-gradient(45deg, #fff, #fff 6px, var(--vt-ivory) 6px, var(--vt-ivory) 12px);
+}
+.vt-qr p { font-size: .78rem; line-height: 1.55; color: var(--vt-muted); }
+.vt-qr p strong { display: block; margin-bottom: .2rem; color: var(--vt-ink); font-size: .85rem; }
+.vt-ticket.is-preview .vt-name:empty::before { content: 'Student name'; color: #b9a9a0; }
+.vt-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin-top: 1.1rem; }
+.vt-btn {
+    display: inline-flex; align-items: center; gap: .45rem; padding: .75rem 1.25rem; border-radius: 999px;
+    font: 700 .92rem 'Montserrat', Arial, sans-serif; cursor: pointer; text-decoration: none;
+    border: 2px solid #4A1419; background: #4A1419; color: #F7F1E8; transition: transform .2s, background .2s;
+}
+.vt-btn:hover { transform: translateY(-2px); }
+.vt-btn--ghost { background: transparent; color: #4A1419; }
+.vt-btn:disabled { opacity: .6; cursor: wait; transform: none; }
+
+@media (max-width: 420px) {
+    .vt-qr { flex-direction: column; text-align: center; }
+    .vt-rows div { grid-template-columns: 70px 1fr; }
+}
+
+/* Print only the ticket */
+@media print {
+    body.vt-printing > *:not(.vt-print-root) { display: none !important; }
+    body.vt-printing { background: #fff !important; }
+    .vt-print-root { position: static !important; padding: 0 !important; }
+    .vt-print-root .vt-ticket { box-shadow: none; margin: 0 auto; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <title>ALMA – A Levels for Medical Aspirants | Veritas Aescula Institute</title>
+    <title>ALMA Diagnostic &amp; Scholarship Exam · A Levels for Medical Aspirants | VAI</title>
     <meta name="description" content="ALMA: VAI's 18-month online Pearson Edexcel International A Levels in Biology, Chemistry, and Maths or Physics, built for medical school, plus the A Level Foundation (AF) for GED holders.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://veritasaescula.com/alma.html">
@@ -1936,11 +1936,155 @@
             .vc-viewport { scroll-behavior: auto; }
         }
 
-        /* ALMA page: the section sits directly under the fixed header */
-        .alma-page { padding-top: 140px; }
         .logo-link { display: inline-flex; }
-        @media (max-width: 768px) { .alma-page { padding-top: 110px; } }
+
+        /* ===== ALMA Diagnostic & Scholarship Exam (event, tiers, registration) ===== */
+        .dx-hero {
+            position: relative; overflow: hidden; padding: 150px 0 80px;
+            background: radial-gradient(1200px 500px at 85% -10%, rgba(200,167,94,.18), transparent 60%),
+                        linear-gradient(160deg, #4A1419 0%, #5C1A20 55%, #7D242B 130%);
+            color: #F7F1E8;
+        }
+        .dx-hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 3rem; align-items: start; }
+        .dx-pill {
+            display: inline-flex; align-items: center; gap: .55rem; padding: .45rem .95rem; border-radius: 999px;
+            border: 1px solid rgba(200,167,94,.7); background: rgba(200,167,94,.12);
+            font-size: .74rem; font-weight: 800; letter-spacing: .1em; color: #E9D49A;
+        }
+        .dx-pill::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: #7BE07B; box-shadow: 0 0 0 4px rgba(123,224,123,.2); }
+        .dx-hero h1 {
+            margin: 1.2rem 0 1rem; font-family: var(--serif); font-weight: 600; line-height: 1.08;
+            font-size: clamp(2.1rem, 4.6vw, 3.6rem); letter-spacing: -.01em; color: #fff;
+        }
+        .dx-hero h1 span { display: block; margin-top: .4rem; font-size: .52em; line-height: 1.25; color: #C8A75E; }
+        .dx-sub { max-width: 640px; font-size: 1.08rem; line-height: 1.75; color: rgba(247,241,232,.92); }
+        .dx-ctas { display: flex; flex-wrap: wrap; gap: .9rem; margin: 2rem 0 2.2rem; }
+        .dx-centres-label { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #C8A75E; margin-bottom: .7rem; }
+        .dx-centres { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; }
+        .dx-centres li { padding: .45rem .9rem; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(247,241,232,.22); font-size: .88rem; font-weight: 600; }
+        .dx-card {
+            background: #F7F1E8; color: #2B1A1C; border-radius: 24px; padding: 1.75rem;
+            border: 2px solid #C8A75E; box-shadow: 0 30px 70px rgba(0,0,0,.3);
+        }
+        .dx-card-eyebrow { font-size: .7rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #7D242B; }
+        .dx-date { margin: .35rem 0 .2rem; font-family: var(--serif); font-size: 1.75rem; font-weight: 600; line-height: 1.15; color: #4A1419; }
+        .dx-date-note { font-size: .88rem; color: #5B4648; }
+        .dx-slots { list-style: none; padding: 0; margin: 1.3rem 0; display: grid; gap: .2rem; }
+        .dx-slots li { position: relative; display: grid; grid-template-columns: 112px 1fr; gap: .9rem; padding: .75rem 0; border-top: 1px solid #D7CAB7; }
+        .dx-slots time { font-size: .8rem; font-weight: 800; color: #7D242B; line-height: 1.45; }
+        .dx-slots strong { display: block; font-size: .95rem; line-height: 1.35; }
+        .dx-slots span { font-size: .84rem; line-height: 1.55; color: #5B4648; }
+        .dx-slots li.is-main { background: #fff; margin: 0 -.75rem; padding: .85rem .75rem; border-radius: 12px; border: 1px solid #C8A75E; }
+        .dx-format { font-size: .86rem; line-height: 1.65; color: #5B4648; padding-top: .9rem; border-top: 1px solid #D7CAB7; }
+        .dx-format strong { color: #2B1A1C; }
+
+        .dx-tiers { background: #F7F1E8; }
+        .dx-tier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 2.5rem; }
+        .dx-tier {
+            position: relative; background: #fff; border: 1px solid #D7CAB7; border-top: 5px solid #7D242B;
+            border-radius: 20px; padding: 1.9rem 1.75rem 1.75rem; box-shadow: 0 10px 30px rgba(74,20,25,.06);
+        }
+        .dx-tier--gold { border-top-color: #C8A75E; background: linear-gradient(180deg, #FFFBF2, #fff 40%); }
+        .dx-tier--draw { grid-column: 1 / -1; background: linear-gradient(135deg, #4A1419, #5C1A20 70%, #7D242B); color: #F7F1E8; border: 2px solid #C8A75E; }
+        .dx-tier-tag { display: inline-block; margin-bottom: .8rem; padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: #4A1419; color: #C8A75E; }
+        .dx-tier--draw .dx-tier-tag { background: #C8A75E; color: #4A1419; }
+        .dx-tier h3 { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; line-height: 1.2; color: #7D242B; margin-bottom: .5rem; }
+        .dx-tier--draw h3 { color: #fff; }
+        .dx-tier > p { color: #5B4648; line-height: 1.7; font-size: .97rem; }
+        .dx-tier--draw > p { color: rgba(247,241,232,.9); }
+        .dx-tier ul { list-style: none; padding: 0; margin-top: 1rem; display: grid; gap: .6rem; }
+        .dx-tier li { position: relative; padding-left: 1.6rem; line-height: 1.6; font-size: .95rem; }
+        .dx-tier li::before { content: ''; position: absolute; left: 0; top: .5em; width: 9px; height: 9px; border-radius: 2px; background: #C8A75E; transform: rotate(45deg); }
+        .dx-tier li strong { color: #4A1419; }
+        .dx-tier--draw li strong { color: #E9D49A; }
+        .dx-prizes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 1.3rem; }
+        .dx-prize { padding: 1.2rem 1.3rem; border-radius: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(200,167,94,.5); }
+        .dx-prize b { display: block; font-family: var(--serif); font-size: 1.6rem; font-weight: 600; color: #C8A75E; line-height: 1.15; }
+        .dx-prize span { display: block; margin-top: .35rem; font-size: .92rem; line-height: 1.55; }
+
+        .dx-register { background: #fff; }
+        .dx-reg-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 3rem; align-items: start; margin-top: 2.5rem; }
+        .dx-aside { position: sticky; top: 110px; --vt-page: #fff; }
+        .dx-aside-label { text-align: center; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #7D242B; margin-bottom: .9rem; }
+        .dx-bring { margin-top: 1.5rem; padding: 1.1rem 1.25rem; border-radius: 16px; background: #F7F1E8; border: 1px solid #D7CAB7; font-size: .9rem; line-height: 1.7; color: #5B4648; }
+        .dx-bring strong { color: #7D242B; }
+        .dx-bring ul { margin: .35rem 0 .35rem 1.1rem; }
+        .dx-form { background: #F7F1E8; border: 1px solid #D7CAB7; border-radius: 24px; padding: clamp(1.25rem, 3vw, 2.25rem); }
+        .dx-form fieldset { border: 0; padding: 0; margin: 0 0 1.75rem; min-width: 0; }
+        .dx-form legend { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; color: #4A1419; margin-bottom: .9rem; }
+        .dx-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+        .dx-field { display: grid; gap: .35rem; margin-bottom: 1rem; }
+        .dx-field label, .dx-label { font-size: .86rem; font-weight: 700; color: #2B1A1C; }
+        .dx-field small, .dx-hint { font-size: .8rem; line-height: 1.5; color: #5B4648; }
+        .dx-form input[type=text], .dx-form input[type=email], .dx-form input[type=tel], .dx-form input[type=number] {
+            width: 100%; padding: .8rem .95rem; border-radius: 12px; border: 1.5px solid #D7CAB7; background: #fff;
+            font: 500 1rem 'Montserrat', Arial, sans-serif; color: #2B1A1C; transition: border-color .2s, box-shadow .2s;
+        }
+        .dx-form input:focus { outline: none; border-color: #7D242B; box-shadow: 0 0 0 4px rgba(125,36,43,.12); }
+        .dx-field.has-error input, .dx-drop.has-error { border-color: #B3261E; }
+        .dx-err { display: none; font-size: .8rem; font-weight: 600; color: #B3261E; }
+        .has-error > .dx-err, .has-error + .dx-err { display: block; }
+        .dx-centre-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .6rem; }
+        .dx-centre { position: relative; }
+        .dx-centre input { position: absolute; opacity: 0; inset: 0; }
+        .dx-centre span {
+            display: grid; place-items: center; min-height: 58px; padding: .6rem; border-radius: 14px; text-align: center;
+            background: #fff; border: 1.5px solid #D7CAB7; font-weight: 700; font-size: .92rem; line-height: 1.25; cursor: pointer; transition: all .2s;
+        }
+        .dx-centre span small { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .08em; color: #5B4648; }
+        .dx-centre input:checked + span { border-color: #7D242B; background: #7D242B; color: #fff; box-shadow: 0 8px 20px rgba(125,36,43,.25); }
+        .dx-centre input:checked + span small { color: #E9D49A; }
+        .dx-centre input:focus-visible + span { outline: 3px solid #C8A75E; outline-offset: 2px; }
+        .dx-drop {
+            position: relative; display: flex; align-items: center; gap: 1rem; padding: 1.2rem; border-radius: 16px;
+            border: 2px dashed #C8A75E; background: #fff; cursor: pointer; transition: background .2s, border-color .2s;
+        }
+        .dx-drop.is-over { background: #FFF8E6; border-color: #7D242B; }
+        .dx-drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+        .dx-drop-thumb { width: 64px; height: 64px; flex-shrink: 0; border-radius: 10px; background: #F7F1E8; display: grid; place-items: center; overflow: hidden; color: #7D242B; font-weight: 800; font-size: .75rem; }
+        .dx-drop-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .dx-drop-text { font-size: .9rem; line-height: 1.5; color: #5B4648; min-width: 0; overflow-wrap: anywhere; }
+        .dx-drop-text strong { color: #2B1A1C; }
+        .dx-switch { display: flex; align-items: flex-start; gap: .85rem; cursor: pointer; }
+        .dx-switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+        .dx-switch-ui { position: relative; width: 48px; height: 28px; flex-shrink: 0; border-radius: 999px; background: #CDBFB0; transition: background .2s; }
+        .dx-switch-ui::after { content: ''; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 2px 6px rgba(0,0,0,.2); transition: transform .2s; }
+        .dx-switch input:checked + .dx-switch-ui { background: #7D242B; }
+        .dx-switch input:checked + .dx-switch-ui::after { transform: translateX(20px); }
+        .dx-switch input:focus-visible + .dx-switch-ui { outline: 3px solid #C8A75E; outline-offset: 2px; }
+        .dx-switch-text { font-size: .93rem; font-weight: 600; line-height: 1.5; color: #2B1A1C; }
+        .dx-pledge { margin-top: 1.1rem; padding: 1.3rem; border-radius: 18px; border: 2px solid #C8A75E; background: #FFFBF2; }
+        .dx-pledge[hidden] { display: none; }
+        .dx-track { display: flex; gap: .75rem; align-items: flex-start; padding: .85rem 1rem; margin-bottom: .55rem; border-radius: 12px; background: #fff; border: 1.5px solid #E5D9C3; cursor: pointer; font-size: .9rem; line-height: 1.5; }
+        .dx-track input { margin-top: .25rem; accent-color: #7D242B; width: 18px; height: 18px; flex-shrink: 0; }
+        .dx-track:has(input:checked) { border-color: #7D242B; background: #FFF6F6; }
+        .dx-track strong { display: block; color: #4A1419; }
+        .dx-pledge-text { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E5D9C3; }
+        .dx-pledge-text .dx-switch-text { font-weight: 500; font-style: italic; }
+        .dx-submit { width: 100%; justify-content: center; font-size: 1.05rem; padding: 1.05rem 1.5rem; border: 0; cursor: pointer; }
+        .dx-submit:disabled { opacity: .7; cursor: wait; }
+        .dx-status { margin-top: .9rem; font-size: .9rem; font-weight: 600; text-align: center; color: #B3261E; }
+        .dx-fine { margin-top: .8rem; font-size: .78rem; line-height: 1.55; color: #5B4648; text-align: center; }
+        .dx-done { text-align: center; background: #F7F1E8; border: 2px solid #C8A75E; border-radius: 24px; padding: 2.25rem 1.5rem; }
+        .dx-done h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 600; color: #4A1419; margin: .5rem 0; }
+        .dx-done p { color: #5B4648; line-height: 1.7; max-width: 460px; margin: 0 auto .4rem; }
+        .dx-done .dx-again { margin-top: 1.2rem; background: none; border: 0; color: #7D242B; font-weight: 700; text-decoration: underline; cursor: pointer; font-size: .92rem; }
+        .dx-check { display: inline-grid; place-items: center; width: 58px; height: 58px; border-radius: 50%; background: #7D242B; color: #fff; font-size: 1.8rem; }
+        .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+        @media (max-width: 960px) {
+            .dx-hero { padding: 120px 0 60px; }
+            .dx-hero-grid, .dx-reg-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .dx-aside { position: static; }
+        }
+        @media (max-width: 680px) {
+            .dx-tier-grid, .dx-prizes, .dx-row { grid-template-columns: 1fr; }
+            .dx-centre-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .dx-slots li { grid-template-columns: 1fr; gap: .2rem; }
+            .dx-ctas > a { width: 100%; text-align: center; }
+        }
     </style>
+    <link rel="stylesheet" href="alma-ticket.css">
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1976,8 +2120,214 @@
 
     <main id="main-content">
 
+    <!-- ALMA National Diagnostic & Scholarship Exam -->
+    <section id="diagnostic" class="dx-hero" aria-labelledby="dx-title">
+        <div class="container dx-hero-grid">
+            <div>
+                <p class="dx-pill">JANUARY 2027 INTAKE · DIAGNOSTIC EXAM 100% FOC (FREE)</p>
+                <h1 id="dx-title">ALMA: A Levels, Built for Medical School <span>National Diagnostic &amp; Scholarship Exam</span></h1>
+                <p class="dx-sub">18-month Pearson Edexcel International A Levels (Biology, Chemistry &amp; Mathematics/Physics) with built-in IMAT, CSCA &amp; European medical entrance preparation.</p>
+                <div class="dx-ctas">
+                    <a href="#register" class="cta-button">Book your free diagnostic</a>
+                    <a href="#scholarships" class="alma-btn-ghost">See the scholarships</a>
+                </div>
+                <p class="dx-centres-label">Choose one of 5 exam centres</p>
+                <ul class="dx-centres">
+                    <li>Yangon</li><li>Mandalay</li><li>Taunggyi</li><li>Tachileik</li><li>Online Exam Center</li>
+                </ul>
+            </div>
+            <aside class="dx-card" aria-label="Event schedule">
+                <p class="dx-card-eyebrow">Tentative event date</p>
+                <p class="dx-date">Monday, 21 December 2026</p>
+                <p class="dx-date-note">1:00 PM – 4:00 PM MMT · 3 hours in total</p>
+                <ol class="dx-slots">
+                    <li><time>1:00 – 1:30 PM</time><div><strong>Check-in &amp; exam rules briefing</strong><span>Show your QR ticket at the door.</span></div></li>
+                    <li class="is-main"><time>1:30 – 3:00 PM</time><div><strong>1.5-hour written diagnostic exam</strong><span>90 minutes · MCQ &amp; MSQ</span></div></li>
+                    <li><time>3:00 – 4:00 PM</time><div><strong>Scholarship ceremony &amp; live lucky draw</strong><span>Direct Invite (7 A*) scholarships awarded on stage.</span></div></li>
+                </ol>
+                <p class="dx-format"><strong>Format:</strong> 1.5-hour written paper at in-person centres, or proctored online. Tests O Level core foundations plus higher-difficulty stretch questions, in MCQ (Multiple Choice) and MSQ (Multiple Select) format.</p>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Scholarship tiers & lucky draw -->
+    <section id="scholarships" class="section dx-tiers" aria-labelledby="dx-tiers-title">
+        <div class="container">
+            <h2 id="dx-tiers-title" class="section-title animate-on-scroll">Scholarships &amp; lucky draw</h2>
+            <p class="section-subtitle animate-on-scroll">Every student who registers is considered. Pick your pathway when you book.</p>
+            <div class="dx-tier-grid">
+                <article class="dx-tier dx-tier--gold animate-on-scroll">
+                    <span class="dx-tier-tag">7 A* or Grade 8–9</span>
+                    <h3>Direct Invite Scholarship</h3>
+                    <p>For aspiring medical and healthcare students with 7 A* (or Grade 8–9) in O Levels / IGCSE.</p>
+                    <ul>
+                        <li><strong>100% zero tuition fees (FOC)</strong> for the full 18-month ALMA programme.</li>
+                        <li><strong>Exempt from the written diagnostic exam.</strong> Complete a pre-event online interview with the VAI Academic Team.</li>
+                        <li>Receive your Direct Invite Scholarship Certificate <strong>on stage</strong> on 21 December.</li>
+                    </ul>
+                </article>
+                <article class="dx-tier dx-tier--gold animate-on-scroll">
+                    <span class="dx-tier-tag">6 A* or Grade 8–9</span>
+                    <h3>Excellence Scholarship</h3>
+                    <p>Sit the 1.5-hour diagnostic exam on 21 December.</p>
+                    <ul>
+                        <li><strong>Score above 80 marks:</strong> upgraded to a 100% full scholarship (zero tuition fees) for 18 months.</li>
+                        <li><strong>Score of 80 or below:</strong> a fixed tuition rate of 200,000 MMK / month for all 18 months (3,600,000 MMK in total).</li>
+                    </ul>
+                </article>
+                <article class="dx-tier animate-on-scroll">
+                    <span class="dx-tier-tag">Open to every test-taker</span>
+                    <h3>Composite Merit Scholarship</h3>
+                    <p>A scholarship ladder from <strong>10% to 67% off</strong> tuition, open to O Level, predicted O Level, Grade 10/11 and GED students.</p>
+                    <ul>
+                        <li>Calculated from <strong>50%</strong> O Level / predicted score + <strong>50%</strong> diagnostic exam score.</li>
+                    </ul>
+                </article>
+                <article class="dx-tier animate-on-scroll">
+                    <span class="dx-tier-tag">Healthcare pledge</span>
+                    <h3>Who can apply</h3>
+                    <p>Scholarships are for students who pledge to study at a recognised healthcare or medical university after ALMA: Medicine, Dentistry, Pharmacy, Nursing or Allied Health Sciences.</p>
+                    <ul>
+                        <li>The diagnostic exam itself is <strong>free for everyone</strong>, scholarship or not.</li>
+                    </ul>
+                </article>
+                <article class="dx-tier dx-tier--draw animate-on-scroll">
+                    <span class="dx-tier-tag">3:00 – 4:00 PM MMT · on site</span>
+                    <h3>Lucky draw for every test-taker</h3>
+                    <p>Everyone who sits the diagnostic exam enters the live lucky draw.</p>
+                    <div class="dx-prizes">
+                        <div class="dx-prize"><b>1 × Grand Prize</b><span>A full VAI OSSD Programme Scholarship worth <strong>$15,400 USD</strong>.</span></div>
+                        <div class="dx-prize"><b>Test-taker prizes</b><span>Medical entrance exam prep (IMAT / CSCA / EU) and university admission packages worth <strong>$500 – $5,000 USD</strong>.</span></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration -->
+    <section id="register" class="section dx-register" aria-labelledby="dx-reg-title">
+        <div class="container">
+            <h2 id="dx-reg-title" class="section-title animate-on-scroll">Book your free diagnostic</h2>
+            <p class="section-subtitle animate-on-scroll">Takes about two minutes. Your QR exam ticket appears as soon as you submit, and we email it to you.</p>
+            <div class="dx-reg-grid">
+                <div id="dxFormWrap">
+                    <form id="dxForm" class="dx-form" novalidate>
+                        <fieldset>
+                            <legend>Student</legend>
+                            <div class="dx-field">
+                                <label for="studentName">Student full name</label>
+                                <input id="studentName" name="studentName" type="text" autocomplete="name" required maxlength="80">
+                                <small>As it will appear on your exam ticket and certificate.</small>
+                                <span class="dx-err" data-err="studentName"></span>
+                            </div>
+                            <div class="dx-row">
+                                <div class="dx-field">
+                                    <label for="age">Age</label>
+                                    <input id="age" name="age" type="number" inputmode="numeric" min="12" max="25" required>
+                                    <span class="dx-err" data-err="age"></span>
+                                </div>
+                                <div class="dx-field">
+                                    <label for="studentPhone">Student contact number</label>
+                                    <input id="studentPhone" name="studentPhone" type="tel" autocomplete="tel" placeholder="+95 9 … or +66 …" required>
+                                    <small>Viber-enabled if possible.</small>
+                                    <span class="dx-err" data-err="studentPhone"></span>
+                                </div>
+                            </div>
+                            <div class="dx-field">
+                                <label for="studentEmail">Student email address</label>
+                                <input id="studentEmail" name="studentEmail" type="email" autocomplete="email" required>
+                                <small>Your official QR Exam Ticket &amp; AI Diagnostic Report will be sent to this email.</small>
+                                <span class="dx-err" data-err="studentEmail"></span>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Guardian</legend>
+                            <div class="dx-row">
+                                <div class="dx-field">
+                                    <label for="guardianName">Guardian full name</label>
+                                    <input id="guardianName" name="guardianName" type="text" required maxlength="80">
+                                    <span class="dx-err" data-err="guardianName"></span>
+                                </div>
+                                <div class="dx-field">
+                                    <label for="guardianPhone">Guardian phone number</label>
+                                    <input id="guardianPhone" name="guardianPhone" type="tel" placeholder="+95 9 …" required>
+                                    <span class="dx-err" data-err="guardianPhone"></span>
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset id="examCenterSet">
+                            <legend>Select exam centre</legend>
+                            <div class="dx-centre-grid">
+                                <label class="dx-centre"><input type="radio" name="examCenter" value="YGN" required><span>Yangon<small>YGN</small></span></label>
+                                <label class="dx-centre"><input type="radio" name="examCenter" value="MDY"><span>Mandalay<small>MDY</small></span></label>
+                                <label class="dx-centre"><input type="radio" name="examCenter" value="TGI"><span>Taunggyi<small>TGI</small></span></label>
+                                <label class="dx-centre"><input type="radio" name="examCenter" value="TCL"><span>Tachileik<small>TCL</small></span></label>
+                                <label class="dx-centre"><input type="radio" name="examCenter" value="ONL"><span>Online Exam Center<small>ONL</small></span></label>
+                            </div>
+                            <span class="dx-err" data-err="examCenter"></span>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Your results</legend>
+                            <span class="dx-label" id="scoreLabel">Upload O Level / IGCSE Statement of Results OR School Predictive Scores (Image or PDF)</span>
+                            <label class="dx-drop" id="dxDrop" style="margin-top:.6rem">
+                                <input id="scoreImage" name="scoreImage" type="file" accept="image/jpeg,image/png,image/webp,application/pdf" required aria-labelledby="scoreLabel">
+                                <span class="dx-drop-thumb" id="dxThumb" aria-hidden="true">JPG<br>PDF</span>
+                                <span class="dx-drop-text" id="dxDropText"><strong>Drag and drop, or tap to choose a file.</strong><br>JPG, PNG, WebP or PDF, up to 10 MB. Photos are resized automatically.</span>
+                            </label>
+                            <span class="dx-err" data-err="scoreImage"></span>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend>Scholarship</legend>
+                            <label class="dx-switch">
+                                <input type="checkbox" id="applyingForScholarship" name="applyingForScholarship" role="switch" checked>
+                                <span class="dx-switch-ui" aria-hidden="true"></span>
+                                <span class="dx-switch-text">I am applying for an ALMA Scholarship (Direct Invite 7 A*, 6 A* Excellence, or Merit Scholarship)</span>
+                            </label>
+                            <div class="dx-pledge" id="dxPledge">
+                                <p class="dx-label" style="margin-bottom:.7rem">Scholarship pathway</p>
+                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="DIRECT_INVITE_7A"><span><strong>7 A* (or Grade 8–9) Direct Invite Scholarship</strong>Online interview only · exempt from the written exam</span></label>
+                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="EXCELLENCE_6A"><span><strong>6 A* (or Grade 8–9) Excellence Scholarship</strong>200,000 MMK/month, or 100% FOC if your diagnostic score is above 80</span></label>
+                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="MERIT_DIAGNOSTIC"><span><strong>ALMA Merit Scholarship</strong>Diagnostic exam + O Level composite score</span></label>
+                                <span class="dx-err" data-err="scholarshipTrack"></span>
+                                <label class="dx-switch dx-pledge-text">
+                                    <input type="checkbox" id="healthcarePledge" name="healthcarePledge" role="switch">
+                                    <span class="dx-switch-ui" aria-hidden="true"></span>
+                                    <span class="dx-switch-text">“I hereby pledge that upon completing the ALMA A-Levels programme, I will apply to and pursue my undergraduate degree at a recognized Healthcare or Medical University (Medicine, Dentistry, Pharmacy, Nursing, or Allied Health Sciences).”</span>
+                                </label>
+                                <span class="dx-err" data-err="healthcarePledge"></span>
+                            </div>
+                        </fieldset>
+
+                        <div class="sr-only" aria-hidden="true"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+                        <button type="submit" class="cta-button dx-submit" id="dxSubmit">Register free &amp; get my ticket</button>
+                        <p class="dx-status" id="dxStatus" role="alert"></p>
+                        <p class="dx-fine">We use your details only to run the exam and scholarship review, and to contact you and your guardian about ALMA.</p>
+                    </form>
+                </div>
+                <aside class="dx-aside" aria-label="Your exam ticket">
+                    <p class="dx-aside-label" id="dxTicketLabel">Live ticket preview</p>
+                    <div id="dxTicket"></div>
+                    <div class="vt-actions" id="dxActions"></div>
+                    <div class="dx-bring">
+                        <strong>Bring with you</strong>
+                        <ul>
+                            <li>Your QR pass, on your phone or printed</li>
+                            <li>Photo ID matching the name on the pass</li>
+                            <li>Pens, pencils and an eraser</li>
+                        </ul>
+                        Arrive by 1:00 PM MMT. Late candidates cannot be admitted once the paper has begun.
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
     <!-- ALMA – A Levels for Medical Aspirants -->
-    <section id="alma" class="section alma alma-page" aria-labelledby="alma-title">
+    <section id="alma" class="section alma" aria-labelledby="alma-title">
         <div class="container">
 
             <div class="alma-intro animate-on-scroll">
@@ -1986,7 +2336,7 @@
                 <p class="alma-lead">ALMA is VAI's 18-month Pearson Edexcel International A Level programme in Biology, Chemistry, and Maths or Physics, for students aiming at medicine in Europe, China, Southeast Asia and around the world. Strong A Level grades can even replace the entrance exam at a number of medical schools.</p>
                 <p class="alma-body">Official Pearson exams at the British Council Myanmar exam centre. Live online classes, so students anywhere in Myanmar can join.</p>
                 <div class="alma-actions">
-                    <a href="apply.html?program=alma" target="_blank" rel="noopener" class="cta-button">Book your diagnostic</a>
+                    <a href="#register" class="cta-button">Book your diagnostic</a>
                     <a href="index.html#faq-alma" class="alma-btn-ghost">See the ALMA FAQ</a>
                 </div>
 
@@ -2159,7 +2509,7 @@
                         <li>Complete your Structured Admissions Interview</li>
                         <li>Confirm your seat, or start the A Level Foundation</li>
                     </ol>
-                    <a href="apply.html?program=alma" target="_blank" rel="noopener" class="cta-button">Book your diagnostic</a>
+                    <a href="#register" class="cta-button">Book your diagnostic</a>
                     <p class="alma-cta-contact">Questions about ALMA? <a href="index.html#contact">Contact our admissions team</a>.</p>
                 </div>
                 <details class="alma-my" lang="my">
@@ -2173,7 +2523,7 @@
                     <p><strong>တည်ငြိမ်ပြီး အားကောင်းတဲ့ လေ့လာမှုအစီအစဉ်</strong><br>သိပ္ပံဘာသာနှစ်ခုကို အရင်စတင်ပြီး တတိယဘာသာကို June 2027 မှာ ထပ်ပေါင်းထည့်ပါတယ်။ အပတ်စဉ် Timed test နဲ့ စာမေးပွဲတိုင်းမတိုင်ခင် Full mock ပါဝင်ပါတယ်။</p>
                     <p><strong>GED ကျောင်းသားတွေအတွက် ဝင်ပေါက်</strong><br>A Level Foundation (AF) – VAI ရဲ့ ထူးခြားတဲ့ Program (Unique to VAI)။</p>
                     <p>Pearson ရဲ့ တရားဝင်စာမေးပွဲတွေကို British Council Myanmar မှာ ဖြေဆိုရပါတယ်။ Live online သင်တန်းဖြစ်လို့ မြန်မာနိုင်ငံ ဘယ်နေရာကနေမဆို တက်ရောက်နိုင်ပါတယ်။</p>
-                    <p><a href="apply.html?program=alma" target="_blank" rel="noopener">👉 Diagnostic test အတွက် ယခုပဲ စာရင်းပေးသွင်းလိုက်ပါ။</a></p>
+                    <p><a href="#register">👉 Diagnostic test အတွက် ယခုပဲ စာရင်းပေးသွင်းလိုက်ပါ။</a></p>
                 </details>
             </div>
 
@@ -2249,6 +2599,184 @@
         const onScroll = () => siteHeader.classList.toggle('scrolled', window.scrollY > 60);
         window.addEventListener('scroll', onScroll, { passive: true });
         onScroll();
+    </script>
+    <script src="alma-ticket.js"></script>
+    <script>
+        // ALMA diagnostic registration: live ticket preview, file handling and submit
+        (function () {
+            const form = document.getElementById('dxForm');
+            if (!form) return;
+            const ticketEl = document.getElementById('dxTicket');
+            const CENTRES = { YGN: 'Yangon', MDY: 'Mandalay', TGI: 'Taunggyi', TCL: 'Tachileik', ONL: 'Online Exam Center' };
+            const TRACKS = {
+                DIRECT_INVITE_7A: '7 A* Direct Invite Scholarship',
+                EXCELLENCE_6A: '6 A* Excellence Scholarship',
+                MERIT_DIAGNOSTIC: 'ALMA Merit Scholarship'
+            };
+            const sch = document.getElementById('applyingForScholarship');
+            const pledgeBox = document.getElementById('dxPledge');
+            const status = document.getElementById('dxStatus');
+            const submit = document.getElementById('dxSubmit');
+            let upload = null;                     // the (possibly resized) results file
+
+            function values() {
+                const fd = new FormData(form);
+                const code = fd.get('examCenter') || '';
+                const track = sch.checked ? (fd.get('scholarshipTrack') || '') : '';
+                return {
+                    studentName: (fd.get('studentName') || '').trim(),
+                    age: fd.get('age'),
+                    centerCode: code,
+                    center: CENTRES[code],
+                    applyingForScholarship: sch.checked,
+                    scholarshipTrack: track,
+                    track: TRACKS[track] || '',
+                    healthcarePledge: sch.checked && document.getElementById('healthcarePledge').checked
+                };
+            }
+            const preview = () => VAITicket.render(ticketEl, values(), true);
+            form.addEventListener('input', preview);
+            form.addEventListener('change', preview);
+            sch.addEventListener('change', () => { pledgeBox.hidden = !sch.checked; });
+            preview();
+
+            // Results file: drag and drop, thumbnail, and resizing of large photos
+            const drop = document.getElementById('dxDrop');
+            const fileInput = document.getElementById('scoreImage');
+            const thumb = document.getElementById('dxThumb');
+            const dropText = document.getElementById('dxDropText');
+            const TYPES = ['image/jpeg', 'image/png', 'image/webp', 'application/pdf'];
+
+            ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('is-over'); }));
+            ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, () => drop.classList.remove('is-over')));
+            drop.addEventListener('drop', e => {
+                e.preventDefault();
+                if (e.dataTransfer.files[0]) { fileInput.files = e.dataTransfer.files; takeFile(e.dataTransfer.files[0]); }
+            });
+            fileInput.addEventListener('change', () => fileInput.files[0] && takeFile(fileInput.files[0]));
+
+            function shrink(file) {
+                return new Promise(resolve => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const scale = Math.min(1, 2000 / Math.max(img.width, img.height));
+                        const c = document.createElement('canvas');
+                        c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+                        c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+                        c.toBlob(b => {
+                            URL.revokeObjectURL(img.src);
+                            resolve(b && b.size < file.size ? new File([b], file.name.replace(/\.\w+$/, '') + '.jpg', { type: 'image/jpeg' }) : file);
+                        }, 'image/jpeg', .85);
+                    };
+                    img.onerror = () => resolve(file);
+                    img.src = URL.createObjectURL(file);
+                });
+            }
+
+            async function takeFile(file) {
+                setError('scoreImage', '');
+                upload = null;
+                if (!TYPES.includes(file.type)) return setError('scoreImage', 'Upload a JPG, PNG, WebP or PDF file.');
+                if (file.size > 10 * 1024 * 1024) return setError('scoreImage', 'The file is larger than 10 MB.');
+                const isPdf = file.type === 'application/pdf';
+                const ready = isPdf ? file : await shrink(file);
+                if (ready.size > 5.5 * 1024 * 1024) return setError('scoreImage', isPdf ? 'Please upload a PDF under 5 MB, or a photo of the page instead.' : 'This image is too large. Please try another photo.');
+                upload = ready;
+                thumb.innerHTML = isPdf ? 'PDF' : `<img src="${URL.createObjectURL(ready)}" alt="">`;
+                dropText.innerHTML = '<strong></strong><br>' + (ready.size / 1048576).toFixed(1) + ' MB · tap to change';
+                dropText.querySelector('strong').textContent = file.name;
+            }
+
+            function setError(name, msg) {
+                const el = form.querySelector(`[data-err="${name}"]`);
+                if (el) el.textContent = msg;
+                const field = el && el.closest('.dx-field');
+                if (field) field.classList.toggle('has-error', !!msg);
+                if (name === 'scoreImage') drop.classList.toggle('has-error', !!msg);
+                if (el) el.style.display = msg ? 'block' : '';
+            }
+
+            function check() {
+                const v = values(), fd = new FormData(form), errs = {};
+                const phone = /^\+?[0-9][0-9\s-]{6,17}$/;
+                if (v.studentName.length < 2) errs.studentName = 'Enter the student’s full name.';
+                const age = Number(v.age);
+                if (!Number.isInteger(age) || age < 12 || age > 25) errs.age = 'Age must be between 12 and 25.';
+                if (!phone.test((fd.get('studentPhone') || '').trim())) errs.studentPhone = 'Enter a valid phone number, e.g. +95 9 7976 13726.';
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((fd.get('studentEmail') || '').trim())) errs.studentEmail = 'Enter a valid email address.';
+                if ((fd.get('guardianName') || '').trim().length < 2) errs.guardianName = 'Enter the guardian’s full name.';
+                if (!phone.test((fd.get('guardianPhone') || '').trim())) errs.guardianPhone = 'Enter a valid phone number.';
+                if (!v.centerCode) errs.examCenter = 'Choose an exam centre.';
+                if (!upload) errs.scoreImage = form.querySelector('[data-err="scoreImage"]').textContent || 'Upload your results or predicted grades.';
+                if (v.applyingForScholarship && !v.scholarshipTrack) errs.scholarshipTrack = 'Choose a scholarship pathway.';
+                if (v.applyingForScholarship && !v.healthcarePledge) errs.healthcarePledge = 'Please confirm the pledge to apply for a scholarship.';
+                return errs;
+            }
+
+            function showErrors(errs) {
+                form.querySelectorAll('[data-err]').forEach(el => setError(el.dataset.err, errs[el.dataset.err] || ''));
+                const first = Object.keys(errs)[0];
+                if (first) {
+                    const target = form.querySelector(`[name="${first}"]`);
+                    if (target) { target.scrollIntoView({ block: 'center', behavior: 'smooth' }); target.focus({ preventScroll: true }); }
+                }
+            }
+
+            form.addEventListener('submit', async e => {
+                e.preventDefault();
+                status.textContent = '';
+                const errs = check();
+                showErrors(errs);
+                if (Object.keys(errs).length) { status.textContent = 'Please check the highlighted fields.'; return; }
+
+                const fd = new FormData(form);
+                fd.set('scoreImage', upload, upload.name);
+                fd.set('applyingForScholarship', sch.checked ? 'on' : '');
+                submit.disabled = true;
+                submit.textContent = 'Issuing your ticket…';
+                try {
+                    const res = await fetch('/api/alma/register', { method: 'POST', body: fd });
+                    const data = await res.json().catch(() => ({}));
+                    if (!res.ok) {
+                        if (data.errors) showErrors(data.errors);
+                        throw new Error(data.error || 'Something went wrong. Please try again, or message us on Viber.');
+                    }
+                    done(data);
+                } catch (err) {
+                    status.textContent = err.message;
+                } finally {
+                    submit.disabled = false;
+                    submit.textContent = 'Register free & get my ticket';
+                }
+            });
+
+            function done(data) {
+                const t = data.ticket;
+                VAITicket.render(ticketEl, t, false);
+                VAITicket.actions(document.getElementById('dxActions'), ticketEl, t);
+                document.getElementById('dxTicketLabel').textContent = 'Your admission pass';
+                const wrap = document.getElementById('dxFormWrap');
+                const email = form.studentEmail.value.trim();
+                wrap.innerHTML = `
+                    <div class="dx-done" tabindex="-1">
+                        <span class="dx-check" aria-hidden="true">✓</span>
+                        <h3>${data.existing ? 'You are already registered' : 'You are registered!'}</h3>
+                        <p>Reference <strong class="vt-ref"></strong> · Seat <strong class="dx-seat"></strong></p>
+                        <p class="dx-mail"></p>
+                        <p>Save your ticket now. You can always reopen it from <a class="dx-pass" href="#">this link</a>.</p>
+                        <button type="button" class="dx-again">Register another student</button>
+                    </div>`;
+                wrap.querySelector('.vt-ref').textContent = t.ref;
+                wrap.querySelector('.dx-seat').textContent = t.seat;
+                wrap.querySelector('.dx-pass').href = t.passUrl.replace('https://veritasaescula.com', '');
+                wrap.querySelector('.dx-mail').textContent = data.existing
+                    ? 'This email address already has a ticket, shown here.'
+                    : data.emailed ? `We have emailed your QR ticket to ${email}.` : 'We could not send the email just now, so please download or print your ticket below.';
+                wrap.querySelector('.dx-again').addEventListener('click', () => location.reload());
+                wrap.querySelector('.dx-done').focus();
+                document.querySelector('.dx-aside').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        })();
     </script>
 </body>
 </html>

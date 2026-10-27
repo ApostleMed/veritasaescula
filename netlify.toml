@@ -1,6 +1,15 @@
 [build]
   publish = "."
 
+[functions]
+  node_bundler = "esbuild"
+
+# Signed ticket links: /alma/pass/r_<id>.<hmac> -> the pass page, which loads the ticket from /api/alma/pass
+[[redirects]]
+  from = "/alma/pass/*"
+  to = "/alma-pass.html"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
