@@ -291,6 +291,21 @@
             opacity: 0.85;
         }
 
+        /* Card where the student has chosen among several offers */
+        .accepted-university.has-attending { font-weight: 400; }
+
+        .university-attending {
+            margin-top: 1rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .university-attending strong {
+            display: block;
+            font-weight: 800;
+            font-size: 1.15rem;
+        }
+
         /* Floating Viber Button */
         .viber-float {
             position: fixed;
@@ -443,11 +458,15 @@
                     <h3 class="student-name">Ms. Sut Ngai Pan</h3>
                     <p class="student-program">OSSD Healthcare Track Graduate, Class of 2025</p>
                     <p class="student-testimony">"Veritas Aescula and Canaway High School gave me the foundation I needed to pursue my dream of becoming a physician. The personalized support and rigorous curriculum opened doors I never thought possible — earning me offers from two of Europe's most prestigious medical faculties."</p>
-                    <div class="accepted-university">
+                    <div class="accepted-university has-attending">
                         <div class="university-label">Accepted to</div>
                         <div>First Faculty of Medicine, Charles University — Czech Republic</div>
                         <div class="university-divider"></div>
                         <div>Masaryk University — Czech Republic</div>
+                        <div class="university-attending">
+                            <div class="university-label">Attending</div>
+                            <strong>First Faculty of Medicine, Charles University</strong>
+                        </div>
                     </div>
                 </div>
 
@@ -469,9 +488,15 @@
                     <h3 class="student-name">Ms. Than Thar Su San</h3>
                     <p class="student-program">OSSD Healthcare Track Graduate, Class of 2025</p>
                     <p class="student-testimony">"The support and mentorship at Veritas Aescula and Canaway High School gave me the confidence to aim high. I'm now one step closer to becoming the doctor I've always wanted to be."</p>
-                    <div class="accepted-university">
+                    <div class="accepted-university has-attending">
                         <div class="university-label">Accepted to</div>
+                        <div>Southern Medical University — China</div>
+                        <div class="university-divider"></div>
                         <div>Nanjing Medical University — China</div>
+                        <div class="university-attending">
+                            <div class="university-label">Attending</div>
+                            <strong>Nanjing Medical University</strong>
+                        </div>
                     </div>
                 </div>
 
