@@ -177,6 +177,7 @@ export function emailHtml(rec, url) {
   <p style="margin:0 0 16px;color:#5B4648;font:15px Arial,sans-serif">Age ${rec.age} · <strong>${rec.ref}</strong></p>
   <table role="presentation" cellpadding="0" cellspacing="0" width="100%">
     ${row('Centre', `${esc(CENTERS[rec.examCenter])} · Seat ${rec.seat}`)}
+    ${row('Phone', esc(rec.studentPhone))}
     ${row('Date', EVENT.date)}
     ${row('Event', `${EVENT.time}<br><span style="font-weight:400;color:#5B4648">Arrive by 1:00 PM MMT for check-in</span>`)}
     ${row('Exam', esc(examLine(rec)))}

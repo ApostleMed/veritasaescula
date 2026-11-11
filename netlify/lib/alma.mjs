@@ -74,6 +74,7 @@ export async function ticketView(rec) {
     seat: rec.seat,
     studentName: rec.studentName,
     age: rec.age,
+    studentPhone: rec.studentPhone,
     centerCode: rec.examCenter,
     center: CENTERS[rec.examCenter],
     applyingForScholarship: rec.applyingForScholarship,

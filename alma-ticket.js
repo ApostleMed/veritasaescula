@@ -9,7 +9,7 @@
         exam: '1:30 PM – 3:00 PM MMT'
     };
 
-    // t: { studentName, age, ref, seat, center, centerCode, applyingForScholarship,
+    // t: { studentName, age, studentPhone, ref, seat, center, centerCode, applyingForScholarship,
     //      scholarshipTrack, track, healthcarePledge, qr, passUrl }
     function render(el, t, preview) {
         const direct = t.scholarshipTrack === 'DIRECT_INVITE_7A';
@@ -38,6 +38,7 @@
                 ${badges.length ? `<div class="vt-badges">${badges.join('')}</div>` : ''}
                 <dl class="vt-rows">
                     <div><dt>Centre</dt><dd>${esc(t.center || 'Choose a centre')}${t.seat ? ` · Seat ${esc(t.seat)}` : ''}</dd></div>
+                    <div><dt>Phone</dt><dd>${esc(t.studentPhone || (preview ? 'Your contact number' : ''))}</dd></div>
                     <div><dt>Date</dt><dd>${EVENT.date}</dd></div>
                     <div><dt>Event</dt><dd>${EVENT.time}<small>${online ? 'Joining instructions are emailed before the exam' : 'Arrive by 1:00 PM MMT for check-in'}</small></dd></div>
                     <div><dt>Exam</dt><dd>${exam}</dd></div>
