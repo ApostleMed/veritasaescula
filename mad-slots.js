@@ -1,6 +1,6 @@
 /* ===== MAD scholarship places: edit this number only ===== */
 window.MAD_SLOTS_TOTAL = 11;
-window.MAD_SLOTS_LEFT  = 11;
+window.MAD_SLOTS_LEFT  = 9;
 /* ========================================================== */
 
 (function () {
