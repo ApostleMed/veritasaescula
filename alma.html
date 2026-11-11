@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <title>ALMA Diagnostic &amp; Scholarship Exam · A Levels for Medical Aspirants | VAI</title>
+    <title>A Levels for Medical School: ALMA Online Programme &amp; Free Diagnostic Exam | VAI</title>
     <meta name="description" content="ALMA: VAI's 18-month online Pearson Edexcel International A Levels in Biology, Chemistry, and Maths or Physics, built for medical school, plus the A Level Foundation (AF) for GED holders.">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
     <link rel="canonical" href="https://veritasaescula.com/alma.html">
@@ -124,6 +124,96 @@
         }
       ]
     }
+    </script>
+
+    <!-- Structured Data: FAQ for the "A Levels for Medical School" guide; must match the visible FAQ word for word -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which A Levels do I need for medical school?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Take Chemistry and Biology, plus a third subject, usually Maths or Physics. Chemistry is required by almost every medical school, Biology is required or strongly preferred by most, and Maths or Physics is the strongest third subject for Medical Aspirants."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is A Level Chemistry required for medicine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, at almost every medical school. If you take only one science, it should be Chemistry, but A Level Biology and Chemistry together keep the most medical schools open to you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should my third A Level be Maths or Physics?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Either works for medical school. Some schools, such as the Second Faculty of Medicine at Charles University, list Physics or Maths as the third A Level. Avoid General Studies and Critical Thinking, which many universities do not count."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What A Level grades do medical schools in Europe ask for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the school: from AAA in Biology, Chemistry, and Physics or Maths, down to a minimum of C in Biology and Chemistry. At a number of European medical schools, these grades can replace the entrance exam."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can A Level grades replace the medical entrance exam?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "At a number of European medical schools, yes. For 2026/27 entry, Charles University (Second Faculty of Medicine), the University of Szeged, the University of Thessaly and the Lithuanian University of Health Sciences (LSMU) waive their own entrance exam or admission test for applicants with the required A Level grades. Places are competitive and rules change every year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are A Levels accepted for medical school in China?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many Chinese medical schools ask international applicants to sit the CSCA as well, and strong A Level science grades support the application and prepare students for the test's science content."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are Pearson Edexcel International A Levels accepted for medicine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pearson Edexcel International A Levels are designed to the same standard as UK A Levels and are recognised by universities worldwide, including medical schools. Always check each university's own entry page for your intake year."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do International A Levels have the practical endorsement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The practical endorsement belongs to the A Levels taken in England. Pearson Edexcel International A Levels assess practical skills through dedicated practical-skills papers instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take A Levels for medical school from Myanmar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Medical Aspirants in Myanmar can study A Levels online and sit the official Pearson exams at the British Council Myanmar exam centre, or at the Pearson centre in Bangkok if they live in Thailand."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I have GED, not IGCSE or O Levels. Can I still take A Levels for medicine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. VAI's A Level Foundation (AF) closes the gaps between GED and A Level science first, then students join ALMA – A Levels for Medical Aspirants."
+      }
+    }
+  ]
+}
     </script>
 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -2083,6 +2173,26 @@
             .dx-slots li { grid-template-columns: 1fr; gap: .2rem; }
             .dx-ctas > a { width: 100%; text-align: center; }
         }
+        /* A Levels for Medical School guide (below the ALMA section) */
+        .alma-guide { background: #fff; }
+        .alma-guide .guide { max-width: 800px; margin: 0 auto; color: var(--text-dark); line-height: 1.75; font-size: 1.03rem; }
+        .alma-guide h2 { font-family: var(--serif); font-weight: 600; color: var(--alma-mahogany); font-size: clamp(1.8rem, 3.6vw, 2.5rem); line-height: 1.15; margin-bottom: 1rem; }
+        .alma-guide h3 { font-family: var(--serif); font-weight: 600; color: var(--alma-mahogany); font-size: clamp(1.3rem, 2.6vw, 1.65rem); line-height: 1.25; margin: 2.5rem 0 .8rem; }
+        .alma-guide p, .alma-guide ul { margin-bottom: 1rem; }
+        .alma-guide ul { padding-left: 1.3rem; }
+        .alma-guide li { margin-bottom: .45rem; }
+        .alma-guide a { color: var(--alma-red); font-weight: 600; }
+        .guide-answer { background: var(--beige-soft, #F5EFE6); border-left: 4px solid var(--alma-gold); border-radius: 14px; padding: 1.3rem 1.5rem; }
+        .guide-answer strong.label { display: block; font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--alma-red); margin-bottom: .4rem; }
+        .guide-answer ul { margin: .4rem 0 0; }
+        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin: 1.25rem 0 1.5rem; }
+        .subject-card { background: var(--beige-soft, #F5EFE6); border-radius: 14px; padding: 1.1rem 1.2rem; border-top: 4px solid var(--alma-red); }
+        .subject-card b { display: block; font-family: var(--serif); font-size: 1.25rem; color: var(--alma-mahogany); }
+        .subject-card em { display: block; font-style: normal; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--alma-red); margin: .15rem 0 .4rem; }
+        .subject-card span { font-size: .95rem; line-height: 1.6; }
+        .alma-guide .faq-details { border-bottom: 1px solid var(--light-beige); padding: .9rem 0; }
+        .alma-guide .faq-details summary { cursor: pointer; font-weight: 700; color: var(--alma-mahogany); }
+        .alma-guide .faq-details p { margin: .6rem 0 0; }
     </style>
     <link rel="stylesheet" href="alma-ticket.css">
 </head>
@@ -2339,6 +2449,7 @@
                     <a href="#register" class="cta-button">Book your diagnostic</a>
                     <a href="index.html#faq-alma" class="alma-btn-ghost">See the ALMA FAQ</a>
                 </div>
+                <p class="alma-body">New to A Levels? Read <a href="#a-levels-for-medical-school">A Levels for Medical School: a guide for Medical Aspirants</a> below.</p>
 
                 <dl class="alma-facts">
                     <div class="alma-fact">
@@ -2530,6 +2641,93 @@
         </div>
     </section>
 
+    <!-- A Levels for Medical School: plain guide for Medical Aspirants (FAQ mirrored in the FAQPage JSON-LD in <head>) -->
+    <section id="a-levels-for-medical-school" class="section alma-guide" aria-labelledby="guide-title">
+        <div class="container">
+            <div class="guide">
+                <h2 id="guide-title">A Levels for Medical School: a guide for Medical Aspirants</h2>
+                <div class="guide-answer">
+                    <strong class="label">The short answer</strong>
+                    To study medicine with A Levels, take <strong>Chemistry and Biology, plus Maths or Physics</strong>, and aim for top grades.
+                    <ul>
+                        <li><strong>A Level Chemistry</strong> is required by almost every medical school.</li>
+                        <li><strong>A Level Biology</strong> is required or strongly preferred by most.</li>
+                        <li><strong>A Level Maths or Physics</strong> is the strongest third subject.</li>
+                        <li><strong>Grades:</strong> in Europe, from AAA down to C grades, depending on the medical school.</li>
+                        <li>At a number of European medical schools, strong A Level grades <strong>can replace the entrance exam</strong>.</li>
+                    </ul>
+                </div>
+
+                <h3>Which A Levels do Medical Aspirants need for medicine?</h3>
+                <p>Medical schools look for three A Levels, and two of them are almost always sciences. This A Level combination keeps the most medical schools open:</p>
+                <div class="subject-grid">
+                    <div class="subject-card"><b>Chemistry</b><em>Essential</em><span>Required by almost every medical school. If you take only one science, make it Chemistry.</span></div>
+                    <div class="subject-card"><b>Biology</b><em>Required or strongly preferred</em><span>Most medical schools ask for it alongside Chemistry, and it is the base of first-year medicine.</span></div>
+                    <div class="subject-card"><b>Maths or Physics</b><em>Best third subject</em><span>Either is a strong choice. Some medical schools name Physics or Maths as the third A Level in their entry rules.</span></div>
+                </div>
+                <p>Many universities accept other academic subjects as the third A Level, but General Studies and Critical Thinking are often not counted. If you are unsure, choose Maths or Physics: both are widely respected choices for medicine.</p>
+
+                <h3>A Level grades for medical school in Europe and China</h3>
+                <p><strong>Europe:</strong> requirements vary from school to school, from AAA in Biology, Chemistry, and Physics or Maths, down to a minimum of C in Biology and Chemistry. At a number of European medical schools, A Level grades are enough on their own: the school waives its entrance exam for applicants who meet its grade requirements (see <a href="#alma">where good grades can replace the entrance exam</a> above). Other schools, such as those using the IMAT, still set their own exam.</p>
+                <p><strong>China:</strong> many Chinese medical schools ask international applicants to sit the CSCA. Strong A Level science grades support the application and prepare Medical Aspirants for the test's science content.</p>
+
+                <h3>International A Levels for medical school</h3>
+                <p><strong>Pearson Edexcel International A Levels</strong> are designed to the same standard as UK A Levels and are recognised by universities around the world, including medical schools. Students outside the UK usually take them because the exams run at local centres, such as the British Council.</p>
+                <p>The <strong>practical endorsement</strong> belongs to the A Levels taken in England. International A Levels assess practical skills through dedicated practical-skills papers instead, so international students do not need a separate endorsement.</p>
+
+                <h3>A Levels for Medical Aspirants in Myanmar and Southeast Asia</h3>
+                <ul>
+                    <li><strong>Study A Levels online</strong> with live classes, from anywhere in Myanmar or the region.</li>
+                    <li><strong>Sit the official Pearson exams</strong> at the British Council Myanmar exam centre, or at the Pearson centre in Bangkok if you live in Thailand.</li>
+                    <li><strong>Coming from IGCSE or O Levels?</strong> You can start A Levels for medicine straight away.</li>
+                    <li><strong>Coming from GED?</strong> The <a href="#foundation">A Level Foundation (AF)</a> closes the gaps in A Level science first, then you join ALMA – A Levels for Medical Aspirants.</li>
+                </ul>
+
+                <h3>A Levels for medical school: frequently asked questions</h3>
+                    <details class="faq-details">
+                        <summary>Which A Levels do I need for medical school?</summary>
+                        <p>Take Chemistry and Biology, plus a third subject, usually Maths or Physics. Chemistry is required by almost every medical school, Biology is required or strongly preferred by most, and Maths or Physics is the strongest third subject for Medical Aspirants.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Is A Level Chemistry required for medicine?</summary>
+                        <p>Yes, at almost every medical school. If you take only one science, it should be Chemistry, but A Level Biology and Chemistry together keep the most medical schools open to you.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Should my third A Level be Maths or Physics?</summary>
+                        <p>Either works for medical school. Some schools, such as the Second Faculty of Medicine at Charles University, list Physics or Maths as the third A Level. Avoid General Studies and Critical Thinking, which many universities do not count.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>What A Level grades do medical schools in Europe ask for?</summary>
+                        <p>It depends on the school: from AAA in Biology, Chemistry, and Physics or Maths, down to a minimum of C in Biology and Chemistry. At a number of European medical schools, these grades can replace the entrance exam.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Can A Level grades replace the medical entrance exam?</summary>
+                        <p>At a number of European medical schools, yes. For 2026/27 entry, Charles University (Second Faculty of Medicine), the University of Szeged, the University of Thessaly and the Lithuanian University of Health Sciences (LSMU) waive their own entrance exam or admission test for applicants with the required A Level grades. Places are competitive and rules change every year.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Are A Levels accepted for medical school in China?</summary>
+                        <p>Yes. Many Chinese medical schools ask international applicants to sit the CSCA as well, and strong A Level science grades support the application and prepare students for the test's science content.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Are Pearson Edexcel International A Levels accepted for medicine?</summary>
+                        <p>Pearson Edexcel International A Levels are designed to the same standard as UK A Levels and are recognised by universities worldwide, including medical schools. Always check each university's own entry page for your intake year.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Do International A Levels have the practical endorsement?</summary>
+                        <p>No. The practical endorsement belongs to the A Levels taken in England. Pearson Edexcel International A Levels assess practical skills through dedicated practical-skills papers instead.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>Can I take A Levels for medical school from Myanmar?</summary>
+                        <p>Yes. Medical Aspirants in Myanmar can study A Levels online and sit the official Pearson exams at the British Council Myanmar exam centre, or at the Pearson centre in Bangkok if they live in Thailand.</p>
+                    </details>
+                    <details class="faq-details">
+                        <summary>I have GED, not IGCSE or O Levels. Can I still take A Levels for medicine?</summary>
+                        <p>Yes. VAI's A Level Foundation (AF) closes the gaps between GED and A Level science first, then students join ALMA – A Levels for Medical Aspirants.</p>
+                    </details>
+            </div>
+        </div>
+    </section>
+
     </main>
 
     <!-- Floating Viber Button -->
@@ -2548,6 +2746,7 @@
                     <li><a href="index.html#programs">Programs</a></li>
                     <li><a href="index.html#scholarships">Scholarships</a></li>
                     <li><a href="#alma">ALMA – A Levels for Medical Aspirants</a></li>
+                    <li><a href="#a-levels-for-medical-school">A Levels for Medical School</a></li>
                     <li><a href="#foundation">A Level Foundation (AF)</a></li>
                     <li><a href="index.html#igcse-pathway">IGCSE O Level to Medical School</a></li>
                     <li><a href="how-to-apply.html">How to Apply</a></li>
