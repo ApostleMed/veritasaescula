@@ -942,6 +942,7 @@
             border-radius: 20px;
             text-align: left;
             box-shadow: 0 18px 48px rgba(0,0,0,.18);
+            scroll-margin-top: 110px;
         }
         .enquiry h3 { font-family: var(--serif, Georgia, serif); font-weight: 600; font-size: 1.5rem; color: #4A1419; margin-bottom: .25rem; }
         .enquiry .enquiry-lede { font-size: .95rem; color: #5B4648; margin-bottom: 1.25rem; }
@@ -2314,7 +2315,7 @@
                         Indonesia, Philippines, and Malaysia — preparing them for accelerated admission to
                         top medical universities in Europe, Asia, Canada, and beyond.
                     </p>
-                    <a href="apply.html" target="_blank" class="cta-button fade-in-up">Start Your Journey Today</a>
+                    <a href="#enquiry-form" data-enquire="" class="cta-button fade-in-up">Start Your Journey Today</a>
                 </div>
 
                 <!-- Scholarship spotlight: places are filled in by mad-slots.js -->
@@ -2325,7 +2326,7 @@
                     <div class="hero-mad-seats" data-mad-seats role="img" aria-label="11 of 11 places left"></div>
                     <p class="hero-mad-left" data-mad-left>11 of 11 places left</p>
                     <div class="hero-mad-actions" data-mad-open>
-                        <a class="hero-mad-btn" href="apply.html?type=scholarship" target="_blank" rel="noopener">Apply for the scholarship</a>
+                        <a class="hero-mad-btn" href="#enquiry-form" data-enquire="mad">Apply for the scholarship</a>
                         <a class="hero-mad-link" href="#scholarships">How it works</a>
                     </div>
                     <p class="hero-mad-closed" data-mad-closed hidden>All places for this round have been awarded. Message us on Viber to join the waiting list.</p>
@@ -2363,7 +2364,7 @@
                     education results. Terms and conditions apply.
                 </p>
 
-                <a class="mad__btn" href="apply.html?type=scholarship" target="_blank" rel="noopener" data-mad-open>
+                <a class="mad__btn" href="#enquiry-form" data-enquire="mad" data-mad-open>
                     Apply for the scholarship
                 </a>
                 <p class="mad__closed" data-mad-closed hidden>
@@ -2581,7 +2582,7 @@
                             <li>Online learning with community volunteer hours</li>
                             <li>Direct pathway to Canadian and international universities</li>
                         </ul>
-                        <a href="apply.html?program=ossd" target="_blank" class="register-button">Pre-Register Now</a>
+                        <a href="#enquiry-form" data-enquire="ossd" class="register-button">Pre-Register Now</a>
                     </div>
                 </div>
 
@@ -2596,7 +2597,7 @@
                             <li>Medical ethics and patient care principles</li>
                             <li>SAT/ACT preparation for medical school prerequisites</li>
                         </ul>
-                        <a href="apply.html?program=ged" target="_blank" class="register-button">Pre-Register Now</a>
+                        <a href="#enquiry-form" data-enquire="ged" class="register-button">Pre-Register Now</a>
                     </div>
                 </div>
 
@@ -2611,7 +2612,7 @@
                             <li>Research skills and laboratory techniques</li>
                             <li>Global recognition for medical school admission</li>
                         </ul>
-                        <a href="apply.html?program=igcse" target="_blank" class="register-button">Pre-Register Now</a>
+                        <a href="#enquiry-form" data-enquire="igcse" class="register-button">Pre-Register Now</a>
                     </div>
                 </div>
 
@@ -2629,7 +2630,7 @@
                         </ul>
                         <div class="program-actions">
                             <a href="alma.html" class="register-button register-button--ghost">Explore ALMA</a>
-                            <a href="alma.html#register" class="register-button">Book Free Diagnostic</a>
+                            <a href="#enquiry-form" data-enquire="alma" class="register-button">Book Free Diagnostic</a>
                         </div>
                     </div>
                 </div>
@@ -2667,7 +2668,7 @@
             </div>
             <p class="pathway-note animate-on-scroll">Prefer the A Level route? After O Level you can join <a href="alma.html">ALMA – A Levels for Medical Aspirants</a>, our 18-month International A Level programme in Biology, Chemistry, and Maths or Physics.</p>
             <div style="text-align:center;margin-top:3rem;">
-                <a href="apply.html?program=igcse" target="_blank" class="cta-button" style="background:var(--primary-maroon);color:#fff;">Start Your IGCSE + OSSD Journey</a>
+                <a href="#enquiry-form" data-enquire="igcse" class="cta-button" style="background:var(--primary-maroon);color:#fff;">Start Your IGCSE + OSSD Journey</a>
             </div>
         </div>
     </section>
@@ -2891,11 +2892,12 @@
                     <label for="enq-programme">Which programme are you interested in?</label>
                     <select id="enq-programme" name="programme" required>
                         <option value="">Select</option>
-                        <option>OSSD – Ontario Secondary School Diploma</option>
-                        <option>GED – General Educational Development</option>
-                        <option>IGCSE O Level</option>
-                        <option>ALMA – A Levels for Medical Aspirants</option>
-                        <option>Not sure yet</option>
+                        <option data-key="ossd">OSSD – Ontario Secondary School Diploma</option>
+                        <option data-key="mad">2027 Med Aspirant Discount (OSSD scholarship)</option>
+                        <option data-key="ged">GED – General Educational Development</option>
+                        <option data-key="igcse">IGCSE O Level</option>
+                        <option data-key="alma">ALMA – A Levels for Medical Aspirants</option>
+                        <option data-key="unsure">Not sure yet</option>
                     </select>
                 </div>
                 <div class="enquiry-field">
@@ -3032,6 +3034,14 @@
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('enquiry-form');
             if (!form) return;
+            // Every sign-up button on the page scrolls here; data-enquire preselects the programme.
+            document.querySelectorAll('[data-enquire]').forEach(function (a) {
+                a.addEventListener('click', function () {
+                    var opt = a.dataset.enquire && form.querySelector('option[data-key="' + a.dataset.enquire + '"]');
+                    if (opt) opt.selected = true;
+                    setTimeout(function () { document.getElementById('enq-name').focus({ preventScroll: true }); }, 600);
+                });
+            });
             var btn = document.getElementById('enq-btn');
             var err = document.getElementById('enq-error');
             form.addEventListener('submit', function (e) {
