@@ -153,8 +153,8 @@
       <span>Veritas Aescula Institute, in partnership with Canaway Global Learning</span>
     </a>
     <!-- Default text is the pre-registration version; the script swaps it in scholarship mode. -->
-    <h1 id="page-title">Pre-register with Veritas Aescula Institute</h1>
-    <p id="page-lede">Tell us about yourself and the programme you are interested in. Our admissions team will contact you by Viber or email.</p>
+    <h1 id="page-title">Ask us about a programme</h1>
+    <p id="page-lede">Leave your name and number. Our admissions team will contact you by Viber or email to answer your questions.</p>
     <span class="left" id="places-pill" data-mad-left hidden>11 of 11 places left</span>
   </div>
 </header>
@@ -183,10 +183,10 @@
         data-netlify="true" netlify-honeypot="company" id="apply-form">
 
     <input type="hidden" name="form-name" value="vai-application">
-    <input type="hidden" name="subject" id="subject" value="New pre-registration">
+    <input type="hidden" name="subject" id="subject" value="New enquiry">
     <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
 
-    <p class="intro">Every question needs an answer unless it is marked optional. The form takes about five minutes.</p>
+    <p class="intro" id="intro">It takes less than a minute.</p>
 
     <fieldset>
       <legend>What would you like to do?</legend>
@@ -194,7 +194,7 @@
         <label class="option">
           <input type="radio" name="application_type" value="preregister" checked>
           <span>
-            <strong>Pre-register for a programme</strong>
+            <strong>Ask about a programme</strong>
             <small>OSSD, GED, IGCSE O Level or ALMA A Levels</small>
           </span>
         </label>
@@ -212,19 +212,38 @@
     <fieldset>
       <legend>About you</legend>
       <div class="field">
-        <label for="full_name">Full name <span class="hint">(as on your passport)</span></label>
+        <label for="full_name">Your name</label>
         <input id="full_name" name="full_name" type="text" required autocomplete="name">
       </div>
       <div class="row">
         <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required autocomplete="email">
-        </div>
-        <div class="field">
           <label for="phone">Viber or WhatsApp number</label>
           <input id="phone" name="phone" type="tel" required placeholder="+95 9…" autocomplete="tel">
         </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email">
+        </div>
       </div>
+
+      <!-- Both selects are named "programme"; only the one for the current mode is enabled. -->
+      <div class="field" data-mode="preregister">
+        <label for="programme_pre">Which programme are you interested in?</label>
+        <select id="programme_pre" name="programme" required>
+          <option value="">Select</option>
+          <option data-key="ossd">OSSD – Ontario Secondary School Diploma</option>
+          <option data-key="ged">GED – General Educational Development</option>
+          <option data-key="igcse">IGCSE O Level</option>
+          <option data-key="alma">ALMA – A Levels for Medical Aspirants</option>
+          <option data-key="unsure">Not sure yet</option>
+        </select>
+      </div>
+      <div class="field" data-mode="preregister">
+        <label for="message">Your question <span class="hint">(optional)</span></label>
+        <textarea id="message" name="message" maxlength="1500" rows="3"></textarea>
+      </div>
+
+      <div data-mode="scholarship" hidden>
       <div class="row">
         <div class="field">
           <label for="country">Country you live in</label>
@@ -252,13 +271,14 @@
           </div>
         </div>
       </div>
+      </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset data-mode="scholarship" hidden>
       <legend>Your studies</legend>
       <div class="field">
         <label for="level">Highest level you have completed</label>
-        <select id="level" name="current_level" required>
+        <select id="level" name="current_level" required disabled>
           <option value="">Select</option>
           <option>Grade 10 / Matthayom 4 (M.4) / Secondary 4</option>
           <option>Grade 11 / Matthayom 5 (M.5)</option>
@@ -272,20 +292,7 @@
         <label for="results">Recent results <span class="hint">(optional, e.g. grades in Biology, Chemistry, Maths)</span></label>
         <textarea id="results" name="recent_results"></textarea>
       </div>
-
-      <!-- Both selects are named "programme"; only the one for the current mode is enabled. -->
-      <div class="field" data-mode="preregister">
-        <label for="programme_pre">Which programme are you interested in?</label>
-        <select id="programme_pre" name="programme" required>
-          <option value="">Select</option>
-          <option data-key="ossd">OSSD – Ontario Secondary School Diploma</option>
-          <option data-key="ged">GED – General Educational Development</option>
-          <option data-key="igcse">IGCSE O Level</option>
-          <option data-key="alma">ALMA – A Levels for Medical Aspirants</option>
-          <option data-key="unsure">Not sure yet</option>
-        </select>
-      </div>
-      <div class="field" data-mode="scholarship" hidden>
+      <div class="field">
         <label for="programme_mad">Which OSSD programme are you interested in?</label>
         <select id="programme_mad" name="programme" required disabled>
           <option value="">Select</option>
@@ -324,16 +331,14 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <p class="intro" data-mode="preregister">By sending this, you agree that Veritas Aescula Institute may contact you by Viber, WhatsApp or email.</p>
+
+    <fieldset data-mode="scholarship" hidden>
       <legend>Last details</legend>
-      <div class="field" data-mode="preregister">
-        <label for="message">Anything you would like to ask or tell us? <span class="hint">(optional)</span></label>
-        <textarea id="message" name="message" maxlength="1500"></textarea>
-      </div>
       <div class="row">
         <div class="field">
           <label for="source">How did you hear about us? <span class="hint">(optional)</span></label>
-          <select id="source" name="heard_from">
+          <select id="source" name="heard_from" disabled>
             <option value="">Select</option>
             <option>Facebook</option>
             <option>TikTok</option>
@@ -347,7 +352,7 @@
       </div>
       <div class="consent">
         <label class="choice">
-          <input type="checkbox" name="consent" value="Yes" required>
+          <input type="checkbox" name="consent" value="Yes" required disabled>
           <span>The information I have given is true. Veritas Aescula Institute may contact me (and my parent or guardian, if I am under 18) by email, Viber or WhatsApp about this application.</span>
         </label>
       </div>
@@ -358,7 +363,7 @@
       <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>.
     </div>
 
-    <button type="submit" id="submit-btn">Submit pre-registration</button>
+    <button type="submit" id="submit-btn">Send</button>
   </form>
 
   <p class="contact">Questions? Viber <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a> or visit <a href="index.html">veritasaescula.com</a></p>
@@ -377,15 +382,17 @@
     // Wording for each use of the form.
     var MODES = {
       preregister: {
-        title: 'Pre-register with Veritas Aescula Institute',
-        lede: 'Tell us about yourself and the programme you are interested in. Our admissions team will contact you by Viber or email.',
-        button: 'Submit pre-registration',
-        subject: 'New pre-registration',
-        tab: 'Pre-register | Veritas Aescula Institute'
+        title: 'Ask us about a programme',
+        lede: 'Leave your name and number. Our admissions team will contact you by Viber or email to answer your questions.',
+        intro: 'It takes less than a minute.',
+        button: 'Send',
+        subject: 'New enquiry',
+        tab: 'Enquire | Veritas Aescula Institute'
       },
       scholarship: {
         title: 'Apply for the 2027 Med Aspirant Discount',
         lede: 'USD 5,600 off OSSD tuition for December 2026 intake students who will sit a medical school entrance exam in early 2027.',
+        intro: 'Every question needs an answer unless it is marked optional. The form takes about five minutes.',
         button: 'Submit application',
         subject: 'New MAD scholarship application',
         tab: 'Apply: 2027 Med Aspirant Discount | Veritas Aescula Institute'
@@ -411,6 +418,7 @@
       radios.forEach(function (r) { r.checked = r.value === mode; });
       document.getElementById('page-title').textContent = text.title;
       document.getElementById('page-lede').textContent = text.lede;
+      document.getElementById('intro').textContent = text.intro;
       document.getElementById('places-pill').hidden = mode !== 'scholarship';
       document.getElementById('subject').value = text.subject;
       document.title = text.tab;
