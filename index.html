@@ -932,6 +932,40 @@
             color: var(--light-beige);
         }
 
+        /* Enquiry form in Get In Touch (posts to the same Google Sheet as apply.html) */
+        .enquiry {
+            max-width: 640px;
+            margin: 2.5rem auto 0;
+            padding: 2rem 1.75rem;
+            background: #F7F1E8;
+            color: #2B1A1C;
+            border-radius: 20px;
+            text-align: left;
+            box-shadow: 0 18px 48px rgba(0,0,0,.18);
+        }
+        .enquiry h3 { font-family: var(--serif, Georgia, serif); font-weight: 600; font-size: 1.5rem; color: #4A1419; margin-bottom: .25rem; }
+        .enquiry .enquiry-lede { font-size: .95rem; color: #5B4648; margin-bottom: 1.25rem; }
+        .enquiry-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .enquiry-field { margin-bottom: 1rem; }
+        .enquiry-field label { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .35rem; }
+        .enquiry-field .hint { font-weight: 400; color: #5B4648; }
+        .enquiry-field input, .enquiry-field select, .enquiry-field textarea {
+            width: 100%; padding: .75rem .9rem; font: inherit; font-size: 1rem; color: #2B1A1C;
+            background: #fff; border: 1px solid #D7CAB7; border-radius: 12px;
+        }
+        .enquiry-field input:focus, .enquiry-field select:focus, .enquiry-field textarea:focus { outline: 2px solid #C8A75E; outline-offset: 1px; border-color: #C8A75E; }
+        .enquiry-field textarea { min-height: 84px; resize: vertical; }
+        .enquiry .hp { position: absolute; left: -9999px; }
+        .enquiry-note { font-size: .82rem; color: #5B4648; margin: .25rem 0 1rem; }
+        .enquiry button {
+            width: 100%; padding: .95rem; border: 0; border-radius: 999px; cursor: pointer;
+            font: 700 1.05rem 'Montserrat', Arial, sans-serif; color: #F7F1E8; background: var(--primary-maroon);
+        }
+        .enquiry button:disabled { opacity: .7; cursor: wait; }
+        .enquiry-error { margin-top: 1rem; font-size: .9rem; color: #7D242B; }
+        .enquiry-error a { color: #7D242B; font-weight: 700; }
+        @media (max-width: 560px) { .enquiry-row { grid-template-columns: 1fr; gap: 0; } .enquiry { padding: 1.5rem 1.1rem; } }
+
         /* IGCSE Pathway Section */
         .pathway-section {
             background: var(--background-light);
@@ -2831,6 +2865,48 @@
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <p class="animate-on-scroll">Ready to transform your academic journey? Contact us to learn more about our programs and how we can help you achieve your healthcare career goals.</p>
+
+            <!-- Short enquiry form: same fields and Sheet tab as the enquiry mode of apply.html -->
+            <form class="enquiry" id="enquiry-form" novalidate>
+                <h3>Ask us about a programme</h3>
+                <p class="enquiry-lede">Leave your name and number. It takes less than a minute.</p>
+                <input type="hidden" name="application_type" value="preregister">
+                <input type="hidden" name="subject" value="New enquiry (homepage)">
+                <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+                <div class="enquiry-field">
+                    <label for="enq-name">Your name</label>
+                    <input id="enq-name" name="full_name" type="text" required autocomplete="name">
+                </div>
+                <div class="enquiry-row">
+                    <div class="enquiry-field">
+                        <label for="enq-phone">Viber or WhatsApp number</label>
+                        <input id="enq-phone" name="phone" type="tel" required placeholder="+95 9…" autocomplete="tel">
+                    </div>
+                    <div class="enquiry-field">
+                        <label for="enq-email">Email</label>
+                        <input id="enq-email" name="email" type="email" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="enquiry-field">
+                    <label for="enq-programme">Which programme are you interested in?</label>
+                    <select id="enq-programme" name="programme" required>
+                        <option value="">Select</option>
+                        <option>OSSD – Ontario Secondary School Diploma</option>
+                        <option>GED – General Educational Development</option>
+                        <option>IGCSE O Level</option>
+                        <option>ALMA – A Levels for Medical Aspirants</option>
+                        <option>Not sure yet</option>
+                    </select>
+                </div>
+                <div class="enquiry-field">
+                    <label for="enq-message">Your question <span class="hint">(optional)</span></label>
+                    <textarea id="enq-message" name="message" maxlength="1500"></textarea>
+                </div>
+                <p class="enquiry-note">By sending this, you agree that Veritas Aescula Institute may contact you by Viber, WhatsApp or email.</p>
+                <button type="submit" id="enq-btn">Send</button>
+                <p class="enquiry-error" id="enq-error" role="alert" hidden>We could not send your enquiry just now. Please try again in a minute, or message us on Viber at <a href="https://viber.click/959797613726" target="_blank" rel="noopener">+95 9 797 613 726</a>.</p>
+            </form>
+
             <div class="contact-info">
                 <div class="contact-item animate-on-scroll">
                     <h3>📧 Email</h3>
@@ -2950,6 +3026,40 @@
     </footer>
 
     <script src="mad-slots.js" defer></script>
+    <script src="form-config.js" defer></script>
+    <script>
+        // Homepage enquiry form: posts to the Google Sheet (form-config.js), then shows the thank-you page.
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('enquiry-form');
+            if (!form) return;
+            var btn = document.getElementById('enq-btn');
+            var err = document.getElementById('enq-error');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                if (btn.disabled) return;
+                if (!form.checkValidity()) { form.reportValidity(); return; }
+                if (form.elements.company.value) { location.href = 'thank-you.html?type=preregister'; return; }
+                var url = window.VAI_FORM && window.VAI_FORM.sheetEndpoint;
+                err.hidden = true;
+                btn.disabled = true;
+                btn.textContent = 'Sending…';
+                var ctrl = new AbortController();
+                var timer = setTimeout(function () { ctrl.abort(); }, 25000);
+                fetch(url, { method: 'POST', body: new URLSearchParams(new FormData(form)), signal: ctrl.signal })
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                        if (!data || data.result !== 'success') throw new Error('not saved');
+                        location.href = 'thank-you.html?type=preregister';
+                    })
+                    .catch(function () {
+                        btn.disabled = false;
+                        btn.textContent = 'Send';
+                        err.hidden = false;
+                    })
+                    .finally(function () { clearTimeout(timer); });
+            });
+        });
+    </script>
     <script>
         // Mobile menu toggle
         const navLinks = document.getElementById('navLinks');
