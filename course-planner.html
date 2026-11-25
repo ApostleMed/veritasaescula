@@ -388,6 +388,17 @@
         .daad-foot { margin-top:.5rem; font-size:.78rem; opacity:.85; }
 
         .pool-more { padding:.6rem .1rem 0; }
+        .fit-group { border-style:solid; }
+        .pool-cat { border-top:1px solid var(--beige-mid); }
+        .pool-cat summary {
+            cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center;
+            padding:.6rem .2rem; font-size:.8rem; font-weight:700; color:var(--text-dark);
+        }
+        .pool-cat summary::-webkit-details-marker { display:none; }
+        .pool-cat summary::after { content:'+'; font-weight:800; color:var(--primary-maroon); margin-left:.5rem; }
+        .pool-cat[open] summary::after { content:'−'; }
+        .pool-cat summary span { margin-left:auto; font-size:.7rem; font-weight:700; color:var(--text-light); }
+        .pool-cat[open] { padding-bottom:.3rem; }
         .pool-more .course-chip { margin-bottom:.4rem; }
         .daad-group { border-color:var(--primary-maroon); }
         .block-letter {
@@ -649,7 +660,7 @@
                         <div class="panel-head">
                             <h3>📚 Course Pool</h3>
                         </div>
-                        <p class="panel-hint">Tap a course to place it, or drag it into any slot. Drag placed courses between slots to reorder. Recommended groups take one or more.</p>
+                        <p class="panel-hint">Tap a course to place it, or drag it into any slot. Drag placed courses between slots to reorder. Recommended groups take one or more. <strong>U</strong> and <strong>M</strong> courses count toward your university Top 6; <strong>O</strong> (Open) courses count toward the diploma only.</p>
                         <div class="pool-list" id="poolList"></div>
                     </div>
 
@@ -723,53 +734,97 @@
 
 <script>
 /* ════════ COURSE CATALOG ════════ */
+/* n: name · l: level (U University, M University/College, O Open) · s: subject area
+   U and M courses count toward the university Top 6 average; O courses count toward the diploma only. */
 const COURSES = {
-  ENG4U:{n:'English',l:'U'},            OLC4O:{n:'Ontario Literacy Course',l:'O'},
-  SBI4U:{n:'Biology',l:'U'},            SCH4U:{n:'Chemistry',l:'U'},
-  SPH4U:{n:'Physics',l:'U'},            SES4U:{n:'Earth & Space Science',l:'U'},
-  MHF4U:{n:'Advanced Functions',l:'U'}, MCV4U:{n:'Calculus & Vectors',l:'U'},
-  MDM4U:{n:'Data Management',l:'U'},    ICS4U:{n:'Computer Science',l:'U'},
-  HZT4U:{n:'Philosophy',l:'U'},         PSK4U:{n:'Kinesiology',l:'U'},
-  CIA4U:{n:'Economic Issues',l:'U'},    CGW4U:{n:'World Issues',l:'U'},
-  CPW4U:{n:'Politics',l:'U'},           CHY4U:{n:'World History',l:'U'},
-  CLN4U:{n:'Law',l:'U'},                CHI4U:{n:'Canada: History & Identity',l:'U'},
-  HSB4U:{n:'Challenge & Change',l:'U'}, HHS4U:{n:'Families in Canada',l:'U'},
-  EWC4U:{n:"The Writer's Craft",l:'U'}, ETS4U:{n:'Studies in Literature',l:'U'},
-  BAT4M:{n:'Financial Accounting',l:'M'},BBB4M:{n:'International Business',l:'M'},
-  BOH4M:{n:'Business Leadership',l:'M'}, AVI4M:{n:'Visual Arts',l:'M'},
-  ADA4M:{n:'Dramatic Arts',l:'M'},       AMU4M:{n:'Music',l:'M'},
-  TGJ4M:{n:'Communications Tech',l:'M'}, TDJ4M:{n:'Technological Design',l:'M'},
-  LWG4U:{n:'International Language',l:'U'}
+  // English
+  ENG4U:{n:'English',l:'U',s:'eng'},                       OLC4O:{n:'Ontario Literacy Course',l:'O',s:'eng'},
+  EWC4U:{n:"The Writer's Craft",l:'U',s:'eng'},            ETS4U:{n:'Studies in Literature',l:'U',s:'eng'},
+  EBT4O:{n:'Business & Technological Communication',l:'O',s:'eng'},
+  // Mathematics
+  MHF4U:{n:'Advanced Functions',l:'U',s:'math'},           MCV4U:{n:'Calculus & Vectors',l:'U',s:'math'},
+  MDM4U:{n:'Data Management',l:'U',s:'math'},
+  // Science
+  SBI4U:{n:'Biology',l:'U',s:'sci'},                       SCH4U:{n:'Chemistry',l:'U',s:'sci'},
+  SPH4U:{n:'Physics',l:'U',s:'sci'},                       SES4U:{n:'Earth & Space Science',l:'U',s:'sci'},
+  SNC4M:{n:'Science',l:'M',s:'sci'},
+  // Computer studies
+  ICS4U:{n:'Computer Science',l:'U',s:'comp'},
+  // Business
+  BAT4M:{n:'Financial Accounting',l:'M',s:'biz'},          BBB4M:{n:'International Business',l:'M',s:'biz'},
+  BOH4M:{n:'Business Leadership',l:'M',s:'biz'},
+  // Canadian & World Studies
+  CIA4U:{n:'Economic Issues',l:'U',s:'cws'},               CGW4U:{n:'World Issues',l:'U',s:'cws'},
+  CPW4U:{n:'Politics',l:'U',s:'cws'},                      CHY4U:{n:'World History',l:'U',s:'cws'},
+  CLN4U:{n:'Law',l:'U',s:'cws'},                           CHI4U:{n:'Canada: History & Identity',l:'U',s:'cws'},
+  CGR4M:{n:'Environment & Resource Management',l:'M',s:'cws'}, CGU4M:{n:'World Geography: Urban Patterns',l:'M',s:'cws'},
+  CGO4M:{n:'Spatial Technologies',l:'M',s:'cws'},
+  NDG4M:{n:'Indigenous Governance in Canada',l:'M',s:'cws'}, NDW4M:{n:'Contemporary Indigenous Issues',l:'M',s:'cws'},
+  // Social sciences & humanities
+  HZT4U:{n:'Philosophy',l:'U',s:'soc'},                    HSB4U:{n:'Challenge & Change',l:'U',s:'soc'},
+  HHS4U:{n:'Families in Canada',l:'U',s:'soc'},            HFA4U:{n:'Nutrition & Health',l:'U',s:'soc'},
+  HHG4M:{n:'Human Development',l:'M',s:'soc'},             HSE4M:{n:'Equity & Social Justice',l:'M',s:'soc'},
+  HSC4M:{n:'World Cultures',l:'M',s:'soc'},                HNB4M:{n:'The World of Fashion',l:'M',s:'soc'},
+  HIP4O:{n:'Personal Life Management',l:'O',s:'soc'},
+  // Arts
+  AVI4M:{n:'Visual Arts',l:'M',s:'arts'},                  ADA4M:{n:'Dramatic Arts',l:'M',s:'arts'},
+  AMU4M:{n:'Music',l:'M',s:'arts'},                        ASM4M:{n:'Media Arts',l:'M',s:'arts'},
+  ATC4M:{n:'Dance',l:'M',s:'arts'},                        AEA4O:{n:'Exploring & Creating in the Arts',l:'O',s:'arts'},
+  // Health & physical education
+  PSK4U:{n:'Kinesiology',l:'U',s:'hpe'},                   PLF4M:{n:'Recreation & Active Living Leadership',l:'M',s:'hpe'},
+  PPL4O:{n:'Healthy Active Living',l:'O',s:'hpe'},
+  // Languages (Level 3 international and classical languages count as Grade 12 U)
+  LWGDU:{n:'German, Level 3',l:'U',s:'lang'},              LWSDU:{n:'Spanish, Level 3',l:'U',s:'lang'},
+  LKMDU:{n:'Mandarin, Level 3',l:'U',s:'lang'},            LVLDU:{n:'Latin, Level 3',l:'U',s:'lang'},
+  LVV4U:{n:'Classical Civilization',l:'U',s:'lang'},
+  // Technological education
+  TPJ4M:{n:'Health Care',l:'M',s:'tech'},                  TGJ4M:{n:'Communications Tech',l:'M',s:'tech'},
+  TDJ4M:{n:'Technological Design',l:'M',s:'tech'},         TEJ4M:{n:'Computer Engineering Tech',l:'M',s:'tech'},
+  TMJ4M:{n:'Manufacturing Engineering Tech',l:'M',s:'tech'}, THJ4M:{n:'Green Industries',l:'M',s:'tech'},
+  // Interdisciplinary & guidance
+  IDC4U:{n:'Interdisciplinary Studies',l:'U',s:'inter'},   GLS4O:{n:'Advanced Learning Strategies',l:'O',s:'inter'}
+};
+const SUBJECTS = {
+  eng:'English', math:'Mathematics', sci:'Science', comp:'Computer Studies', biz:'Business Studies',
+  cws:'Canadian & World Studies', soc:'Social Sciences & Humanities', arts:'The Arts',
+  hpe:'Health & Physical Education', lang:'Languages', tech:'Technological Education', inter:'Interdisciplinary & Guidance'
 };
 
 /* ════════ STREAMS ════════ */
 const STREAMS = [
   { id:'health', icon:'🩺', name:'Healthcare & Pre-Medical', tag:'8 U courses',
     desc:'Medicine, dentistry, pharmacy, nursing, physiotherapy',
+    suggest:['HFA4U','HHG4M','TPJ4M','PSK4U','HZT4U','MDM4U','HSB4U','PLF4M'],
     picks:[['ENG4U'],['OLC4O'],['SBI4U'],['SCH4U'],['SPH4U'],['MHF4U'],['MCV4U'],['HZT4U','PSK4U']] },
 
   { id:'eng', icon:'⚙️', name:'Engineering', tag:'all U courses',
     desc:'Civil, mechanical, electrical, chemical & biomedical engineering',
+    suggest:['ICS4U','SBI4U','MDM4U','SES4U','TDJ4M','TEJ4M','TMJ4M','IDC4U'],
     picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MCV4U'],['SPH4U'],['SCH4U'],['ICS4U','SBI4U'],['MDM4U','SES4U']] },
 
   { id:'it', icon:'💻', name:'IT / Computer Science', tag:'all U courses',
     desc:'Software engineering, data science, AI & cybersecurity',
+    suggest:['ICS4U','TEJ4M','TGJ4M','MDM4U','IDC4U','HZT4U','SPH4U'],
     picks:[['ENG4U'],['OLC4O'],['ICS4U'],['MHF4U'],['MCV4U'],['MDM4U'],['SPH4U','SBI4U'],['SCH4U','SES4U']] },
 
   { id:'biz', icon:'📈', name:'Business, Finance & Commerce', tag:'6 U + business core',
     desc:'Commerce, accounting, finance, management & economics',
+    suggest:['BAT4M','BBB4M','BOH4M','CIA4U','CLN4U','CGU4M','MDM4U','EBT4O'],
     picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MDM4U'],['CIA4U'],['MCV4U','ICS4U'],['BAT4M','BBB4M'],['BOH4M','CGW4U']] },
 
   { id:'social', icon:'🌍', name:'Social Science & International Relations', tag:'all U courses',
     desc:'Politics, law, diplomacy, sociology & global studies',
+    suggest:['CLN4U','CHI4U','CHY4U','CPW4U','HSE4M','HSC4M','NDW4M','NDG4M','LVV4U','CIA4U'],
     picks:[['ENG4U'],['OLC4O'],['CPW4U'],['CGW4U'],['CHY4U','CLN4U'],['HSB4U','HZT4U'],['CIA4U','CHI4U'],['MDM4U','MHF4U']] },
 
   { id:'arts', icon:'🎨', name:'Arts (Visual, Creative & Performing)', tag:'6 U + studio core',
     desc:'Fine arts, design, media, music, theatre & creative writing',
+    suggest:['ASM4M','ATC4M','ADA4M','AMU4M','AVI4M','TGJ4M','EWC4U','HNB4M','AEA4O'],
     picks:[['ENG4U'],['OLC4O'],['EWC4U','ETS4U'],['HZT4U'],['HSB4U','HHS4U'],['AVI4M','ADA4M'],['AMU4M','TGJ4M'],['MDM4U','CHY4U']] },
 
   { id:'arch', icon:'🏛️', name:'Architecture', tag:'6 U + design core',
     desc:'Architecture, urban planning, interior & industrial design',
+    suggest:['TDJ4M','AVI4M','CGU4M','CGR4M','CGO4M','MDM4U','SES4U','TMJ4M'],
     picks:[['ENG4U'],['OLC4O'],['MHF4U'],['MCV4U'],['SPH4U'],['SCH4U','MDM4U'],['TDJ4M','AVI4M'],['SES4U','CGW4U']] }
 ];
 
@@ -782,7 +837,7 @@ const PATHWAYS = [
     where:'Hungary, Czech Republic, Malaysia, China' },
   { icon:'💊', name:'Pharmacy', all:['SBI4U','SCH4U'], anyOf:[['MHF4U','MCV4U','MDM4U']],
     where:'UK, Canada, Malaysia, Thailand' },
-  { icon:'🏥', name:'Nursing & Allied Health', all:['SBI4U'], anyOf:[['SCH4U','PSK4U']],
+  { icon:'🏥', name:'Nursing & Allied Health', all:['SBI4U'], anyOf:[['SCH4U','PSK4U','HFA4U']],
     where:'Canada, Australia, UK, Singapore' },
   { icon:'🏃', name:'Physiotherapy & Kinesiology', all:['SBI4U'], anyOf:[['PSK4U','SCH4U']],
     where:'Canada, Australia, New Zealand' },
@@ -796,15 +851,15 @@ const PATHWAYS = [
     where:'Canada, UK, Singapore, Hong Kong, Australia' },
   { icon:'💰', name:'Accounting & Finance', all:['MHF4U'], anyOf:[['BAT4M','CIA4U','MDM4U']],
     where:'UK, Canada, Singapore, Australia' },
-  { icon:'⚖️', name:'Law & Legal Studies', all:['ENG4U'], anyOf:[['CLN4U','CPW4U','CHY4U','HZT4U']],
+  { icon:'⚖️', name:'Law & Legal Studies', all:['ENG4U'], anyOf:[['CLN4U','CPW4U','CHY4U','HZT4U','CHI4U']],
     where:'UK, Canada, Australia' },
   { icon:'🌍', name:'International Relations & Politics', all:['ENG4U'], anyOf:[['CPW4U','CGW4U','CHY4U']],
     where:'UK, Netherlands, Canada, Czech Republic' },
-  { icon:'🧠', name:'Psychology & Social Sciences', all:['ENG4U'], anyOf:[['HSB4U','SBI4U','HHS4U','HZT4U']],
+  { icon:'🧠', name:'Psychology & Social Sciences', all:['ENG4U'], anyOf:[['HSB4U','SBI4U','HHS4U','HZT4U','HHG4M']],
     where:'Canada, UK, Australia, Netherlands' },
   { icon:'🏛️', name:'Architecture & Urban Design', all:['MHF4U','SPH4U'], anyOf:[['TDJ4M','AVI4M','MCV4U']],
     where:'Canada, UK, Italy, Australia' },
-  { icon:'🎨', name:'Fine Arts, Design & Media', all:['ENG4U'], anyOf:[['AVI4M','ADA4M','AMU4M','TGJ4M','EWC4U']],
+  { icon:'🎨', name:'Fine Arts, Design & Media', all:['ENG4U'], anyOf:[['AVI4M','ADA4M','AMU4M','ASM4M','ATC4M','TGJ4M','EWC4U']],
     where:'Canada, UK, Italy, Australia' },
   { icon:'🔬', name:'Pure & Applied Sciences', all:[], anyOf:[['SBI4U','SCH4U','SPH4U','SES4U'],['MHF4U','MCV4U']],
     where:'Canada, UK, Germany, Australia' }
@@ -815,13 +870,14 @@ const PATHWAYS = [
    every other destination uses the standard 8-course plan.              */
 const MODES = { other:{ slots:8 }, germany:{ slots:12 } };
 const SCIENCES = ['SBI4U','SCH4U','SPH4U'];
-const FOREIGN_LANGS = ['LWG4U'];
+const FOREIGN_LANGS = ['LWGDU','LWSDU','LKMDU'];   // Germany: any one foreign language
 
 /* ════════ STATE ════════ */
 let mode = 'other';
 let currentStream = null;
 let slots = new Array(MODES[mode].slots).fill(null);   // slot index → course code
 let drag = null;                                        // in-flight drag state, see startDrag()
+const openCats = new Set();                             // subject groups the student has expanded
 
 /* ════════ INIT ════════ */
 function initStreams() {
@@ -879,13 +935,18 @@ function renderPool() {
   // courses Germany asks for that this stream doesn't already include
   let forGermany = [];
   if (mode === 'germany') {
-    const needed = [...FOREIGN_LANGS, 'MHF4U', 'MCV4U'].filter(c => !inStream.has(c));
-    // Germany asks for one natural science, whatever the student plans to study
+    const needed = ['MHF4U', 'MCV4U'].filter(c => !inStream.has(c));
+    // Germany asks for one natural science and one foreign language, whatever the student plans to study
     const sciences = SCIENCES.some(c => inStream.has(c)) ? [] : SCIENCES;
-    forGermany = [...needed, ...sciences];
+    forGermany = [...needed, ...FOREIGN_LANGS, ...sciences];
     if (needed.length) html += `<div class="choice-group daad-group">
         <span class="choice-group-label">🇩🇪 Needed for Germany</span>
         ${needed.map(c => chipHTML(c, used, 'Germany')).join('')}
+      </div>`;
+    const langN = FOREIGN_LANGS.filter(c => used.includes(c)).length;
+    html += `<div class="choice-group daad-group">
+        <span class="choice-group-label">🇩🇪 ${langN ? '✓ Language chosen' : 'Germany: pick one foreign language'}</span>
+        ${FOREIGN_LANGS.map(c => chipHTML(c, used, 'Germany · one language')).join('')}
       </div>`;
     if (sciences.length) {
       const n = sciences.filter(c => used.includes(c)).length;
@@ -896,14 +957,34 @@ function renderPool() {
     }
   }
 
-  const rest = Object.keys(COURSES).filter(c => !inStream.has(c) && !forGermany.includes(c));
+  // electives that suit this stream, then the rest of the catalogue by subject area
+  const shown = new Set([...inStream, ...forGermany]);
+  const fits = (currentStream.suggest || []).filter(c => !shown.has(c));
+  fits.forEach(c => shown.add(c));
+  if (fits.length) html += `<div class="choice-group fit-group">
+      <span class="choice-group-label">Also good for ${currentStream.name}</span>
+      ${fits.map(c => chipHTML(c, used, kindOf(c, 'Good fit'))).join('')}
+    </div>`;
+
+  const bySubject = {};
+  Object.keys(COURSES).filter(c => !shown.has(c)).forEach(c => (bySubject[COURSES[c].s] ||= []).push(c));
   html += `<div class="pool-more">
-      <span class="choice-group-label">All other courses</span>
-      ${rest.map(c => chipHTML(c, used, 'Optional')).join('')}
+      <span class="choice-group-label">More OSSD courses by subject</span>
+      ${Object.keys(SUBJECTS).filter(k => bySubject[k]).map(k => `
+        <details class="pool-cat"${openCats.has(k) ? ' open' : ''} data-cat="${k}">
+          <summary>${SUBJECTS[k]} <span>${bySubject[k].length}</span></summary>
+          ${bySubject[k].map(c => chipHTML(c, used, kindOf(c, 'Optional'))).join('')}
+        </details>`).join('')}
     </div>`;
 
   document.getElementById('poolList').innerHTML = html;
+  document.querySelectorAll('.pool-cat').forEach(d => d.addEventListener('toggle', () => {
+    d.open ? openCats.add(d.dataset.cat) : openCats.delete(d.dataset.cat);
+  }));
 }
+
+// Open courses still earn a credit but are not counted in university admission averages
+function kindOf(code, label) { return COURSES[code].l === 'O' ? 'Open · diploma credit only' : label; }
 
 function chipHTML(code, used, kind) {
   const c = COURSES[code];
@@ -1072,7 +1153,7 @@ function daadChecks(chosen) {
   return [
     { ok: u.length >= 6, text:`At least 6 University (U) courses (you have ${u.length})` },
     { ok: chosen.includes('ENG4U'), text:'English: ENG4U' },
-    { ok: FOREIGN_LANGS.some(c => chosen.includes(c)), text:'A foreign language: LWG4U International Language' },
+    { ok: FOREIGN_LANGS.some(c => chosen.includes(c)), text:'A foreign language: LWGDU German, LWSDU Spanish or LKMDU Mandarin' },
     { ok: chosen.includes('MHF4U') && chosen.includes('MCV4U'), text:'Maths: MHF4U Advanced Functions and MCV4U Calculus &amp; Vectors' },
     { ok: sci.length > 0, text:'A natural science: SBI4U, SCH4U or SPH4U' },
     { ok: u.some(c => !core.has(c)), text:'One more academic subject (any other U course)' }
@@ -1099,6 +1180,10 @@ function updateProgress() {
       problems.push(`Choose at least one: ${group.map(c => `<strong>${c}</strong>`).join(' or ')}`);
   });
   if (filled < cap) problems.push(`Place ${cap - filled} more course${cap - filled > 1 ? 's' : ''} to fill all ${cap} slots`);
+  // universities rank applicants on their best 6 Grade 12 U/M courses
+  const top6 = chosen.filter(c => COURSES[c].l !== 'O').length;
+  if (mode !== 'germany' && filled === cap && top6 < 6)
+    problems.push(`Universities use your best <strong>6 U or M courses</strong>; you have ${top6}. Swap an Open (O) course for a U or M course`);
 
   const checks = mode === 'germany' ? daadChecks(chosen) : [];
   const daadMissing = checks.filter(c => !c.ok).length;
@@ -1114,7 +1199,7 @@ function updateProgress() {
     const n = problems.length + daadMissing;
     v.className = 'validation warn show';
     v.innerHTML = `<strong>⚠ ${n} item${n > 1 ? 's' : ''} to resolve</strong>
-      ${problems.length ? `<ul>${problems.slice(0,5).map(p => `<li>${p}</li>`).join('')}</ul>` : ''}${checklist}`;
+      ${problems.length ? `<ul>${problems.slice(0,6).map(p => `<li>${p}</li>`).join('')}</ul>` : ''}${checklist}`;
     btn.disabled = true;
   } else {
     v.className = 'validation ok show';
