@@ -19,19 +19,13 @@
       directEntryPerSubject: 195, floorPerSubject: 155,
       topTotal: 780, floorTotal: 620
     },
-    bands: [
-      { minComposite: 95, scholarship: 1.0 },
-      { minComposite: 90, scholarship: 0.9 },
-      { minComposite: 85, scholarship: 0.8 },
-      { minComposite: 80, scholarship: 0.7 },
-      { minComposite: 75, scholarship: 0.6 },
-      { minComposite: 70, scholarship: 0.5 },
-      { minComposite: 65, scholarship: 0.4 },
-      { minComposite: 60, scholarship: 0.3 },
-      { minComposite: 55, scholarship: 0.2 },
-      { minComposite: 50, scholarship: 0.1 },
-      { minComposite: 0, scholarship: 0.0 }
-    ],
+    // 5% steps: every 2.5 composite points adds 5%, from 10% at 50 to 95% at 92.5; 100% at 95+.
+    bands: (function () {
+      var out = [{ minComposite: 95, scholarship: 1.0 }];
+      for (var c = 92.5; c >= 50; c -= 2.5) out.push({ minComposite: c, scholarship: Math.round((0.10 + (c - 50) / 2.5 * 0.05) * 100) / 100 });
+      out.push({ minComposite: 0, scholarship: 0 });
+      return out;
+    })(),
     // Fees stay hidden (VAI policy: no ALMA fees on the website).
     fees: { SHOW_FEES: false }
   };
