@@ -2198,6 +2198,7 @@
         .alma-guide .faq-details p { margin: .6rem 0 0; }
     </style>
     <link rel="stylesheet" href="alma-ticket.css">
+    <link rel="stylesheet" href="alma-calculator.css?v=1">
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -2314,6 +2315,57 @@
                     </div>
                 </article>
             </div>
+
+            <!-- Scholarship calculator: logic in alma-calculator.js (spec: ALMA_scholarship_calculation.md) -->
+            <div class="calc animate-on-scroll" id="calculator" aria-labelledby="calc-title">
+                <div id="almaCalc">
+                    <div class="calc-head">
+                        <span class="calc-tag">Scholarship calculator</span>
+                        <h3 id="calc-title">Estimate your ALMA scholarship</h3>
+                        <p>Your scholarship is worked out from two parts, weighted equally: your O Level / IGCSE or GED results (50%) and your diagnostic exam score (50%). Enter your results to see where you could land.</p>
+                    </div>
+                    <div class="calc-grid">
+                        <div class="calc-inputs">
+                            <div class="calc-step">
+                                <p class="calc-step-label"><i>1</i>Choose your qualification</p>
+                                <div class="calc-seg" role="group" aria-label="Qualification">
+                                    <button type="button" data-qual="OLEVEL" aria-pressed="true">O Level / IGCSE</button>
+                                    <button type="button" data-qual="GED" aria-pressed="false">GED</button>
+                                </div>
+                            </div>
+                            <div class="calc-step" id="calcOlevel">
+                                <p class="calc-step-label"><i>2</i>Enter your 7 subject grades</p>
+                                <div class="calc-boards">Set all to:
+                                    <button type="button" data-board-all="CIE">Cambridge (CIE)</button>
+                                    <button type="button" data-board-all="EDX">Pearson Edexcel</button>
+                                </div>
+                                <div class="calc-rows" id="calcGrades"></div>
+                                <p class="calc-hint">Your best 6 subjects count. Edexcel 9 and 8 count as A*, 7 as A, 6 as B. A 5 counts as C. Predicted grades work too.</p>
+                            </div>
+                            <div class="calc-step" id="calcGedPanel" hidden>
+                                <p class="calc-step-label"><i>2</i>Enter your 4 GED scores</p>
+                                <div class="calc-ged" id="calcGed"></div>
+                            </div>
+                            <div class="calc-step">
+                                <p class="calc-step-label"><i>3</i><label for="calcDx">Your diagnostic exam score (out of 100)</label></p>
+                                <div class="calc-dx">
+                                    <input type="range" id="calcDxRange" min="0" max="100" step="1" value="70" aria-label="Diagnostic score slider">
+                                    <input type="number" id="calcDx" min="0" max="100" step="1" value="70" inputmode="numeric">
+                                </div>
+                                <p class="calc-hint">Use the score you expect. Your real score comes from the diagnostic exam and admissions interview.</p>
+                            </div>
+                        </div>
+                        <div class="calc-result is-empty" id="calcResult" aria-live="polite"></div>
+                    </div>
+                    <div class="calc-foot">
+                        <p>This is an estimate. The final scholarship is confirmed after the diagnostic exam and admissions interview, and depends on seats available in each cohort.</p>
+                        <div class="calc-foot-actions">
+                            <button type="button" class="calc-reset" id="calcReset">Reset</button>
+                            <a href="#register" class="cta-button">Book your free diagnostic</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -2391,28 +2443,6 @@
                                 <span class="dx-drop-text" id="dxDropText"><strong>Drag and drop, or tap to choose a file.</strong><br>JPG, PNG, WebP or PDF, up to 10 MB. Photos are resized automatically.</span>
                             </label>
                             <span class="dx-err" data-err="scoreImage"></span>
-                        </fieldset>
-
-                        <fieldset>
-                            <legend>Scholarship</legend>
-                            <label class="dx-switch">
-                                <input type="checkbox" id="applyingForScholarship" name="applyingForScholarship" role="switch" checked>
-                                <span class="dx-switch-ui" aria-hidden="true"></span>
-                                <span class="dx-switch-text">I am applying for an ALMA Scholarship (Direct Invite 7 A*, 6 A* Excellence, or Merit Scholarship)</span>
-                            </label>
-                            <div class="dx-pledge" id="dxPledge">
-                                <p class="dx-label" style="margin-bottom:.7rem">Scholarship pathway</p>
-                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="DIRECT_INVITE_7A"><span><strong>7 A* (or Grade 8–9) Direct Invite Scholarship</strong>Online interview only · exempt from the written exam</span></label>
-                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="EXCELLENCE_6A"><span><strong>6 A* (or Grade 8–9) Excellence Scholarship</strong>&gt;90% tuition fee discount, or 100% FOC if your diagnostic score is above 80</span></label>
-                                <label class="dx-track"><input type="radio" name="scholarshipTrack" value="MERIT_DIAGNOSTIC"><span><strong>ALMA Merit Scholarship</strong>Diagnostic exam + O Level composite score</span></label>
-                                <span class="dx-err" data-err="scholarshipTrack"></span>
-                                <label class="dx-switch dx-pledge-text">
-                                    <input type="checkbox" id="healthcarePledge" name="healthcarePledge" role="switch">
-                                    <span class="dx-switch-ui" aria-hidden="true"></span>
-                                    <span class="dx-switch-text">“I hereby pledge that upon completing the ALMA A-Levels programme, I will apply to and pursue my undergraduate degree at a recognized Healthcare or Medical University (Medicine, Dentistry, Pharmacy, Nursing, or Allied Health Sciences).”</span>
-                                </label>
-                                <span class="dx-err" data-err="healthcarePledge"></span>
-                            </div>
                         </fieldset>
 
                         <div class="sr-only" aria-hidden="true"><label>Company <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
@@ -2803,6 +2833,7 @@
         onScroll();
     </script>
     <script src="alma-ticket.js?v=2"></script>
+    <script src="alma-calculator.js?v=2"></script>
     <script>
         // ALMA diagnostic registration: live ticket preview, file handling and submit
         (function () {
@@ -2815,8 +2846,6 @@
                 EXCELLENCE_6A: '6 A* Excellence Scholarship',
                 MERIT_DIAGNOSTIC: 'ALMA Merit Scholarship'
             };
-            const sch = document.getElementById('applyingForScholarship');
-            const pledgeBox = document.getElementById('dxPledge');
             const status = document.getElementById('dxStatus');
             const submit = document.getElementById('dxSubmit');
             let upload = null;                     // the (possibly resized) results file
@@ -2824,23 +2853,21 @@
             function values() {
                 const fd = new FormData(form);
                 const code = fd.get('examCenter') || '';
-                const track = sch.checked ? (fd.get('scholarshipTrack') || '') : '';
                 return {
                     studentName: (fd.get('studentName') || '').trim(),
                     age: fd.get('age'),
                     studentPhone: (fd.get('studentPhone') || '').trim(),
                     centerCode: code,
                     center: CENTRES[code],
-                    applyingForScholarship: sch.checked,
-                    scholarshipTrack: track,
-                    track: TRACKS[track] || '',
-                    healthcarePledge: sch.checked && document.getElementById('healthcarePledge').checked
+                    applyingForScholarship: false,
+                    scholarshipTrack: '',
+                    track: '',
+                    healthcarePledge: false
                 };
             }
             const preview = () => VAITicket.render(ticketEl, values(), true);
             form.addEventListener('input', preview);
             form.addEventListener('change', preview);
-            sch.addEventListener('change', () => { pledgeBox.hidden = !sch.checked; });
             preview();
 
             // Results file: drag and drop, thumbnail, and resizing of large photos
@@ -2911,8 +2938,6 @@
                 if (!phone.test((fd.get('guardianPhone') || '').trim())) errs.guardianPhone = 'Enter a valid phone number.';
                 if (!v.centerCode) errs.examCenter = 'Choose an exam centre.';
                 if (!upload) errs.scoreImage = form.querySelector('[data-err="scoreImage"]').textContent || 'Upload your results or predicted grades.';
-                if (v.applyingForScholarship && !v.scholarshipTrack) errs.scholarshipTrack = 'Choose a scholarship pathway.';
-                if (v.applyingForScholarship && !v.healthcarePledge) errs.healthcarePledge = 'Please confirm the pledge to apply for a scholarship.';
                 return errs;
             }
 
@@ -2934,7 +2959,6 @@
 
                 const fd = new FormData(form);
                 fd.set('scoreImage', upload, upload.name);
-                fd.set('applyingForScholarship', sch.checked ? 'on' : '');
                 submit.disabled = true;
                 submit.textContent = 'Issuing your ticket…';
                 try {
