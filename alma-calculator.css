@@ -16,6 +16,9 @@
 .calc-seg button[aria-pressed="true"] { background: #7D242B; color: #fff; box-shadow: 0 6px 16px rgba(125,36,43,.25); }
 .calc-seg button:focus-visible { outline: 3px solid #C8A75E; outline-offset: 2px; }
 
+.calc-seg--3 { grid-template-columns: repeat(3, 1fr); margin-bottom: 1rem; }
+.calc-sublabel { margin: 0 0 .5rem; font-size: .82rem; font-weight: 700; color: #5B4648; }
+.calc-row[hidden] { display: none; }
 .calc-boards { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin-bottom: .7rem; font-size: .8rem; color: #5B4648; }
 .calc-boards button { appearance: none; border: 1px solid #D7CAB7; background: #fff; border-radius: 999px; padding: .3rem .7rem; font: 600 .78rem 'Montserrat', Arial, sans-serif; color: #4A1419; cursor: pointer; }
 .calc-boards button:hover { border-color: #7D242B; }

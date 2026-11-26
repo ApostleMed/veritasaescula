@@ -69,23 +69,28 @@
     var ol = CONFIG.oLevel, ged = CONFIG.ged;
 
     if (input.qualification === 'OLEVEL') {
-      var pts = (input.oLevelGrades || []).map(function (g) { return toPoints(toLetter(g)); });
+      // Students may have taken 5, 6 or 7 subjects. The best 6 count (all of them if fewer),
+      // scored out of 3 points per counted subject, so 5 or 6 subjects are not penalised.
+      var taken = Math.max(ol.minGradesBOrBetter, Math.min(ol.subjectsEntered, Number(input.subjectsTaken) || ol.subjectsEntered));
+      var pts = (input.oLevelGrades || []).slice(0, taken).map(function (g) { return toPoints(toLetter(g)); });
+      var counted = Math.min(taken, ol.subjectsCounted);
+      var maxPts = counted * 3;
       var aStars = pts.filter(function (p) { return p === 3; }).length;
       var bOrBetter = pts.filter(function (p) { return p >= 1; }).length;
-      var best6 = pts.slice().sort(function (a, b) { return b - a; }).slice(0, ol.subjectsCounted)
+      var best6 = pts.slice().sort(function (a, b) { return b - a; }).slice(0, counted)
         .reduce(function (s, p) { return s + p; }, 0);
-      resultsScore = best6 / ol.maxPoints * 100;
+      resultsScore = best6 / maxPts * 100;
       direct = aStars >= ol.directEntryAStars;
       meetsMinimum = bOrBetter >= ol.minGradesBOrBetter;
-      minText = 'at least ' + ol.minGradesBOrBetter + ' grades at B or better';
-      detail = { aStars: aStars, bOrBetter: bOrBetter, best6: best6 };
+      minText = 'at least ' + ol.minGradesBOrBetter + ' grades at B or better (you have ' + bOrBetter + ')';
+      detail = { aStars: aStars, bOrBetter: bOrBetter, best6: best6, counted: counted, maxPts: maxPts, taken: taken };
     } else {
       var s = (input.gedScores || []).map(Number);
       var total = s.reduce(function (a, b) { return a + (b || 0); }, 0);
       resultsScore = Math.max(0, Math.min(100, (total - ged.floorTotal) / (ged.topTotal - ged.floorTotal) * 100));
       direct = s.length === 4 && s.every(function (x) { return x >= ged.directEntryPerSubject; });
       meetsMinimum = total >= ged.floorTotal;
-      minText = 'a GED total of ' + ged.floorTotal + ' or more';
+      minText = 'a GED total of ' + ged.floorTotal + ' or more (you have ' + total + ')';
       detail = { total: total, at195: s.filter(function (x) { return x >= ged.directEntryPerSubject; }).length };
     }
 
@@ -100,7 +105,10 @@
 
     if (!meetsMinimum || dx < CONFIG.minDiagnostic) return Object.assign(base, {
       scholarship: 0, band: 'Below the minimum', composite: null, rule: 2,
-      reason: 'Below the minimum: needs ' + minText + ' and a diagnostic score of ' + CONFIG.minDiagnostic + ' or more.'
+      reason: 'Below the minimum: needs ' + [
+        meetsMinimum ? null : minText,
+        dx >= CONFIG.minDiagnostic ? null : 'a diagnostic score of ' + CONFIG.minDiagnostic + ' or more'
+      ].filter(Boolean).join(' and ') + '.'
     });
 
     var composite = Math.round((CONFIG.weights.results * resultsScore + CONFIG.weights.diagnostic * dx) * 100) / 100;
@@ -169,6 +177,23 @@
       update();
     });
 
+    // How many subjects the student took (5, 6 or 7)
+    var taken = CONFIG.oLevel.subjectsEntered;
+    function showRows() {
+      rowsWrap.querySelectorAll('.calc-row').forEach(function (r, k) {
+        r.hidden = k >= taken;
+        if (k >= taken) r.querySelector('.calc-grade').value = '';
+      });
+      box.querySelector('#calcCountLabel').textContent = taken;
+    }
+    box.querySelectorAll('[data-count]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        taken = Number(b.getAttribute('data-count'));
+        box.querySelectorAll('[data-count]').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        showRows(); update();
+      });
+    });
+
     // Board for all rows
     box.querySelectorAll('[data-board-all]').forEach(function (b) {
       b.addEventListener('click', function () {
@@ -228,6 +253,7 @@
     function update() {
       var entered = false, gedBad = false, input = { qualification: qual, diagnostic: dxNum.value === '' ? 0 : Number(dxNum.value) };
       if (qual === 'OLEVEL') {
+        input.subjectsTaken = taken;
         input.oLevelGrades = Array.prototype.map.call(rowsWrap.querySelectorAll('.calc-grade'), function (s) { return s.value; });
         entered = input.oLevelGrades.some(function (g) { return g !== ''; });
       } else {
@@ -262,7 +288,7 @@
       var pct = Math.round(r.scholarship * 100);
       var pathway = qual === 'OLEVEL' ? 'O Level pathway' : 'GED pathway';
       var resDetail = qual === 'OLEVEL'
-        ? 'Best 6 subjects: ' + r.detail.best6 + ' of 18 points'
+        ? (r.detail.taken > r.detail.counted ? 'Best ' + r.detail.counted + ' subjects: ' : 'All ' + r.detail.counted + ' subjects: ') + r.detail.best6 + ' of ' + r.detail.maxPts + ' points'
         : 'GED total: ' + r.detail.total + ' of 800';
       var check = function (ok, text) { return '<li class="' + (ok ? 'ok' : 'no') + '"><span aria-hidden="true">' + (ok ? '✓' : '✕') + '</span>' + text + '</li>'; };
       var rules = qual === 'OLEVEL'

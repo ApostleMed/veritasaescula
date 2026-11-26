@@ -2198,7 +2198,7 @@
         .alma-guide .faq-details p { margin: .6rem 0 0; }
     </style>
     <link rel="stylesheet" href="alma-ticket.css">
-    <link rel="stylesheet" href="alma-calculator.css?v=1">
+    <link rel="stylesheet" href="alma-calculator.css?v=2">
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -2317,13 +2317,20 @@
                                 </div>
                             </div>
                             <div class="calc-step" id="calcOlevel">
-                                <p class="calc-step-label"><i>2</i>Enter your 7 subject grades</p>
+                                <p class="calc-step-label"><i>2</i>Enter your O Level / IGCSE grades</p>
+                                <p class="calc-sublabel">How many subjects did you take?</p>
+                                <div class="calc-seg calc-seg--3" role="group" aria-label="Number of subjects">
+                                    <button type="button" data-count="5" aria-pressed="false">5</button>
+                                    <button type="button" data-count="6" aria-pressed="false">6</button>
+                                    <button type="button" data-count="7" aria-pressed="true">7</button>
+                                </div>
+                                <p class="calc-sublabel">Your <span id="calcCountLabel">7</span> grades</p>
                                 <div class="calc-boards">Set all to:
                                     <button type="button" data-board-all="CIE">Cambridge (CIE)</button>
                                     <button type="button" data-board-all="EDX">Pearson Edexcel</button>
                                 </div>
                                 <div class="calc-rows" id="calcGrades"></div>
-                                <p class="calc-hint">Your best 6 subjects count. Edexcel 9 and 8 count as A*, 7 as A, 6 as B. A 5 counts as C. Predicted grades work too.</p>
+                                <p class="calc-hint">Your best 6 subjects count (all of them if you took 5 or 6). You need at least 5 grades at B or better. Edexcel 9 and 8 count as A*, 7 as A, 6 as B; a 5 counts as C. Predicted grades work too.</p>
                             </div>
                             <div class="calc-step" id="calcGedPanel" hidden>
                                 <p class="calc-step-label"><i>2</i>Enter your 4 GED scores</p>
@@ -2816,7 +2823,7 @@
         onScroll();
     </script>
     <script src="alma-ticket.js?v=2"></script>
-    <script src="alma-calculator.js?v=2"></script>
+    <script src="alma-calculator.js?v=3"></script>
     <script>
         // ALMA diagnostic registration: live ticket preview, file handling and submit
         (function () {
