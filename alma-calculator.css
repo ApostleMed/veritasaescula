@@ -1,5 +1,5 @@
 /* ALMA scholarship calculator (alma.html#calculator) */
-.calc { margin-top: 3rem; background: #fff; border: 1px solid #D7CAB7; border-radius: 24px; box-shadow: 0 18px 48px rgba(74,20,25,.08); overflow: hidden; }
+.calc { scroll-margin-top: 100px; margin-top: 3rem; background: #fff; border: 1px solid #D7CAB7; border-radius: 24px; box-shadow: 0 18px 48px rgba(74,20,25,.08); overflow: hidden; }
 .calc-head { padding: clamp(1.4rem, 3vw, 2rem) clamp(1.25rem, 3vw, 2.25rem) 0; }
 .calc-tag { display: inline-block; padding: .3rem .75rem; border-radius: 999px; font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; background: #4A1419; color: #C8A75E; }
 .calc-head h3 { margin: .8rem 0 .4rem; font-family: var(--serif); font-size: clamp(1.45rem, 2.6vw, 1.9rem); font-weight: 600; line-height: 1.2; color: #4A1419; }
